@@ -36,10 +36,15 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
+    "sphinx_codeautolink",
+    "sphinx_inline_tabs",  # tabs
+    "sphinx_copybutton",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ["_templates"]
+# templates_path = ["_templates"]
+
+language = "zh_CN"
 
 # The suffix of source filenames.
 source_suffix = ".rst"
@@ -238,7 +243,7 @@ html_theme = "furo"
 # html_theme_options = {}
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = ["_themes"]
+# html_theme_path = ["_themes"]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -271,7 +276,7 @@ html_static_path = ["_static"]
 
 # Custom sidebar templates, maps document names to template names.
 # html_sidebars = {}
-html_sidebars = {"**": ["localtoc.html", "relations.html", "sidebarlinks.html", "searchbox.html"]}
+# html_sidebars = {"**": ["localtoc.html", "relations.html", "sidebarlinks.html", "searchbox.html"]}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.

@@ -3,11 +3,19 @@
 Quickstart
 ==========
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Getting started with |docx| is easy. Let's walk through the basics.
 
 
 Opening a document
 ------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 First thing you'll need is a document to work on. The easiest way is this::
 
@@ -23,6 +31,10 @@ but we'll keep things simple for the moment.
 
 Adding a paragraph
 ------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 Paragraphs are fundamental in Word. They're used for body text, but also for
 headings and list items like bullets.
@@ -51,6 +63,10 @@ generating one from scratch.
 Adding a heading
 ----------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 In anything but the shortest document, body text is divided into sections, each
 of which starts with a heading. Here's how to add one::
 
@@ -69,6 +85,10 @@ start a relatively short document that doesn't have a separate title page.
 Adding a page break
 -------------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Every once in a while you want the text that comes next to go on a separate
 page, even if the one you're on isn't full. A "hard" page break gets this
 done::
@@ -85,6 +105,10 @@ getting the most out of Word.
 
 Adding a table
 --------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 One frequently encounters content that lends itself to tabular presentation,
 lined up in neat rows and columns. Word does a pretty good job at this. Here's
@@ -175,6 +199,10 @@ Word's table style gallery.
 Adding a picture
 ----------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Word lets you place an image in a document using the ``Insert > Photo > Picture
 from file...`` menu item. Here's how to do it in |docx|::
 
@@ -188,6 +216,10 @@ or over a network and don't want to get the filesystem involved.
 
 Image size
 ~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 By default, the added image appears at `native` size. This is often bigger than
 you want. Native size is calculated as ``pixels / dpi``. So a 300x300 pixel
@@ -220,6 +252,10 @@ which in fact they are. So an expression like ``width = Inches(3)
 Applying a paragraph style
 --------------------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 If you don't know what a Word paragraph style is you should definitely check it
 out. Basically it allows you to apply a whole set of formatting options to
 a paragraph at once. It's a lot like CSS styles if you know what those are.
@@ -242,6 +278,10 @@ Generally, the style name is exactly as it appears in the Word user interface
 
 Applying bold and italic
 ------------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 In order to understand how bold and italic work, you need to understand
 a little about what goes on inside a paragraph. The short version is this:
@@ -303,6 +343,10 @@ make your code simpler if you're building the paragraph up from runs anyway::
 
 Applying a character style
 --------------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 In addition to paragraph styles, which specify a group of paragraph-level
 settings, Word has *character styles* which specify a group of run-level

@@ -2,18 +2,34 @@
 python-docx
 ===========
 
-Release v\ |version| (:ref:`Installation <install>`)
 
-*python-docx* is a Python library for creating and updating Microsoft Word
-(.docx) files.
+.. tab:: 中文
 
+    发布于 v\ |version| (:ref:`Installation <install>`)
+
+    *python-docx* 是一个用于创建和更新 Microsoft Word (.docx) 文件的 Python 库。
+
+.. tab:: 英文
+
+    Release v\ |version| (:ref:`Installation <install>`)
+
+    *python-docx* is a Python library for creating and updating Microsoft Word (.docx) files.
+
+
+它可以做什么
+--------------
 
 What it can do
---------------
 
 .. |img| image:: /_static/img/example-docx-01.png
 
-Here's an example of what |docx| can do:
+.. tab:: 中文
+
+    以下是 |docx| 功能的一个示例：
+
+.. tab:: 英文
+
+    Here's an example of what |docx| can do:
 
 ============================================  ===============================================================
 |img|                                         ::
@@ -65,11 +81,9 @@ Here's an example of what |docx| can do:
 ============================================  ===============================================================
 
 
-User Guide
-----------
-
 .. toctree::
    :maxdepth: 1
+   :caption: 用户指南 / User Guide
 
    user/install
    user/quickstart
@@ -83,12 +97,9 @@ User Guide
    user/styles-using
    user/shapes
 
-
-API Documentation
------------------
-
 .. toctree::
    :maxdepth: 2
+   :caption: API 文档 / API Documentation
 
    api/document
    api/settings
@@ -101,11 +112,8 @@ API Documentation
    api/shared
    api/enum/index
 
-
-Contributor Guide
------------------
-
 .. toctree::
    :maxdepth: 1
+   :caption: 贡献指南 / Contributor Guide
 
    dev/analysis/index
