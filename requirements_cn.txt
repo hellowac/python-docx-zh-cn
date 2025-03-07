@@ -110,3 +110,6 @@ furo
 sphinx-inline-tabs
 sphinx-copybutton
 sphinx-autodoc-typehints
+# mardkown 语法支持
+# https://www.sphinx-doc.org/zh-cn/master/usage/markdown.html
+myst-parser 

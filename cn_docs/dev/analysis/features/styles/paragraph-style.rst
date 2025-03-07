@@ -2,6 +2,10 @@
 Paragraph Style
 ===============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 A paragraph style provides character formatting (font) as well as paragraph
 formatting properties. Character formatting is inherited from
 |_CharacterStyle| and is predominantly embodied in the :attr:`font` property.
@@ -13,6 +17,10 @@ A handful of other properties are specific to a paragraph style.
 
 next_paragraph_style
 --------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 The `next_paragraph_style` property provides access to the style that will
 automatically be assigned by Word to a new paragraph inserted after
@@ -26,6 +34,10 @@ Text` style would normally be followed by a paragraph of the same style.
 
 Expected usage
 ~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 The priority use case for this property is to provide a working style that
 can be assigned to a paragraph. The property will always provide a valid
@@ -42,6 +54,10 @@ common than expected.
 Behavior
 ~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 **Default.** The default next paragraph style is the same paragraph style.
 
 The default is used whenever the next paragraph style is not specified or is
@@ -57,6 +73,10 @@ In all these cases the current style (`self`) is returned.
 
 Example XML
 ~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -79,6 +99,10 @@ paragraph_style.next_paragraph_style is styles['Bar']::
 
 Candidate protocol
 ~~~~~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: python
 

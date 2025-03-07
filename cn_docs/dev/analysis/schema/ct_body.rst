@@ -19,6 +19,10 @@
 Spec text
 ---------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
     This element specifies the contents of the body of the document -- the main
     document editing surface.
 

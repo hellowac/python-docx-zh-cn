@@ -2,12 +2,20 @@
 Latent Styles
 =============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Latent style definitions are a "stub" style definition specifying behavioral
 (UI display) attributes for built-in styles.
 
 
 Latent style collection
 -----------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 The latent style collection for a document is accessed using the
 :attr:`~.Styles.latent_styles` property on |Styles|::
@@ -33,6 +41,10 @@ dictionary-style notation.
 default_priority
 ~~~~~~~~~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 **XML semantics**. According to ISO 29500, the default value if the
 `w:defUIPriority` attribute is omitted is 99. 99 is explictly set in the
 default Word `styles.xml`, so will generally be what one finds.
@@ -53,6 +65,10 @@ default Word `styles.xml`, so will generally be what one finds.
 load_count
 ~~~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 **XML semantics**. No default is stated in the spec. Don't allow assignment
 of |None|.
 
@@ -67,6 +83,10 @@ of |None|.
 
 Boolean properties
 ~~~~~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 There are four boolean properties that all share the same protocol:
 
@@ -89,6 +109,10 @@ the attribute should always be written explicitly on update.
 
 Specimen XML
 ~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -131,6 +155,10 @@ The `w:latentStyles` element used in the default Word 2011 template::
 
 Latent style behavior
 ---------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * A style has two categories of attribute, `behavioral` and `formatting`.
   Behavioral attributes specify where and when the style should appear in the

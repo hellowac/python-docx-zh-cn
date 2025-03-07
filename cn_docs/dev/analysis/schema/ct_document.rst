@@ -16,6 +16,10 @@
 Spec text
 ---------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
     This element specifies the contents of a main document part in
     a WordprocessingML document.
 
@@ -34,6 +38,10 @@ Spec text
 
 Schema excerpt
 --------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

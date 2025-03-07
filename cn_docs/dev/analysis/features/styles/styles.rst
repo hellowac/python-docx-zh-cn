@@ -6,6 +6,10 @@ Styles collection
 Candidate protocols
 -------------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Access::
 
     >>> styles = document.styles  # default styles part added if not present
@@ -42,6 +46,10 @@ Access style by name (or style id)::
 Feature Notes
 -------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 * could add a default builtin style from known specs on first access via
   WD_BUILTIN_STYLE enumeration::
 
@@ -53,6 +61,10 @@ Feature Notes
 
 Example XML
 -----------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

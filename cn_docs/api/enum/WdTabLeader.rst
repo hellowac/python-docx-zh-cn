@@ -3,6 +3,10 @@
 ``WD_TAB_LEADER``
 =================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies the character to use as the leader with formatted tabs.
 
 ----

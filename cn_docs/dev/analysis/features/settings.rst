@@ -1,20 +1,30 @@
 
-Settings part
+设置部分
 =============
 
-In WordprocessingML, document-level settings are defined in the
-`settings.xml` part. There are 98 distinct settings, all of which are
-optional (according to the spec at least).
+Settings part
 
-The API does not provide for direct access to the settings part. A |Settings|
-proxy object is available on the :attr:`.Document.settings` property and
-provides access to the document-level settings. The |Document| object obtains
-access via its document part. |DocumentPart| brokers all access to the
-settings part.
+.. tab:: 中文
 
+    在 WordprocessingML 中，文档级设置定义在 `settings.xml` 部分。  
+    共有 98 种不同的设置，所有这些设置都是可选的（至少根据规范来说是这样）。
+
+    API 不提供对 `settings.xml` 部分的直接访问。  
+    但可以通过 :attr:`.Document.settings` 属性获取 |Settings| 代理对象，  
+    从而访问文档级设置。|Document| 对象通过其 `document part` 访问 `settings.xml`，  
+    而 |DocumentPart| 负责管理所有对 `settings.xml` 的访问。
+
+.. tab:: 英文
+
+    In WordprocessingML, document-level settings are defined in the `settings.xml` part. There are 98 distinct settings, all of which are optional (according to the spec at least).
+
+    The API does not provide for direct access to the settings part. A |Settings| proxy object is available on the :attr:`.Document.settings` property and provides access to the document-level settings. The |Document| object obtains access via its document part. |DocumentPart| brokers all access to the settings part.
+
+
+候选协议
+------------------
 
 Candidate Protocol
-------------------
 
 .. highlight:: python
 
@@ -25,12 +35,22 @@ Candidate Protocol
   <docx.settings.Settings object at 0xdeadbeef4>
 
 
-Specimen XML
+样本 XML
 ------------
+
+Specimen XML
+
+.. tab:: 中文
+
+    Word 2016 中新文档的默认 `settings.xml` 部分
+
+.. tab:: 英文
+
+    Default `settings.xml` part for a new document in Word 2016
 
 .. highlight:: xml
 
-Default `settings.xml` part for a new document in Word 2016::
+::
 
   <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
   <w:settings
@@ -85,8 +105,10 @@ Default `settings.xml` part for a new document in Word 2016::
     <w15:docId w15:val="{3E989880-FF70-7C4D-8D4E-02DC7E104B81}"/>
   </w:settings>
 
-Schema Excerpts
+Schema 摘录
 ---------------
+
+Schema Excerpts
 
 .. highlight:: xml
 

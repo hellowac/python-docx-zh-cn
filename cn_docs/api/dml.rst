@@ -4,6 +4,10 @@
 DrawingML objects
 =================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Low-level drawing elements like color that appear in various document
 contexts.
 

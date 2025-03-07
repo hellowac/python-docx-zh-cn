@@ -1,28 +1,54 @@
 
-Breaks
+中断
 ======
 
-Word supports a variety of breaks that interrupt the flow of text in the
-document:
+Breaks
 
-* line break
-* page break
-* column break
-* section break (new page, even page, odd page)
+.. tab:: 中文
 
-In addition, a page break can be forced by formatting a paragraph with the
-"page break before" setting.
+    Word 支持多种中断文档中文本流动的分隔符：
 
-This analysis is limited to line, page, and column breaks. A section break is
-implemented using a completely different set of elements and is covered
-separately.
+    * 换行符
+    * 分页符
+    * 列分隔符
+    * 节分隔符（新页面、偶数页、奇数页）
+
+    此外，可以通过将段落设置为“分页前”来强制分页。
+
+    本分析仅限于换行符、分页符和列分隔符。节分隔符使用完全不同的一组元素实现，单独进行说明。
+
+.. tab:: 英文
+
+    Word supports a variety of breaks that interrupt the flow of text in the
+    document:
+
+    * line break
+    * page break
+    * column break
+    * section break (new page, even page, odd page)
+
+    In addition, a page break can be forced by formatting a paragraph with the
+    "page break before" setting.
+
+    This analysis is limited to line, page, and column breaks. A section break is
+    implemented using a completely different set of elements and is covered
+    separately.
 
 
-Candidate protocol -- run.add_break()
+候选协议 -- run.add_break()
 -------------------------------------
 
-The following interactive session demonstrates the protocol for adding a page
-break::
+Candidate protocol -- run.add_break()
+
+.. tab:: 中文
+
+    以下交互式会话演示了添加分页符的协议
+
+.. tab:: 英文
+
+    The following interactive session demonstrates the protocol for adding a page break
+
+::
 
     >>> run = p.add_run()
     >>> run.breaks
@@ -45,8 +71,10 @@ break::
     >>> run.add_break(WD_BREAK.TEXT_WRAPPING)
 
 
-Enumeration -- WD_BREAK_TYPE
+枚举 -- WD_BREAK_TYPE
 ----------------------------
+
+Enumeration -- WD_BREAK_TYPE
 
 * WD_BREAK.LINE
 * WD_BREAK.LINE_CLEAR_LEFT
@@ -63,117 +91,225 @@ Enumeration -- WD_BREAK_TYPE
 * WD_BREAK.SECTION_ODD_PAGE
 
 
-Specimen XML
+样本 XML
 ------------
+
+Specimen XML
 
 .. highlight:: xml
 
 
-Line break
+换行符
 ~~~~~~~~~~
 
-This XML is produced by Word after inserting a line feed with Shift-Enter::
+Line break
 
-    <w:p>
-      <w:r>
-        <w:t>Text before</w:t>
-      </w:r>
-      <w:r>
-        <w:br/>
-        <w:t>and after line break</w:t>
-      </w:r>
-    </w:p>
+.. tab:: 中文
 
-Word loads this more straightforward generation just fine, although it changes
-it back on next save. I'm not sure of the advantage in creating a fresh run
-such that the ``<w:br/>`` element is the first child::
+    以下 XML 是 Word 在使用 Shift-Enter 插入换行符后生成的::
 
-    <w:p>
-      <w:r>
-        <w:t>Text before</w:t>
-        <w:br/>
-        <w:t>and after line break</w:t>
-      </w:r>
-    </w:p>
+      <w:p>
+        <w:r>
+          <w:t>Text before</w:t>
+        </w:r>
+        <w:r>
+          <w:br/>
+          <w:t>and after line break</w:t>
+        </w:r>
+      </w:p>
 
+    Word 可以正常加载这种更直接的生成方式，尽管它在下次保存时会将其更改。我不确定创建一个新的 run，使得 ``<w:br/>`` 元素成为第一个子元素的优势何在::
+
+      <w:p>
+        <w:r>
+          <w:t>Text before</w:t>
+          <w:br/>
+          <w:t>and after line break</w:t>
+        </w:r>
+      </w:p>
+
+.. tab:: 英文
+
+    This XML is produced by Word after inserting a line feed with Shift-Enter::
+
+        <w:p>
+          <w:r>
+            <w:t>Text before</w:t>
+          </w:r>
+          <w:r>
+            <w:br/>
+            <w:t>and after line break</w:t>
+          </w:r>
+        </w:p>
+
+    Word loads this more straightforward generation just fine, although it changes
+    it back on next save. I'm not sure of the advantage in creating a fresh run
+    such that the ``<w:br/>`` element is the first child::
+
+        <w:p>
+          <w:r>
+            <w:t>Text before</w:t>
+            <w:br/>
+            <w:t>and after line break</w:t>
+          </w:r>
+        </w:p>
+
+
+分页符
+~~~~~~~~~~
 
 Page break
-~~~~~~~~~~
 
-Starting with this XML ... ::
+.. tab:: 中文
 
-    <w:p>
-      <w:r>
-        <w:t>Before inserting a page break, the cursor was here }</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>This was the following paragraph, the last in the document</w:t>
-      </w:r>
-    </w:p>
+    从这个 XML 开始... ::
+
+        <w:p>
+          <w:r>
+            <w:t>Before inserting a page break, the cursor was here }</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>This was the following paragraph, the last in the document</w:t>
+          </w:r>
+        </w:p>
+
+    ... 这是 Word 在插入硬分页时生成的 XML::
+
+        <w:p>
+          <w:r>
+            <w:t>Before inserting a page break, the cursor was here }</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:br w:type="page"/>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:bookmarkStart w:id="0" w:name="_GoBack"/>
+          <w:bookmarkEnd w:id="0"/>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>This was the following paragraph, the last in the document</w:t>
+          </w:r>
+        </w:p>
+
+    Word 可以正常加载以下简化形式... ::
+
+        <w:p>
+          <w:r>
+            <w:t>Text before an intra-run page break</w:t>
+            <w:br w:type="page"/>
+            <w:t>Text after an intra-run page break</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>following paragraph</w:t>
+          </w:r>
+        </w:p>
+
+    ... 然而在保存时，它会将其转换为以下形式::
+
+        <w:p>
+          <w:r>
+            <w:t>Text before an intra-run page break</w:t>
+          </w:r>
+          <w:r>
+            <w:br w:type="page"/>
+          </w:r>
+          <w:r>
+            <w:lastRenderedPageBreak/>
+            <w:t>Text after an intra-run page break</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>following paragraph</w:t>
+          </w:r>
+        </w:p>
+
+.. tab:: 英文
+
+    Starting with this XML ... ::
+
+        <w:p>
+          <w:r>
+            <w:t>Before inserting a page break, the cursor was here }</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>This was the following paragraph, the last in the document</w:t>
+          </w:r>
+        </w:p>
 
 
-... this XML is produced by Word on inserting a hard page::
+    ... this XML is produced by Word on inserting a hard page::
 
-    <w:p>
-      <w:r>
-        <w:t>Before inserting a page break, the cursor was here }</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:br w:type="page"/>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:bookmarkStart w:id="0" w:name="_GoBack"/>
-      <w:bookmarkEnd w:id="0"/>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>This was the following paragraph, the last in the document</w:t>
-      </w:r>
-    </w:p>
+        <w:p>
+          <w:r>
+            <w:t>Before inserting a page break, the cursor was here }</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:br w:type="page"/>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:bookmarkStart w:id="0" w:name="_GoBack"/>
+          <w:bookmarkEnd w:id="0"/>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>This was the following paragraph, the last in the document</w:t>
+          </w:r>
+        </w:p>
 
-Word loads the following simplified form fine ... ::
+    Word loads the following simplified form fine ... ::
 
-    <w:p>
-      <w:r>
-        <w:t>Text before an intra-run page break</w:t>
-        <w:br w:type="page"/>
-        <w:t>Text after an intra-run page break</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>following paragraph</w:t>
-      </w:r>
-    </w:p>
+        <w:p>
+          <w:r>
+            <w:t>Text before an intra-run page break</w:t>
+            <w:br w:type="page"/>
+            <w:t>Text after an intra-run page break</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>following paragraph</w:t>
+          </w:r>
+        </w:p>
 
-... although on saving it converts it to this::
+    ... although on saving it converts it to this::
 
-    <w:p>
-      <w:r>
-        <w:t>Text before an intra-run page break</w:t>
-      </w:r>
-      <w:r>
-        <w:br w:type="page"/>
-      </w:r>
-      <w:r>
-        <w:lastRenderedPageBreak/>
-        <w:t>Text after an intra-run page break</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>following paragraph</w:t>
-      </w:r>
-    </w:p>
+        <w:p>
+          <w:r>
+            <w:t>Text before an intra-run page break</w:t>
+          </w:r>
+          <w:r>
+            <w:br w:type="page"/>
+          </w:r>
+          <w:r>
+            <w:lastRenderedPageBreak/>
+            <w:t>Text after an intra-run page break</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>following paragraph</w:t>
+          </w:r>
+        </w:p>
 
+
+架构摘录
+--------------
 
 Schema excerpt
---------------
 
 .. highlight:: xml
 
@@ -250,8 +386,10 @@ Schema excerpt
   </xsd:simpleType>
 
 
-Resources
+资源
 ---------
+
+Resources
 
 * `WdBreakType Enumeration on MSDN`_
 * `Range.InsertBreak Method (Word) on MSDN`_
@@ -263,7 +401,9 @@ Resources
    http://msdn.microsoft.com/en-us/library/office/ff835132.aspx
 
 
-Relevant sections in the ISO Spec
+ISO 规范中的相关部分
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Relevant sections in the ISO Spec
 
 * 17.18.3 ST_BrClear (Line Break Text Wrapping Restart Location)

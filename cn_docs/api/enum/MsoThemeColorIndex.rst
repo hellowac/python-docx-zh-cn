@@ -3,6 +3,10 @@
 ``MSO_THEME_COLOR_INDEX``
 =========================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Indicates the Office theme color, one of those shown in the color gallery on
 the formatting ribbon.
 

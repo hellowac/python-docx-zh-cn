@@ -3,6 +3,10 @@
 ``WD_SECTION_START``
 ====================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_SECTION**
 
 Specifies the start type of a section break.

@@ -3,6 +3,10 @@
 ``WD_TABLE_DIRECTION``
 ======================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies the direction in which an application orders cells in the
 specified table or row.
 

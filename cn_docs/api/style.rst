@@ -4,6 +4,10 @@
 Style-related objects
 =====================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 A style is used to collect a set of formatting properties under a single name
 and apply those properties to a content object all at once. This promotes
 formatting consistency throughout a document and across related documents

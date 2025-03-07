@@ -1,12 +1,22 @@
 
-Table Row
+表行
 =========
 
-A table row has certain properties such as height.
+Table Row
 
+.. tab:: 中文
+
+    表格行具有某些属性，例如高度。
+
+.. tab:: 英文
+
+    A table row has certain properties such as height.
+
+
+行高
+----------
 
 Row.height
-----------
 
 Candidate protocol::
 
@@ -25,17 +35,27 @@ Candidate protocol::
 MS API
 ------
 
+MS API
+
 https://msdn.microsoft.com/en-us/library/office/ff193915.aspx
 
-Methods
+方法
 ~~~~~~~
+
+Methods
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * Delete()
 * SetHeight()
 * SetLeftIndent()
 
-Properties
+属性
 ~~~~~~~~~~
+
+Properties
 
 * Alignment
 * AllowBreakAcrossPages
@@ -55,19 +75,37 @@ Properties
 * SpaceBetweenColumns
 
 
-WD_ROW_HEIGHT_RULE Enumeration
+WD_ROW_HEIGHT_RULE 枚举
 ------------------------------
 
-Alias: WD_ROW_HEIGHT
+WD_ROW_HEIGHT_RULE Enumeration
 
-* wdRowHeightAtLeast (1) The row height is at least a minimum specified value.
-* wdRowHeightAuto (0) The row height is adjusted to accommodate the tallest
-  value in the row.
-* wdRowHeightExactly (2) The row height is an exact value.
+.. tab:: 中文
 
+    别名: WD_ROW_HEIGHT
+
+    * wdRowHeightAtLeast (1) 行高至少为指定的最小值。
+    * wdRowHeightAuto (0) 行高会进行调整以适应行中的最高值。
+    * wdRowHeightExactly (2) 行高是一个精确值。
+
+.. tab:: 英文
+
+    Alias: WD_ROW_HEIGHT
+
+    * wdRowHeightAtLeast (1) The row height is at least a minimum specified value.
+    * wdRowHeightAuto (0) The row height is adjusted to accommodate the tallest
+      value in the row.
+    * wdRowHeightExactly (2) The row height is an exact value.
+
+
+架构定义
+------------------
 
 Schema Definitions
-------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

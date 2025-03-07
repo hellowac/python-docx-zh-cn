@@ -5,6 +5,10 @@
 Section objects
 ===============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Provides access to section properties such as margins and page orientation.
 
 

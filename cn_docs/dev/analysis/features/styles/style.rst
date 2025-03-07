@@ -2,6 +2,10 @@
 Style objects
 =============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 A style is one of four types; character, paragraph, table, or numbering. All
 style objects have behavioral properties and formatting properties. The set of
 formatting properties varies depending on the style type. In general,
@@ -11,6 +15,10 @@ not inherit.
 
 Behavioral properties
 ---------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 There are six behavior properties:
 
@@ -42,12 +50,20 @@ locked
 hidden
 ------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `hidden` attribute doesn't work on built-in styles and its behavior on
 custom styles is spotty. Skipping this attribute for now. Will reconsider if
 someone requests it and can provide a specific use case.
 
 Behavior
 ~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 **Scope.** `hidden` doesn't work at all on 'Normal' or 'Heading 1' style. It
 doesn't work on Salutation either. There is no `w:defHidden` attribute on
@@ -65,6 +81,10 @@ having a hidden style.
 priority
 --------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `priority` attribute is the integer primary sort key determining the
 position of a style in a UI list. The secondary sort is alphabetical by name.
 Negative values are valid, although not assigned by Word itself and appear to
@@ -72,6 +92,10 @@ be treated as 0.
 
 Behavior
 ~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 **Default.** Word behavior appears to default priority to 0 for custom
 styles. The spec indicates the effective default value is conceptually
@@ -97,6 +121,10 @@ Candidate protocol
 semi-hidden
 -----------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `w:semiHidden` element specifies visibility of the style in the so-called
 `main` user interface. For Word, this means the style gallery and the
 recommended, styles-in-use, and in-current-document lists. The all-styles
@@ -105,6 +133,10 @@ part of an `advanced` user interface.
 
 Behavior
 ~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 **Default.** If the `w:semiHidden` element is omitted, its effective value is
 |False|. There is no inheritance of this value.
@@ -117,6 +149,10 @@ Behavior
 Candidate protocol
 ~~~~~~~~~~~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 ::
 
     >>> style = document.styles['Foo']
@@ -128,6 +164,10 @@ Candidate protocol
 
 Example XML
 ~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -161,6 +201,10 @@ used when writing XML::
 unhide-when-used
 ----------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `w:unhideWhenUsed` element signals an application that this style should
 be made visibile the next time it is used.
 
@@ -182,6 +226,10 @@ contents does not cause the `w:semiHidden` element to be removed.
 Candidate protocol
 ~~~~~~~~~~~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 .. highlight:: python
 
 ::
@@ -195,6 +243,10 @@ Candidate protocol
 
 Example XML
 ~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -229,12 +281,20 @@ used when writing XML::
 quick-style
 -----------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `w:qFormat` element specifies whether Word should display this style in
 the style gallery. In order to appear in the gallery, this attribute must be
 |True| and `hidden` must be |False|.
 
 Behavior
 ~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 **Default.** If the `w:qFormat` element is omitted, its effective value is
 |False|. There is no inheritance of this value.
@@ -244,6 +304,10 @@ will appear in the gallery in the order specified by `w:uiPriority`.
 
 Candidate protocol
 ~~~~~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: python
 
@@ -258,6 +322,10 @@ Candidate protocol
 
 Example XML
 ~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -291,6 +359,10 @@ used when writing XML::
 locked
 ------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The `w:locked` element specifies whether Word should prevent this style from
 being applied to content. This behavior is only active if formatting
 protection is turned on.
@@ -298,11 +370,19 @@ protection is turned on.
 Behavior
 ~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 **Default.** If the `w:locked` element is omitted, its effective value is
 |False|. There is no inheritance of this value.
 
 Candidate protocol
 ~~~~~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: python
 
@@ -349,6 +429,10 @@ used when writing XML::
 
 Candidate protocols
 -------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: python
 

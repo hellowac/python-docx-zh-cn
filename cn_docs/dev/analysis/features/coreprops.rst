@@ -2,6 +2,10 @@
 Core Document Properties
 ========================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The Open XML format provides for a set of descriptive properties to be
 maintained with each document. One of these is the *core file properties*.
 The core properties are common to all Open XML formats and appear in
@@ -33,6 +37,10 @@ Candidate Protocol
 
 Properties
 ----------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 15 properties are supported. All unicode values are limited to 255 characters
 (not bytes).
@@ -102,6 +110,10 @@ version *(unicode)*
 Specimen XML
 ------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 .. highlight:: xml
 
 core.xml produced by Microsoft Word::
@@ -133,6 +145,10 @@ core.xml produced by Microsoft Word::
 
 Schema Excerpt
 --------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 ::
 

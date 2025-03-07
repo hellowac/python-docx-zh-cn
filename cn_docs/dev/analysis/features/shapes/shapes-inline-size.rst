@@ -2,6 +2,10 @@
 Inline shape size
 =================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The position of an inline shape is completely determined by the text it is
 inline with, however its dimensions can be specified. For some shape types,
 both the contained shape and the shape container specify a width and height.
@@ -12,6 +16,10 @@ determine the display size while the dimension of the pic element determine the
 
 Candidate protocol -- inline shape access
 -----------------------------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 The following interactive session illustrates the protocol for accessing and
 changing the size of an inline shape::
@@ -31,6 +39,10 @@ changing the size of an inline shape::
 Resources
 ---------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 * `InlineShape Members (Word) on MSDN`_
 * `Shape Members (Word) on MSDN`_
 
@@ -43,6 +55,10 @@ Resources
 
 Specimen XML
 ------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

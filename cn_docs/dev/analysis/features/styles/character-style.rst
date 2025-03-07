@@ -2,6 +2,10 @@
 Character Style
 ===============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Word allows a set of run-level properties to be given a name. The set of
 properties is called a *character style*. All the settings may be applied to
 a run in a single action by setting the style of the run.
@@ -9,6 +13,10 @@ a run in a single action by setting the style of the run.
 
 Protocol
 --------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 There are two call protocols related to character style: getting and setting
 the character style of a run, and specifying a style when creating a run.
@@ -52,6 +60,10 @@ Specifying the style of a run on creation::
 Specimen XML
 ------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 .. highlight:: xml
 
 A baseline regular run::
@@ -90,6 +102,10 @@ those spaces removed. In this example, "Subtle Emphasis" becomes
 
 Schema excerpt
 --------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

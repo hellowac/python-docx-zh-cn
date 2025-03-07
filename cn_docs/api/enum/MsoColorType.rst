@@ -3,6 +3,10 @@
 ``MSO_COLOR_TYPE``
 ==================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies the color specification scheme
 
 Example::

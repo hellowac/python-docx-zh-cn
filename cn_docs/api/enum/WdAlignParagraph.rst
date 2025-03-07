@@ -3,6 +3,10 @@
 ``WD_PARAGRAPH_ALIGNMENT``
 ==========================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_ALIGN_PARAGRAPH**
 
 Specifies paragraph justification type.

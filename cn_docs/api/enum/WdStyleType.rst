@@ -3,6 +3,10 @@
 ``WD_STYLE_TYPE``
 =================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies one of the four style types: paragraph, character, list, or
 table.
 

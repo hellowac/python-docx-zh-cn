@@ -3,6 +3,10 @@
 ``WD_TAB_ALIGNMENT``
 ====================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies the tab stop alignment to apply.
 
 ----

@@ -1,14 +1,22 @@
 
-Table Cell
+单元格
 ==========
 
-All content in a table is contained in a cell. A cell also has several
-properties affecting its size, appearance, and how the content it contains is
-formatted.
+Table Cell
 
+.. tab:: 中文
+
+    表格中的所有内容都包含在单元格中。单元格还具有一些属性，这些属性会影响其大小、外观以及其所含内容的格式。
+
+.. tab:: 英文
+
+    All content in a table is contained in a cell. A cell also has several properties affecting its size, appearance, and how the content it contains is formatted.
+
+
+候选协议
+------------------
 
 Candidate protocol
-------------------
 
 Cell.vertical_alignment::
 
@@ -23,8 +31,14 @@ Cell.vertical_alignment::
     CENTER (1)
 
 
-MS API - Partial Summary
+MS API - 部分摘要
 ------------------------
+
+MS API - Partial Summary
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * Merge()
 * Split()
@@ -45,27 +59,51 @@ MS API - Partial Summary
 * WordWrap
 
 
-WD_ALIGN_VERTICAL Enumeration
+WD_ALIGN_VERTICAL 枚举
 ---------------------------------
 
-wdAlignVerticalBoth (101)
-    This is an option in the OpenXml spec, but not in Word itself. It's not
-    clear what Word behavior this setting produces. If you find out please let
-    us know and we'll update the documentation. Otherwise, probably best to
-    avoid this option.
+WD_ALIGN_VERTICAL Enumeration
 
-wdAlignVerticalBottom (3)
-    Text is aligned to the bottom border of the cell.
+.. tab:: 中文
 
-wdAlignVerticalCenter (1)
-    Text is aligned to the center of the cell.
+    **wdAlignVerticalBoth (101)**  
+        这是 OpenXml 规范中的一个选项，但在 Word 本身中并不存在。目前尚不清楚此设置在 Word 中会产生何种行为。如果您发现了相关信 息，请告诉我们，我们将更新文档。否则，建议避免使用此选项。
 
-wdAlignVerticalTop (0)
-    Text is aligned to the top border of the cell.
+    **wdAlignVerticalBottom (3)**  
+        文本对齐到单元格的底部边界。
+ 
+    **wdAlignVerticalCenter (1)**  
+        文本在单元格内垂直居中对齐。
+ 
+    **wdAlignVerticalTop (0)**  
+        文本对齐到单元格的顶部边界。
+ 
+.. tab:: 英文
 
+    wdAlignVerticalBoth (101)
+        This is an option in the OpenXml spec, but not in Word itself. It's not
+        clear what Word behavior this setting produces. If you find out please let
+        us know and we'll update the documentation. Otherwise, probably best to
+        avoid this option.
+
+    wdAlignVerticalBottom (3)
+        Text is aligned to the bottom border of the cell.
+
+    wdAlignVerticalCenter (1)
+        Text is aligned to the center of the cell.
+
+    wdAlignVerticalTop (0)
+        Text is aligned to the top border of the cell.
+
+
+样本 XML
+------------
 
 Specimen XML
-------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -87,8 +125,14 @@ Specimen XML
   </w:tc>
 
 
-Schema Definitions
+架构定义
 ------------------
+
+Schema Definitions
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

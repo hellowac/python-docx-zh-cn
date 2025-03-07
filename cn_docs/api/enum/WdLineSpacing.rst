@@ -3,6 +3,10 @@
 ``WD_LINE_SPACING``
 ===================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Specifies a line spacing format to be applied to a paragraph.
 
 Example::

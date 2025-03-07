@@ -3,6 +3,10 @@
 ``WD_ORIENTATION``
 ==================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_ORIENT**
 
 Specifies the page layout orientation.

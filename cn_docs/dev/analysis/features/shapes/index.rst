@@ -2,6 +2,10 @@
 Shapes (in general)
 ===================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 A graphical object that appears in a Word document is known as a `shape`.
 A shape can be `inline` or `floating`. An inline shape appears on a text
 baseline as though it were a character glyph and affects the line height.
@@ -28,6 +32,10 @@ feature analyses:
 MS API
 ------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Access to shapes is provided by the Shapes and InlineShapes properties on the
 Document object.
 
@@ -49,6 +57,10 @@ both:
 
 Resources
 ---------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * `Document Members (Word) on MSDN`_
 * `InlineShape Members (Word) on MSDN`_

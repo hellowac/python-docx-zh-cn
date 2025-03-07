@@ -10,6 +10,10 @@ Shared classes
 Length objects
 --------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Length values in |docx| are expressed as a standardized |Length| value object.
 |Length| is a subclass of |int|, having all the behavior of an |int|. In
 addition, it has built-in units conversion properties, e.g.::
@@ -47,6 +51,10 @@ allowing values to be expressed in the units most appropriate to the context.
 
 |RGBColor| objects
 ------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. autoclass:: RGBColor(r, g, b)
    :members:

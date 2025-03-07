@@ -1,6 +1,12 @@
 
-Styles
+样式
 ======
+
+Styles
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. toctree::
    :titlesonly:
@@ -19,8 +25,14 @@ Style Sheets (CSS) works with HTML.
 Styles are defined in the ``styles.xml`` package part and are keyed to
 a paragraph, run, or table using the `styleId` string.
 
-Style visual behavior
+样式视觉行为
 ---------------------
+
+Style visual behavior
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * **Sort order.** Built-in styles appear in order of the effective value of
   their `uiPriority` attribute. By default, a custom style will not receive
@@ -84,8 +96,14 @@ Style visual behavior
   when: `semiHidden` == |False| and `qFormat` == |True|
 
 
-Glossary
+词汇表
 --------
+
+Glossary
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 built-in style
     One of a set of standard styles known to Word, such as "Heading 1".
@@ -105,8 +123,14 @@ recommended style list
     "Recommended" is selected from the "List:" dropdown box.
 
 
-Word behavior
+单词行为
 -------------
+
+Word behavior
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 If no style having an assigned style id is defined in the styles part, the
 style application has no effect.
@@ -119,8 +143,10 @@ definition if it is no longer applied to any content. The definition of each
 of the styles ever used in a document are accumulated in its ``styles.xml``.
 
 
-Related MS API *(partial)*
+相关 MS API *(部分)*
 --------------------------
+
+Related MS API *(partial)*
 
 * Document.Styles
 * Styles.Add, .Item, .Count, access by name, e.g. Styles("Foobar")
@@ -148,14 +174,18 @@ Related MS API *(partial)*
 * Style.Visibility
 
 
-Enumerations
+枚举
 ------------
+
+Enumerations
 
 * WdBuiltinStyle
 
 
-Example XML
+示例 XML
 -----------
+
+Example XML
 
 .. highlight:: xml
 
@@ -229,8 +259,10 @@ Example XML
    </w:styles>
 
 
-Schema excerpt
+架构摘录
 --------------
+
+Schema excerpt
 
 ::
 

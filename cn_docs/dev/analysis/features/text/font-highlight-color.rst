@@ -1,17 +1,32 @@
 
-Font highlight color
+字体高亮颜色
 ====================
 
-Text in a Word document can be "highlighted" with a number of colors,
-providing text background color. The visual effect is similar to that
-produced using a highlighter (often fluorescent yellow) on a printed page.
+Font highlight color
+
+.. tab:: 中文
+
+    Word 文档中的文本可以用多种颜色“突出显示”，提供文本背景颜色。视觉效果类似于在打印页面上使用荧光笔（通常是荧光黄）产生的效果。
+
+.. tab:: 英文
+
+    Text in a Word document can be "highlighted" with a number of colors, providing text background color. The visual effect is similar to that produced using a highlighter (often fluorescent yellow) on a printed page.
 
 
-Protocol
+协议
 --------
 
-Text is highlighted by assigning a member of `WD_COLOR_INDEX` to
-`Font.highlight_color`.
+Protocol
+
+.. tab:: 中文
+
+    通过将 `WD_COLOR_INDEX` 的成员分配给 `Font.highlight_color` 来突出显示文本。
+
+.. tab:: 英文
+
+    Text is highlighted by assigning a member of `WD_COLOR_INDEX` to `Font.highlight_color`.
+
+::
 
     >>> font = paragraph.add_run().font
     >>> font.highlight_color
@@ -27,18 +42,30 @@ Text is highlighted by assigning a member of `WD_COLOR_INDEX` to
     None
 
 
-Enumerations
+枚举
 ------------
+
+Enumerations
 
 * `WdColorIndex Enumeration on MSDN`_
 
 .. _WdColorIndex Enumeration on MSDN: https://msdn.microsoft.com/EN-US/library/office/ff195343.aspx
 
 
-XML Semantics
+XML 语义
 -------------
 
-Mapping of `WD_COLOR_INDEX` members to `ST_Highlight` values::
+XML Semantics
+
+.. tab:: 中文
+    
+    将 `WD_COLOR_INDEX` 成员映射到 `ST_Highlight` 值
+
+.. tab:: 英文
+
+    Mapping of `WD_COLOR_INDEX` members to `ST_Highlight` values
+
+::
 
     AUTO = 'default'
     BLACK = 'black'
@@ -59,45 +86,85 @@ Mapping of `WD_COLOR_INDEX` members to `ST_Highlight` values::
     YELLOW = 'yellow'
 
 
-Specimen XML
+样本 XML
 ------------
 
+Specimen XML
+
 .. highlight:: xml
 
-Baseline run::
+.. tab:: 中文
 
-  <w:r>
-    <w:t>Black text on white background</w:t>
-  </w:r>
+    基线运行（Baseline run）::
 
-Blue text, Bright Green Highlight::
+      <w:r>
+        <w:t>黑色文本，白色背景</w:t>
+      </w:r>
 
-  <w:r>
-    <w:rPr>
-      <w:highlight w:val="green"/>
-    </w:rPr>
-    <w:t>Blue text on bright green background</w:t>
-  </w:r>
+    蓝色文本，亮绿色高亮::
 
-Red text, Green Highlight::
+      <w:r>
+        <w:rPr>
+          <w:highlight w:val="green"/>
+        </w:rPr>
+        <w:t>蓝色文本，亮绿色背景</w:t>
+      </w:r>
 
-  <w:r>
-    <w:rPr>
-      <w:highlight w:val="darkGreen"/>
-    </w:rPr>
-    <w:t>Red text on green background</w:t>
-  </w:r>
+    红色文本，绿色高亮::
+
+      <w:r>
+        <w:rPr>
+          <w:highlight w:val="darkGreen"/>
+        </w:rPr>
+        <w:t>红色文本，绿色背景</w:t>
+      </w:r>
+
+.. tab:: 英文
+
+    Baseline run::
+
+      <w:r>
+        <w:t>Black text on white background</w:t>
+      </w:r>
+
+    Blue text, Bright Green Highlight::
+
+      <w:r>
+        <w:rPr>
+          <w:highlight w:val="green"/>
+        </w:rPr>
+        <w:t>Blue text on bright green background</w:t>
+      </w:r>
+
+    Red text, Green Highlight::
+
+      <w:r>
+        <w:rPr>
+          <w:highlight w:val="darkGreen"/>
+        </w:rPr>
+        <w:t>Red text on green background</w:t>
+      </w:r>
 
 
-Schema excerpt
+架构摘录
 --------------
 
+Schema excerpt
+
+.. tab:: 中文
+
+    根据架构，运行属性可以按任意顺序出现，并且每个属性可能出现多次。不确定其语义是什么，也不确定为什么要这样做，但需要注意。Word 似乎在写入文件时将它们按以下顺序放置。
+
+.. tab:: 英文
+
+    According to the schema, run properties may appear in any order and may
+    appear multiple times each. Not sure what the semantics of that would be or
+    why one would want to do it, but something to note. Word seems to place them
+    in the order below when it writes the file.
+
 .. highlight:: xml
 
-According to the schema, run properties may appear in any order and may
-appear multiple times each. Not sure what the semantics of that would be or
-why one would want to do it, but something to note. Word seems to place them
-in the order below when it writes the file.::
+::
 
   <xsd:complexType name="CT_RPr">  <!-- denormalized -->
     <xsd:sequence>

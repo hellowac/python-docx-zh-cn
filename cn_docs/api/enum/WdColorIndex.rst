@@ -3,6 +3,10 @@
 ``WD_COLOR_INDEX``
 ==================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_COLOR**
 
 Specifies a standard preset color to apply. Used for font highlighting and

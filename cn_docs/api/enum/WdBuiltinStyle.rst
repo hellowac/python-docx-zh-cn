@@ -3,6 +3,10 @@
 ``WD_BUILTIN_STYLE``
 ====================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_STYLE**
 
 Specifies a built-in Microsoft Word style.

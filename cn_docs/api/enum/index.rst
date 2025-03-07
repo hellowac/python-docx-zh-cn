@@ -2,6 +2,10 @@
 Enumerations
 ============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Documentation for the various enumerations used for |docx| property settings
 can be found here:
 

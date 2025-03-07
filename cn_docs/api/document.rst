@@ -4,6 +4,10 @@
 Document objects
 ================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 The main Document and related objects.
 
 
@@ -23,6 +27,10 @@ The main Document and related objects.
 
 |CoreProperties| objects
 -------------------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 Each |Document| object provides access to its |CoreProperties| object via its
 :attr:`core_properties` attribute. A |CoreProperties| object provides

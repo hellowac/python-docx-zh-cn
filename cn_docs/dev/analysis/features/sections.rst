@@ -2,6 +2,10 @@
 Sections
 ========
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Word supports the notion of a `section`, having distinct page layout settings.
 This is how, for example, a document can contain some pages in portrait layout
 and others in landscape. Section breaks are implemented completely differently
@@ -35,6 +39,10 @@ occur:
 Word behavior
 -------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 * A paragraph containing a section break (<w:sectPr> element) does not
   produce a ¶ glyph in the Word UI.
 * The section break indicator/double-line appears directly after the text of
@@ -45,6 +53,10 @@ Word behavior
 
 Before and after analysis
 ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -152,6 +164,10 @@ Enumerations
 WD_SECTION_START
 ~~~~~~~~~~~~~~~~
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_SECTION**
 
 `WdSectionStart Enumeration on MSDN`_
@@ -177,6 +193,10 @@ ODD_PAGE (4)
 
 WD_ORIENTATION
 ~~~~~~~~~~~~~~
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 alias: **WD_ORIENT**
 

@@ -4,6 +4,10 @@
 Document |Settings| objects
 ---------------------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 .. currentmodule:: docx.settings
 
 .. autoclass:: Settings()

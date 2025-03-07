@@ -1,16 +1,28 @@
 
-Table Properties
+表格属性
 ================
 
+Table Properties
 
-Alignment
+
+对齐
 ---------
 
-Word allows a table to be aligned between the page margins either left,
-right, or center.
+Alignment
 
-The read/write :attr:`Table.alignment` property specifies the alignment for
-a table::
+.. tab:: 中文
+
+    Word 允许表格在页边距之间左对齐、右对齐或居中对齐。
+
+    读/写 :attr:`Table.alignment` 属性指定表格的对齐方式
+
+.. tab:: 英文
+
+    Word allows a table to be aligned between the page margins either left, right, or center.
+
+    The read/write :attr:`Table.alignment` property specifies the alignment for a table
+
+::
 
     >>> table = document.add_table(rows=2, cols=2)
     >>> table.alignment
@@ -20,17 +32,24 @@ a table::
     RIGHT (2)
 
 
-Autofit
+自动调整
 -------
 
-Word has two algorithms for laying out a table, *fixed-width* or `autofit`.
-The default is autofit. Word will adjust column widths in an autofit table
-based on cell contents. A fixed-width table retains its column widths
-regardless of the contents. Either algorithm will adjust column widths
-proportionately when total table width exceeds page width.
+Autofit
 
-The read/write :attr:`Table.allow_autofit` property specifies which algorithm
-is used::
+.. tab:: 中文
+
+    Word 有两种表格布局算法， *固定宽度* 或 `自动调整(autofit)`。默认使用自动调整。在自动调整表格中，Word 会根据单元格内容调整列宽。固定宽度表格则会保持列宽不变，无论内容如何。无论使用哪种算法，当表格总宽度超过页面宽度时，都会按比例调整列宽。
+
+    读写属性 :attr:`Table.allow_autofit` 指定使用哪种算法。
+
+.. tab:: 英文
+
+    Word has two algorithms for laying out a table, *fixed-width* or `autofit`. The default is autofit. Word will adjust column widths in an autofit table based on cell contents. A fixed-width table retains its column widths regardless of the contents. Either algorithm will adjust column widths proportionately when total table width exceeds page width.
+
+    The read/write :attr:`Table.allow_autofit` property specifies which algorithm is used
+
+::
 
     >>> table = document.add_table(rows=2, cols=2)
     >>> table.allow_autofit
@@ -40,12 +59,22 @@ is used::
     False
 
 
-Specimen XML
+样本 XML
 ------------
+
+Specimen XML
 
 .. highlight:: xml
 
-The following XML represents a 2x2 table::
+.. tab:: 中文
+
+    以下 XML 表示 2x2 表
+
+.. tab:: 英文
+
+    The following XML represents a 2x2 table
+
+::
 
     <w:tbl>
       <w:tblPr>
@@ -90,15 +119,24 @@ The following XML represents a 2x2 table::
     </w:tbl>
 
 
-Layout behavior
+布局行为
 ---------------
 
-Auto-layout causes actual column widths to be both unpredictable and
-unstable. Changes to the content can make the table layout shift.
+Layout behavior
 
+.. tab:: 中文
+
+    自动布局会导致实际列宽不可预测且不稳定。内容的更改可能会导致表格布局发生变化。
+
+.. tab:: 英文
+
+    Auto-layout causes actual column widths to be both unpredictable and unstable. Changes to the content can make the table layout shift.
+
+
+CT_TblWidth 元素的语义
+--------------------------------
 
 Semantics of CT_TblWidth element
---------------------------------
 
 e.g. ``tcW``::
 
@@ -126,8 +164,14 @@ e.g. ``tcW``::
     +-- ST_UniversalMeasure  e.g. '-04.34mm'
 
 
-Schema Definitions
+架构定义
 ------------------
+
+Schema Definitions
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

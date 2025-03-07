@@ -1,22 +1,40 @@
 
-Run-level content
+Run 级别内容
 =================
 
-A run is the object most closely associated with inline content; text,
-pictures, and other items that are flowed between the block-item boundaries
-within a paragraph.
+Run-level content
 
-main content child elements:
+.. tab:: 中文
 
-* <w:t>
-* <w:br>
-* <w:drawing>
-* <w:tab>
-* <w:cr>
+    运行是与内联内容最紧密相关的对象；文本、图片和其他项目，它们在段落的块项边界之间流动。
 
+    主要内容子元素：
+
+    * ``<w:t>``
+    * ``<w:br>``
+    * ``<w:drawing>``
+    * ``<w:tab>``
+    * ``<w:cr>``
+
+.. tab:: 英文
+
+    A run is the object most closely associated with inline content; text,
+    pictures, and other items that are flowed between the block-item boundaries
+    within a paragraph.
+
+    main content child elements:
+
+    * <w:t>
+    * <w:br>
+    * <w:drawing>
+    * <w:tab>
+    * <w:cr>
+
+
+Schema 摘录
+--------------
 
 Schema excerpt
---------------
 
 .. highlight:: xml
 

@@ -1,43 +1,87 @@
 
-Underline
+下划线
 =========
 
-Text in a Word document can be underlined in a variety of styles.
+Underline
+
+.. tab:: 中文
+
+    Word 文档中的文本可以采用多种样式加下划线。
+
+.. tab:: 英文
+
+    Text in a Word document can be underlined in a variety of styles.
 
 
-Protocol
+协议
 --------
 
-The call protocol for underline is overloaded such that it works like
-``.bold`` and ``.italic`` for single underline, but also allows an enumerated
-value to be assigned to specify more sophisticated underlining such as
-dashed, wavy, and double-underline::
+Protocol
 
-    >>> run = paragraph.add_run()
-    >>> run.underline
-    None
-    >>> run.underline = True
-    >>> run.underline
-    True
-    >>> run.underline = WD_UNDERLINE.SINGLE
-    >>> run.underline
-    True
-    >>> run.underline = WD_UNDERLINE.DOUBLE
-    >>> str(run.underline)
-    DOUBLE (3)
-    >>> run.underline = False
-    >>> run.underline
-    False
-    >>> run.underline = WD_UNDERLINE.NONE
-    >>> run.underline
-    False
-    >>> run.underline = None
-    >>> run.underline
-    None
+.. tab:: 中文
 
+    下划线的调用协议被重载，使得它像 ``.bold`` 和 ``.italic`` 一样支持单一的下划线，同时也允许赋值枚举值来指定更复杂的下划线样式，例如虚线、波浪线和双下划线::
+
+        >>> run = paragraph.add_run()
+        >>> run.underline
+        None
+        >>> run.underline = True
+        >>> run.underline
+        True
+        >>> run.underline = WD_UNDERLINE.SINGLE
+        >>> run.underline
+        True
+        >>> run.underline = WD_UNDERLINE.DOUBLE
+        >>> str(run.underline)
+        DOUBLE (3)
+        >>> run.underline = False
+        >>> run.underline
+        False
+        >>> run.underline = WD_UNDERLINE.NONE
+        >>> run.underline
+        False
+        >>> run.underline = None
+        >>> run.underline
+        None
+
+.. tab:: 英文
+
+    The call protocol for underline is overloaded such that it works like
+    ``.bold`` and ``.italic`` for single underline, but also allows an enumerated
+    value to be assigned to specify more sophisticated underlining such as
+    dashed, wavy, and double-underline::
+
+        >>> run = paragraph.add_run()
+        >>> run.underline
+        None
+        >>> run.underline = True
+        >>> run.underline
+        True
+        >>> run.underline = WD_UNDERLINE.SINGLE
+        >>> run.underline
+        True
+        >>> run.underline = WD_UNDERLINE.DOUBLE
+        >>> str(run.underline)
+        DOUBLE (3)
+        >>> run.underline = False
+        >>> run.underline
+        False
+        >>> run.underline = WD_UNDERLINE.NONE
+        >>> run.underline
+        False
+        >>> run.underline = None
+        >>> run.underline
+        None
+
+
+枚举
+------------
 
 Enumerations
-------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 * `WdUnderline Enumeration on MSDN`_
 
@@ -45,50 +89,97 @@ Enumerations
    http://msdn.microsoft.com/en-us/library/office/ff822388(v=office.15).aspx
 
 
-Specimen XML
+样本 XML
 ------------
+
+Specimen XML
 
 .. highlight:: xml
 
-Baseline run::
+.. tab:: 中文
 
-    <w:r>
-      <w:t>underlining determined by inheritance</w:t>
-    </w:r>
+    基线运行::
 
-Single underline::
+        <w:r>
+          <w:t>下划线由继承决定</w:t>
+        </w:r>
 
-    <w:r>
-      <w:rPr>
-        <w:u w:val="single"/>
-      </w:rPr>
-      <w:t>single underlined</w:t>
-    </w:r>
+    单一下划线::
 
-Double underline::
+        <w:r>
+          <w:rPr>
+            <w:u w:val="single"/>
+          </w:rPr>
+          <w:t>单一下划线</w:t>
+        </w:r>
 
-    <w:r>
-      <w:rPr>
-        <w:u w:val="double"/>
-      </w:rPr>
-      <w:t>single underlined</w:t>
-    </w:r>
+    双下划线::
 
-Directly-applied no-underline, overrides inherited value::
+        <w:r>
+          <w:rPr>
+            <w:u w:val="double"/>
+          </w:rPr>
+          <w:t>双下划线</w:t>
+        </w:r>
 
-    <w:r>
-      <w:rPr>
-        <w:u w:val="none"/>
-      </w:rPr>
-      <w:t>not underlined</w:t>
-    </w:r>
+    直接应用无下划线，覆盖继承值::
+
+        <w:r>
+          <w:rPr>
+            <w:u w:val="none"/>
+          </w:rPr>
+          <w:t>无下划线</w:t>
+        </w:r>
+
+.. tab:: 英文
+
+    Baseline run::
+
+        <w:r>
+          <w:t>underlining determined by inheritance</w:t>
+        </w:r>
+
+    Single underline::
+
+        <w:r>
+          <w:rPr>
+            <w:u w:val="single"/>
+          </w:rPr>
+          <w:t>single underlined</w:t>
+        </w:r>
+
+    Double underline::
+
+        <w:r>
+          <w:rPr>
+            <w:u w:val="double"/>
+          </w:rPr>
+          <w:t>single underlined</w:t>
+        </w:r>
+
+    Directly-applied no-underline, overrides inherited value::
+
+        <w:r>
+          <w:rPr>
+            <w:u w:val="none"/>
+          </w:rPr>
+          <w:t>not underlined</w:t>
+        </w:r>
 
 
-Schema excerpt
+架构摘录
 --------------
 
-Note that the ``w:val`` attribute on ``CT_Underline`` is optional. When it is
-not present no underline appears on the run.
+Schema excerpt
+
+.. tab:: 中文
+
+    请注意， ``CT_Underline`` 上的 ``w:val`` 属性是可选的。如果不存在，则运行时不会出现下划线。
+
+.. tab:: 英文
+
+    Note that the ``w:val`` attribute on ``CT_Underline`` is optional. When it is
+    not present no underline appears on the run.
 
 .. highlight:: xml
 

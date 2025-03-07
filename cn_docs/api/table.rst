@@ -4,6 +4,10 @@
 Table objects
 ================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Table objects are constructed using the ``add_table()`` method on |Document|.
 
 

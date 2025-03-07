@@ -8,6 +8,10 @@ Numbering Part
 Schema excerpt
 --------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 .. highlight:: xml
 
 ::

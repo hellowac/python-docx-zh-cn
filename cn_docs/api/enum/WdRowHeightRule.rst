@@ -3,6 +3,10 @@
 ``WD_ROW_HEIGHT_RULE``
 ======================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_ROW_HEIGHT**
 
 Specifies the rule for determining the height of a table row

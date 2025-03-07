@@ -2,6 +2,10 @@
 Inline shape
 ============
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 Word allows a graphical object to be placed into a document as an inline
 object. An inline shape appears as a ``<w:drawing>`` element as a child of
 a ``<w:r>`` element.
@@ -21,6 +25,10 @@ inline shape::
 Resources
 ---------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 * `Document Members (Word) on MSDN`_
 * `InlineShape Members (Word) on MSDN`_
 * `Shape Members (Word) on MSDN`_
@@ -37,6 +45,10 @@ Resources
 
 MS API
 ------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 The Shapes and InlineShapes properties on Document hold references to things
 like pictures in the MS API.
@@ -55,6 +67,10 @@ like pictures in the MS API.
 Spec references
 ---------------
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 * 17.3.3.9 drawing (DrawingML Object)
 * 20.4.2.8 inline (Inline DrawingML Object)
 * 20.4.2.7 extent (Drawing Object Size)
@@ -62,6 +78,10 @@ Spec references
 
 Minimal XML
 -----------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 
@@ -87,6 +107,10 @@ Word will load::
 
 Specimen XML
 ------------
+
+.. tab:: 中文
+
+.. tab:: 英文
 
 .. highlight:: xml
 

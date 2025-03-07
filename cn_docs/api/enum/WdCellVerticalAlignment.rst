@@ -3,6 +3,10 @@
 ``WD_CELL_VERTICAL_ALIGNMENT``
 ==============================
 
+.. tab:: 中文
+
+.. tab:: 英文
+
 alias: **WD_ALIGN_VERTICAL**
 
 Specifies the vertical alignment of text in one or more cells of a table.
