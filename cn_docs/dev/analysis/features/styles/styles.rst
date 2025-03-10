@@ -1,66 +1,113 @@
 
-Styles collection
+样式集合
 =================
 
+Styles collection
 
-Candidate protocols
+
+候选协议
 -------------------
 
+Candidate protocols
+
 .. tab:: 中文
+
+    访问::
+
+        >>> styles = document.styles  # default styles part added if not present
+        >>> styles
+        <docx.styles.styles.Styles object at 0x1045dd550>
+
+    迭代和长度::
+
+        >>> len(styles)
+        10
+        >>> list_styles = [s for s in styles if s.type == WD_STYLE_TYPE.LIST]
+        >>> len(list_styles)
+        3
+
+    通过名称访问样式 (或样式ID)::
+
+        >>> styles['Normal']
+        <docx.styles.style._ParagraphStyle object at 0x1045dd550>
+
+        >>> styles['undefined-style']
+        KeyError: no style with id or name 'undefined-style'
+
+    :meth:`.Styles.add_style()`::
+
+        >>> style = styles.add_style('Citation', WD_STYLE_TYPE.PARAGRAPH)
+        >>> style.name
+        'Citation'
+        >>> style.type
+        PARAGRAPH (1)
+        >>> style.builtin
+        False
 
 .. tab:: 英文
 
-Access::
+    Access::
 
-    >>> styles = document.styles  # default styles part added if not present
-    >>> styles
-    <docx.styles.styles.Styles object at 0x1045dd550>
+        >>> styles = document.styles  # default styles part added if not present
+        >>> styles
+        <docx.styles.styles.Styles object at 0x1045dd550>
 
-Iteration and length::
+    Iteration and length::
 
-    >>> len(styles)
-    10
-    >>> list_styles = [s for s in styles if s.type == WD_STYLE_TYPE.LIST]
-    >>> len(list_styles)
-    3
+        >>> len(styles)
+        10
+        >>> list_styles = [s for s in styles if s.type == WD_STYLE_TYPE.LIST]
+        >>> len(list_styles)
+        3
 
-Access style by name (or style id)::
+    Access style by name (or style id)::
 
-    >>> styles['Normal']
-    <docx.styles.style._ParagraphStyle object at 0x1045dd550>
+        >>> styles['Normal']
+        <docx.styles.style._ParagraphStyle object at 0x1045dd550>
 
-    >>> styles['undefined-style']
-    KeyError: no style with id or name 'undefined-style'
+        >>> styles['undefined-style']
+        KeyError: no style with id or name 'undefined-style'
 
-:meth:`.Styles.add_style()`::
+    :meth:`.Styles.add_style()`::
 
-    >>> style = styles.add_style('Citation', WD_STYLE_TYPE.PARAGRAPH)
-    >>> style.name
-    'Citation'
-    >>> style.type
-    PARAGRAPH (1)
-    >>> style.builtin
-    False
+        >>> style = styles.add_style('Citation', WD_STYLE_TYPE.PARAGRAPH)
+        >>> style.name
+        'Citation'
+        >>> style.type
+        PARAGRAPH (1)
+        >>> style.builtin
+        False
 
 
-Feature Notes
+功能备注
 -------------
 
+Feature Notes
+
 .. tab:: 中文
+
+    * 可以在首次访问时通过 WD_BUILTIN_STYLE 枚举从已知规范中添加默认内置样式::
+
+          >>> style = document.styles['Heading1']
+          KeyError: no style with id or name 'Heading1'
+          >>> style = document.styles[WD_STYLE.HEADING_1]
+          >>> assert style == document.styles['Heading1']
 
 .. tab:: 英文
 
-* could add a default builtin style from known specs on first access via
-  WD_BUILTIN_STYLE enumeration::
+    * could add a default builtin style from known specs on first access via
+      WD_BUILTIN_STYLE enumeration::
 
-      >>> style = document.styles['Heading1']
-      KeyError: no style with id or name 'Heading1'
-      >>> style = document.styles[WD_STYLE.HEADING_1]
-      >>> assert style == document.styles['Heading1']
+          >>> style = document.styles['Heading1']
+          KeyError: no style with id or name 'Heading1'
+          >>> style = document.styles[WD_STYLE.HEADING_1]
+          >>> assert style == document.styles['Heading1']
 
+
+XML 例子
+-----------
 
 Example XML
------------
 
 .. tab:: 中文
 
@@ -142,8 +189,10 @@ Example XML
    </w:styles>
 
 
-Schema excerpt
+Schema 摘录
 --------------
+
+Schema excerpt
 
 ::
 
