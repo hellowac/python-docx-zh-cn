@@ -1,0 +1,742 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="文档 Settings 对象" href="settings.html" /><link rel="prev" title="了解图片和其他形状" href="../user/shapes.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>文档对象 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dev/analysis/index.html">分析</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/document.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="document-api">
+<span id="id1"></span><h1>文档对象<a class="headerlink" href="#document-api" title="Link to this heading">¶</a></h1>
+<p>Document objects</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>主要文档和相关对象。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>The main Document and related objects.</p>
+</div>
+</div>
+<section id="document">
+<h2><a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> 构造函数<a class="headerlink" href="#document" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> constructor</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="docx.Document">
+<span class="sig-prename descclassname"><span class="pre">docx.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docx</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#bytes" title="（在 Python v3.13）"><span class="pre">bytes</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DocumentObject</span></span></span><a class="reference internal" href="../_modules/docx/api.html#Document"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.Document" title="Link to this definition">¶</a></dt>
+<dd><p>Return a <a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> object loaded from <cite>docx</cite>, where <cite>docx</cite> can be either a path
+to a <code class="docutils literal notranslate"><span class="pre">.docx</span></code> file (a string) or a file-like object.</p>
+<p>If <cite>docx</cite> is missing or <code class="docutils literal notranslate"><span class="pre">None</span></code>, the built-in default document &quot;template&quot; is
+loaded.</p>
+</dd></dl>
+
+</section>
+<section id="id2">
+<h2><a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> 对象<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.document.Document">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.document.</span></span><span class="sig-name descname"><span class="pre">Document</span></span><a class="reference internal" href="../_modules/docx/document.html#Document"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document" title="Link to this definition">¶</a></dt>
+<dd><p>WordprocessingML (WML) document.</p>
+<p>Not intended to be constructed directly. Use <a class="reference internal" href="#docx.Document" title="docx.Document"><code class="xref py py-func docutils literal notranslate"><span class="pre">docx.Document()</span></code></a> to open or create
+a document.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_heading">
+<span class="sig-name descname"><span class="pre">add_heading</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.add_heading"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_heading" title="Link to this definition">¶</a></dt>
+<dd><p>Return a heading paragraph newly added to the end of the document.</p>
+<p>The heading paragraph will contain <cite>text</cite> and have its paragraph style
+determined by <cite>level</cite>. If <cite>level</cite> is 0, the style is set to <cite>Title</cite>. If <cite>level</cite>
+is 1 (or omitted), <cite>Heading 1</cite> is used. Otherwise the style is set to <cite>Heading
+{level}</cite>. Raises <a class="reference external" href="https://docs.python.org/zh-cn/3/library/exceptions.html#ValueError" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></a> if <cite>level</cite> is outside the range 0-9.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_page_break">
+<span class="sig-name descname"><span class="pre">add_page_break</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.add_page_break"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_page_break" title="Link to this definition">¶</a></dt>
+<dd><p>Return newly <a class="reference internal" href="text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a> object containing only a page break.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_paragraph">
+<span class="sig-name descname"><span class="pre">add_paragraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style.ParagraphStyle" title="docx.styles.style.ParagraphStyle"><span class="pre">ParagraphStyle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a></span></span><a class="reference internal" href="../_modules/docx/document.html#Document.add_paragraph"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_paragraph" title="Link to this definition">¶</a></dt>
+<dd><p>Return paragraph newly added to the end of the document.</p>
+<p>The paragraph is populated with <cite>text</cite> and having paragraph style <cite>style</cite>.</p>
+<p><cite>text</cite> can contain tab (<code class="docutils literal notranslate"><span class="pre">\t</span></code>) characters, which are converted to the
+appropriate XML form for a tab. <cite>text</cite> can also include newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) or
+carriage return (<code class="docutils literal notranslate"><span class="pre">\r</span></code>) characters, each of which is converted to a line
+break.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_picture">
+<span class="sig-name descname"><span class="pre">add_picture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path_or_stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#bytes" title="（在 Python v3.13）"><span class="pre">bytes</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><span class="pre">Length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><span class="pre">Length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.add_picture"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_picture" title="Link to this definition">¶</a></dt>
+<dd><p>Return new picture shape added in its own paragraph at end of the document.</p>
+<p>The picture contains the image at <cite>image_path_or_stream</cite>, scaled based on
+<cite>width</cite> and <cite>height</cite>. If neither width nor height is specified, the picture
+appears at its native size. If only one is specified, it is used to compute a
+scaling factor that is then applied to the unspecified dimension, preserving the
+aspect ratio of the image. The native size of the picture is calculated using
+the dots-per-inch (dpi) value specified in the image file, defaulting to 72 dpi
+if no value is specified, as is often the case.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_section">
+<span class="sig-name descname"><span class="pre">add_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WD_SECTION_START</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">WD_SECTION_START.NEW_PAGE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.add_section"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_section" title="Link to this definition">¶</a></dt>
+<dd><p>Return a <a class="reference internal" href="section.html#docx.section.Section" title="docx.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a> object newly added at the end of the document.</p>
+<p>The optional <cite>start_type</cite> argument must be a member of the <a class="reference internal" href="enum/WdSectionStart.html#wdsectionstart"><span class="std std-ref">WD_SECTION_START</span></a>
+enumeration, and defaults to <code class="docutils literal notranslate"><span class="pre">WD_SECTION.NEW_PAGE</span></code> if not provided.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.add_table">
+<span class="sig-name descname"><span class="pre">add_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">cols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style._TableStyle" title="docx.styles.style._TableStyle"><span class="pre">_TableStyle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.add_table"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.add_table" title="Link to this definition">¶</a></dt>
+<dd><p>Add a table having row and column counts of <cite>rows</cite> and <cite>cols</cite> respectively.</p>
+<p><cite>style</cite> may be a table style object or a table style name. If <cite>style</cite> is <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>,
+the table inherits the default table style of the document.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.core_properties">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">core_properties</span></span><a class="headerlink" href="#docx.document.Document.core_properties" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> object providing Dublin Core properties of document.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.inline_shapes">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">inline_shapes</span></span><a class="headerlink" href="#docx.document.Document.inline_shapes" title="Link to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="shape.html#docx.shape.InlineShapes" title="docx.shape.InlineShapes"><code class="xref py py-class docutils literal notranslate"><span class="pre">InlineShapes</span></code></a> collection for this document.</p>
+<p>An inline shape is a graphical object, such as a picture, contained in a run of
+text and behaving like a character glyph, being flowed like other text in a
+paragraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.iter_inner_content">
+<span class="sig-name descname"><span class="pre">iter_inner_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Iterator</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="table.html#docx.table.Table" title="docx.table.Table"><span class="pre">Table</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/docx/document.html#Document.iter_inner_content"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.iter_inner_content" title="Link to this definition">¶</a></dt>
+<dd><p>Generate each <cite>Paragraph</cite> or <cite>Table</cite> in this document in document order.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.paragraphs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">paragraphs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.document.Document.paragraphs" title="Link to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a> instances in the document, in document order.</p>
+<p>Note that paragraphs within revision marks such as <code class="docutils literal notranslate"><span class="pre">&lt;w:ins&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;w:del&gt;</span></code> do
+not appear in this list.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.part">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">part</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">DocumentPart</span></em><a class="headerlink" href="#docx.document.Document.part" title="Link to this definition">¶</a></dt>
+<dd><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">DocumentPart</span></code> object of this document.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.document.Document.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path_or_stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.IO" title="（在 Python v3.13）"><span class="pre">IO</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#bytes" title="（在 Python v3.13）"><span class="pre">bytes</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/document.html#Document.save"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.document.Document.save" title="Link to this definition">¶</a></dt>
+<dd><p>Save this document to <cite>path_or_stream</cite>.</p>
+<p><cite>path_or_stream</cite> can be either a path to a filesystem location (a string) or a
+file-like object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.sections">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sections</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="section.html#docx.section.Sections" title="docx.section.Sections"><span class="pre">Sections</span></a></em><a class="headerlink" href="#docx.document.Document.sections" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="section.html#docx.section.Sections" title="docx.section.Sections"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sections</span></code></a> object providing access to each section in this document.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.settings">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="settings.html#docx.settings.Settings" title="docx.settings.Settings"><span class="pre">Settings</span></a></em><a class="headerlink" href="#docx.document.Document.settings" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="settings.html#docx.settings.Settings" title="docx.settings.Settings"><code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code></a> object providing access to the document-level settings.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.styles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">styles</span></span><a class="headerlink" href="#docx.document.Document.styles" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="style.html#docx.styles.styles.Styles" title="docx.styles.styles.Styles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code></a> object providing access to the styles in this document.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.document.Document.tables">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">tables</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="table.html#docx.table.Table" title="docx.table.Table"><span class="pre">Table</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.document.Document.tables" title="Link to this definition">¶</a></dt>
+<dd><p>All <a class="reference internal" href="table.html#docx.table.Table" title="docx.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> instances in the document, in document order.</p>
+<p>Note that only tables appearing at the top level of the document appear in this
+list; a table nested inside a table cell does not appear. A table within
+revision marks such as <code class="docutils literal notranslate"><span class="pre">&lt;w:ins&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">&lt;w:del&gt;</span></code> will also not appear in the
+list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="coreproperties">
+<h2><a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> 对象<a class="headerlink" href="#coreproperties" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> objects-</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p>每个 <a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> 对象都通过其 <code class="xref py py-attr docutils literal notranslate"><span class="pre">core_properties</span></code> 属性提供对其 <a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> 对象的访问。<a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> 对象提供对文档所谓的 <em>核心属性</em> 的读/写访问。核心属性包括作者、类别、评论、content_status、创建、标识符、关键字、语言、上次修改者、上次打印、修改、修订、主题、标题和版本。</p>
+<p>每个属性都是三种类型之一：<a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>、<a class="reference external" href="https://docs.python.org/zh-cn/3/library/datetime.html#datetime.datetime" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> 或 <a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>。字符串属性的长度限制为 255 个字符，如果未设置，则返回空字符串 ('')。日期属性被分配并返回为不带时区的 <a class="reference external" href="https://docs.python.org/zh-cn/3/library/datetime.html#datetime.datetime" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> 对象，即 UTC。任何时区转换都是客户的责任。如果未设置，日期属性将返回 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 除了向没有核心属性部分的演示文稿添加核心属性部分（非常罕见）外，不会自动设置任何文档核心属性。如果 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 添加核心属性部分，则它包含 title、last_modified_by、revision 和 modified 属性的默认值。如果需要该行为，客户端代码应该更新 revision 和 last_modified_by 等属性。</p>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<p>Each <a class="reference internal" href="#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> object provides access to its <a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> object via its <code class="xref py py-attr docutils literal notranslate"><span class="pre">core_properties</span></code> attribute. A <a class="reference internal" href="#docx.opc.coreprops.CoreProperties" title="docx.opc.coreprops.CoreProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code></a> object provides read/write access to the so-called <em>core properties</em> for the document. The core properties are author, category, comments, content_status, created, identifier, keywords, language, last_modified_by, last_printed, modified, revision, subject, title, and version.</p>
+<p>Each property is one of three types, <a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>, <a class="reference external" href="https://docs.python.org/zh-cn/3/library/datetime.html#datetime.datetime" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a>, or <a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>. String properties are limited in length to 255 characters and return an empty string ('') if not set. Date properties are assigned and returned as <a class="reference external" href="https://docs.python.org/zh-cn/3/library/datetime.html#datetime.datetime" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> objects without timezone, i.e. in UTC. Any timezone conversions are the responsibility of the client. Date properties return <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> if not set.</p>
+<p><code class="docutils literal notranslate"><span class="pre">python-docx</span></code> does not automatically set any of the document core properties other than to add a core properties part to a presentation that doesn't have one (very uncommon). If <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> adds a core properties part, it contains default values for the title, last_modified_by, revision, and modified properties. Client code should update properties like revision and last_modified_by if that behavior is desired.</p>
+</div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.opc.coreprops.</span></span><span class="sig-name descname"><span class="pre">CoreProperties</span></span><a class="reference internal" href="../_modules/docx/opc/coreprops.html#CoreProperties"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.opc.coreprops.CoreProperties" title="Link to this definition">¶</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.author">
+<span class="sig-name descname"><span class="pre">author</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.author" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- An entity primarily responsible for making the content of the
+resource.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.category" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- A categorization of the content of this package. Example
+values might include: Resume, Letter, Financial Forecast, Proposal,
+or Technical Presentation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.comments">
+<span class="sig-name descname"><span class="pre">comments</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.comments" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- An account of the content of the resource.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.content_status">
+<span class="sig-name descname"><span class="pre">content_status</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.content_status" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- completion status of the document, e.g. 'draft'</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.created">
+<span class="sig-name descname"><span class="pre">created</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.created" title="Link to this definition">¶</a></dt>
+<dd><p><cite>datetime</cite> -- time of intial creation of the document</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.identifier">
+<span class="sig-name descname"><span class="pre">identifier</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.identifier" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- An unambiguous reference to the resource within a given
+context, e.g. ISBN.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.keywords">
+<span class="sig-name descname"><span class="pre">keywords</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.keywords" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- descriptive words or short phrases likely to be used as
+search terms for this document</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.language">
+<span class="sig-name descname"><span class="pre">language</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.language" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- language the document is written in</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.last_modified_by">
+<span class="sig-name descname"><span class="pre">last_modified_by</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.last_modified_by" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- name or other identifier (such as email address) of person
+who last modified the document</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.last_printed">
+<span class="sig-name descname"><span class="pre">last_printed</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.last_printed" title="Link to this definition">¶</a></dt>
+<dd><p><cite>datetime</cite> -- time the document was last printed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.modified">
+<span class="sig-name descname"><span class="pre">modified</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.modified" title="Link to this definition">¶</a></dt>
+<dd><p><cite>datetime</cite> -- time the document was last modified</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.revision">
+<span class="sig-name descname"><span class="pre">revision</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.revision" title="Link to this definition">¶</a></dt>
+<dd><p><cite>int</cite> -- number of this revision, incremented by Word each time the
+document is saved. Note however <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> does not automatically increment
+the revision number when it saves a document.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.subject">
+<span class="sig-name descname"><span class="pre">subject</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.subject" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- The topic of the content of the resource.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.title">
+<span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.title" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- The name given to the resource.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.opc.coreprops.CoreProperties.version">
+<span class="sig-name descname"><span class="pre">version</span></span><a class="headerlink" href="#docx.opc.coreprops.CoreProperties.version" title="Link to this definition">¶</a></dt>
+<dd><p><cite>string</cite> -- free-form version string</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="settings.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../user/shapes.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">了解图片和其他形状</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">文档对象</a><ul>
+<li><a class="reference internal" href="#document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code> 构造函数</a><ul>
+<li><a class="reference internal" href="#docx.Document"><code class="docutils literal notranslate"><span class="pre">Document()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.document.Document"><code class="docutils literal notranslate"><span class="pre">Document</span></code></a><ul>
+<li><a class="reference internal" href="#docx.document.Document.add_heading"><code class="docutils literal notranslate"><span class="pre">Document.add_heading()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.add_page_break"><code class="docutils literal notranslate"><span class="pre">Document.add_page_break()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.add_paragraph"><code class="docutils literal notranslate"><span class="pre">Document.add_paragraph()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.add_picture"><code class="docutils literal notranslate"><span class="pre">Document.add_picture()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.add_section"><code class="docutils literal notranslate"><span class="pre">Document.add_section()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.add_table"><code class="docutils literal notranslate"><span class="pre">Document.add_table()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.core_properties"><code class="docutils literal notranslate"><span class="pre">Document.core_properties</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.inline_shapes"><code class="docutils literal notranslate"><span class="pre">Document.inline_shapes</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.iter_inner_content"><code class="docutils literal notranslate"><span class="pre">Document.iter_inner_content()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.paragraphs"><code class="docutils literal notranslate"><span class="pre">Document.paragraphs</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.part"><code class="docutils literal notranslate"><span class="pre">Document.part</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.save"><code class="docutils literal notranslate"><span class="pre">Document.save()</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.sections"><code class="docutils literal notranslate"><span class="pre">Document.sections</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.settings"><code class="docutils literal notranslate"><span class="pre">Document.settings</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.styles"><code class="docutils literal notranslate"><span class="pre">Document.styles</span></code></a></li>
+<li><a class="reference internal" href="#docx.document.Document.tables"><code class="docutils literal notranslate"><span class="pre">Document.tables</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#coreproperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">CoreProperties</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties"><code class="docutils literal notranslate"><span class="pre">CoreProperties</span></code></a><ul>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.author"><code class="docutils literal notranslate"><span class="pre">CoreProperties.author</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.category"><code class="docutils literal notranslate"><span class="pre">CoreProperties.category</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.comments"><code class="docutils literal notranslate"><span class="pre">CoreProperties.comments</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.content_status"><code class="docutils literal notranslate"><span class="pre">CoreProperties.content_status</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.created"><code class="docutils literal notranslate"><span class="pre">CoreProperties.created</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.identifier"><code class="docutils literal notranslate"><span class="pre">CoreProperties.identifier</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.keywords"><code class="docutils literal notranslate"><span class="pre">CoreProperties.keywords</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.language"><code class="docutils literal notranslate"><span class="pre">CoreProperties.language</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.last_modified_by"><code class="docutils literal notranslate"><span class="pre">CoreProperties.last_modified_by</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.last_printed"><code class="docutils literal notranslate"><span class="pre">CoreProperties.last_printed</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.modified"><code class="docutils literal notranslate"><span class="pre">CoreProperties.modified</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.revision"><code class="docutils literal notranslate"><span class="pre">CoreProperties.revision</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.subject"><code class="docutils literal notranslate"><span class="pre">CoreProperties.subject</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.title"><code class="docutils literal notranslate"><span class="pre">CoreProperties.title</span></code></a></li>
+<li><a class="reference internal" href="#docx.opc.coreprops.CoreProperties.version"><code class="docutils literal notranslate"><span class="pre">CoreProperties.version</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

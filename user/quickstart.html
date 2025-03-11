@@ -1,0 +1,923 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="处理文档" href="documents.html" /><link rel="prev" title="安装" href="install.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>快速入门 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dev/analysis/index.html">分析</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/user/quickstart.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="quickstart">
+<span id="id1"></span><h1>快速入门<a class="headerlink" href="#quickstart" title="Link to this heading">¶</a></h1>
+<p>Quickstart</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>开始使用 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 非常简单。让我们来了解一下基础知识。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>Getting started with <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> is easy. Let's walk through the basics.</p>
+</div>
+</div>
+<section id="id2">
+<h2>打开文档<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Opening a document</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p>您首先需要的是一份要处理的文档。最简单的方法是:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+
+<span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这将打开一个基于默认“模板”的空白文档，这与使用内置默认值在 Word 中启动新文档时所获得的内容非常相似。您可以使用 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 打开并处理现有的 Word 文档，但目前我们先简单介绍一下。</p>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<p>First thing you'll need is a document to work on. The easiest way is this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+
+<span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This opens up a blank document based on the default &quot;template&quot;, pretty much what you get when you start a new document in Word using the built-in defaults. You can open and work on an existing Word document using <code class="docutils literal notranslate"><span class="pre">python-docx</span></code>, but we'll keep things simple for the moment.</p>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>添加段落<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Adding a paragraph</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<p>段落是 Word 中的基础。它们用于正文，也用于标题和列表项（如项目符号）。</p>
+<p>这是添加段落的最简单方法:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此方法返回对段落的引用，即文档末尾新添加的段落。在本例中，新段落引用被分配给“paragraph”，但除非我需要，否则我将在以下示例中省略它。在您的代码中，通常您在添加项目后不会对其进行任何操作，因此保留对它的引用没有多大意义。</p>
+<p>还可以将一个段落用作“光标”，并在其上方直接插入一个新段落:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prior_paragraph</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">insert_paragraph_before</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样可以将一个段落插入到文档中间，这在修改现有文档而不是从头生成文档时通常很重要。</p>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<p>Paragraphs are fundamental in Word. They're used for body text, but also for headings and list items like bullets.</p>
+<p>Here's the simplest way to add one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method returns a reference to a paragraph, newly added paragraph at the end of the document. The new paragraph reference is assigned to <code class="docutils literal notranslate"><span class="pre">paragraph</span></code> in this case, but I'll be leaving that out in the following examples unless I have a need for it. In your code, often times you won't be doing anything with the item after you've added it, so there's not a lot of sense in keep a reference to it hanging around.</p>
+<p>It's also possible to use one paragraph as a &quot;cursor&quot; and insert a new paragraph directly above it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">prior_paragraph</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">insert_paragraph_before</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This allows a paragraph to be inserted in the middle of a document, something that's often important when modifying an existing document rather than generating one from scratch.</p>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>添加标题<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>Adding a heading</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>除了最短的文档外，正文还会被分成几个部分，每个部分都以标题开头。添加标题的方法如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s1">&#39;宇宙的真正意义&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>默认情况下，这会添加一个顶级标题，在 Word 中显示为“标题 1”。当您想要为子部分添加标题时，只需将所需的级别指定为 1 到 9 之间的整数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s1">&#39;海豚的作用&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果您将级别指定为 0，则会添加“标题”段落。这对于开始一个没有单独标题页的相对较短的文档非常方便。</p>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>In anything but the shortest document, body text is divided into sections, each of which starts with a heading. Here's how to add one:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s1">&#39;The REAL meaning of the universe&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default, this adds a top-level heading, what appears in Word as 'Heading 1'. When you want a heading for a sub-section, just specify the level you want as an integer between 1 and 9:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_heading</span><span class="p">(</span><span class="s1">&#39;The role of dolphins&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you specify a level of 0, a &quot;Title&quot; paragraph is added. This can be handy to start a relatively short document that doesn't have a separate title page.</p>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>添加分页符<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>Adding a page break</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">中文</label><div class="tab-content docutils">
+<p>有时，即使当前页面未满，您也希望将后面的文本放在单独的页面上。“硬”分页符可以实现此目的:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_page_break</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>如果您发现自己经常使用此功能，则可能表明您可以通过更好地了解段落样式受益。您可以设置的一个段落样式属性是在每个具有该样式的段落之前立即分页。因此，您可以将特定级别的标题设置为始终开始新页面。稍后将详细介绍样式。事实证明，它们对于真正充分利用 Word 至关重要。</p>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">英文</label><div class="tab-content docutils">
+<p>Every once in a while you want the text that comes next to go on a separate page, even if the one you're on isn't full. A &quot;hard&quot; page break gets this done:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_page_break</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If you find yourself using this very often, it's probably a sign you could benefit by better understanding paragraph styles. One paragraph style property you can set is to break a page immediately before each paragraph having that style. So you might set your headings of a certain level to always start a new page. More on styles later. They turn out to be critically important for really getting the most out of Word.</p>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>添加表格<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>Adding a table</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">中文</label><div class="tab-content docutils">
+<p>我们经常会遇到适合以表格形式呈现的内容，整齐地排列在行和列中。Word 在这方面做得相当不错。以下是添加表格的方法:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>要填充表格，你需要了解表格的一些属性和方法。首先，最好从访问单个单元格开始。作为基础操作，你可以通过行和列的索引来访问单元格:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这将获取我们刚刚创建的表格顶部行的右侧单元格。请注意，行和列的索引是从零开始的，就像列表索引一样。</p>
+<p>一旦你有了一个单元格，就可以在其中填入内容:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;parrot, possibly dead&#39;</span>
+</pre></div>
+</div>
+<p>通常情况下，一次访问一行单元格会更方便，例如从数据源填充长度可变的表格时。表格的 <cite>.rows</cite> 属性可以让你访问单独的行，每一行都有一个 <cite>.cells</cite> 属性。<cite>Row</cite> 和 <cite>Column</cite> 上的 <cite>.cells</cite> 属性支持像列表一样的索引访问:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Foo bar to you.&#39;</span>
+<span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;And a hearty foo bar to you too sir!&#39;</span>
+</pre></div>
+</div>
+<p>表格上的 <cite>.rows</cite> 和 <cite>.columns</cite> 集合是可迭代的，因此你可以直接在 <cite>for</cite> 循环中使用它们。行或列上的 <cite>.cells</cite> 序列也是如此:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>如果你想获取表格中的行数或列数，只需对序列使用 <cite>len()</cite> 函数:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">col_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你也可以像下面这样逐步向表格中添加行:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>对于我们上面提到的可变长度表格场景，这非常有用:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 获取表格数据 -------------</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;1024&#39;</span><span class="p">,</span> <span class="s1">&#39;Plush kittens&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2042&#39;</span><span class="p">,</span> <span class="s1">&#39;Furbees&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;1288&#39;</span><span class="p">,</span> <span class="s1">&#39;French Poodle Collars, Deluxe&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># 添加表格 ------------------</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># 填充表头行 --------</span>
+<span class="n">heading_cells</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cells</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;数量&#39;</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;SKU&#39;</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;描述&#39;</span>
+
+<span class="c1"># 为每个项目添加一行数据</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">()</span><span class="o">.</span><span class="n">cells</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">qty</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">sku</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">desc</span>
+</pre></div>
+</div>
+<p>对于列也可以这样做，不过我还没有遇到过这样的使用场景。</p>
+<p>Word 提供了一系列预格式化的表格样式，你可以从其表格样式库中进行选择。你可以像下面这样将其中一种样式应用到表格上:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;LightShading-Accent1&#39;</span>
+</pre></div>
+</div>
+<p>样式名称是通过删除表格样式名称中的所有空格形成的。你可以在 Word 的表格样式库中将鼠标悬停在缩略图上查看表格样式名称 。</p>
+</div>
+<input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">英文</label><div class="tab-content docutils">
+<p>One frequently encounters content that lends itself to tabular presentation, lined up in neat rows and columns. Word does a pretty good job at this. Here's how to add a table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">rows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tables have several properties and methods you'll need in order to populate them. Accessing individual cells is probably a good place to start. As a baseline, you can always access a cell by its row and column indicies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This gives you the right-hand cell in the top row of the table we just created. Note that row and column indicies are zero-based, just like in list access.</p>
+<p>Once you have a cell, you can put something in it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cell</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;parrot, possibly dead&#39;</span>
+</pre></div>
+</div>
+<p>Frequently it's easier to access a row of cells at a time, for example when populating a table of variable length from a data source. The <code class="docutils literal notranslate"><span class="pre">.rows</span></code> property of a table provides access to individual rows, each of which has a <code class="docutils literal notranslate"><span class="pre">.cells</span></code> property.  The <code class="docutils literal notranslate"><span class="pre">.cells</span></code> property on both <code class="docutils literal notranslate"><span class="pre">Row</span></code> and <code class="docutils literal notranslate"><span class="pre">Column</span></code> supports indexed access, like a list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Foo bar to you.&#39;</span>
+<span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;And a hearty foo bar to you too sir!&#39;</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.rows</span></code> and <code class="docutils literal notranslate"><span class="pre">.columns</span></code> collections on a table are iterable, so you can use them directly in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. Same with the <code class="docutils literal notranslate"><span class="pre">.cells</span></code> sequences on a row or column:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">cells</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want a count of the rows or columns in the table, just use <code class="docutils literal notranslate"><span class="pre">len()</span></code> on the sequence:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">)</span>
+<span class="n">col_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also add rows to a table incrementally like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This can be very handy for the variable length table scenario we mentioned above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># get table data -------------</span>
+<span class="n">items</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;1024&#39;</span><span class="p">,</span> <span class="s1">&#39;Plush kittens&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2042&#39;</span><span class="p">,</span> <span class="s1">&#39;Furbees&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;1288&#39;</span><span class="p">,</span> <span class="s1">&#39;French Poodle Collars, Deluxe&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># add table ------------------</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># populate header row --------</span>
+<span class="n">heading_cells</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cells</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Qty&#39;</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;SKU&#39;</span>
+<span class="n">heading_cells</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Description&#39;</span>
+
+<span class="c1"># add a data row for each item</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
+    <span class="n">cells</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">()</span><span class="o">.</span><span class="n">cells</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">qty</span><span class="p">)</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">sku</span>
+    <span class="n">cells</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">desc</span>
+</pre></div>
+</div>
+<p>The same works for columns, although I've yet to see a use case for it.</p>
+<p>Word has a set of pre-formatted table styles you can pick from its table style gallery. You can apply one of those to the table like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;LightShading-Accent1&#39;</span>
+</pre></div>
+</div>
+<p>The style name is formed by removing all the spaces from the table style name. You can find the table style name by hovering your mouse over its thumbnail in Word's table style gallery.</p>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>添加图片<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>Adding a picture</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">中文</label><div class="tab-content docutils">
+<p>Word 允许您使用 <code class="docutils literal notranslate"><span class="pre">插入</span> <span class="pre">&gt;</span> <span class="pre">照片</span> <span class="pre">&gt;</span> <span class="pre">来自文件的图片...</span></code> 菜单项将图像放入文档中。以下是在 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 中执行此操作的方法:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="s1">&#39;image-filename.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>此示例使用路径，从本地文件系统加载图像文件。您还可以使用 <em>类文件对象</em>，本质上是任何像打开文件一样的对象。如果您从数据库或通过网络检索图像并且不想让文件系统参与其中，这可能会很方便。</p>
+</div>
+<input class="tab-input" id="tab-set--6-input--2" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--2">英文</label><div class="tab-content docutils">
+<p>Word lets you place an image in a document using the <code class="docutils literal notranslate"><span class="pre">Insert</span> <span class="pre">&gt;</span> <span class="pre">Photo</span> <span class="pre">&gt;</span> <span class="pre">Picture</span> <span class="pre">from</span> <span class="pre">file...</span></code> menu item. Here's how to do it in <code class="docutils literal notranslate"><span class="pre">python-docx</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="s1">&#39;image-filename.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This example uses a path, which loads the image file from the local filesystem. You can also use a <em>file-like object</em>, essentially any object that acts like an open file. This might be handy if you're retrieving your image from a database or over a network and don't want to get the filesystem involved.</p>
+</div>
+</div>
+<section id="id8">
+<h3>图像大小<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h3>
+<p>Image size</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">中文</label><div class="tab-content docutils">
+<p>默认情况下，添加的图片会以“原始”尺寸显示。这通常比你期望的要大。原始尺寸是根据“像素数 / 每英寸点数（dpi）”计算得出的。因此，一张分辨率为 300 dpi、像素尺寸为 300×300 的图片会在文档中显示为一个边长为一英寸的正方形。问题是，大多数图片并不包含 dpi 属性，其默认值为 72 dpi。这样一来，同一张图片的边长就会显示为 4.167 英寸，大约占了页面的一半。</p>
+<p>要使图片达到你期望的大小，你可以使用英寸或厘米等便捷单位来指定图片的宽度或高度:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">document</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="s1">&#39;image-filename.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">Inches</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>你可以同时指定宽度和高度，但通常没必要这么做。如果你只指定了其中一个参数，<code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 会根据它自动计算出另一个参数的适当缩放值。这样就能保持图片的“纵横比”，避免图片看起来被拉伸变形。</p>
+<p><cite>Inches</cite> 和 <cite>Cm</cite> 类可用于让你以便捷的单位指定尺寸。在 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 内部，使用的是英制公制单位（English Metric Units），1 英寸对应 914400 个单位。所以，如果你忘了这一点，只是简单地写 <cite>width=2</cite> ，那么得到的图片会极小 :)。你需要从 <cite>docx.shared</cite> 子包中导入这些类。在使用时，你可以像处理整数一样对它们进行算术运算，实际上它们在内部就是以整数形式存储的。因此，像 <cite>width = Inches(3) / thing_count</cite> 这样的表达式完全可以正常工作 。</p>
+</div>
+<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">英文</label><div class="tab-content docutils">
+<p>By default, the added image appears at <cite>native</cite> size. This is often bigger than
+you want. Native size is calculated as <code class="docutils literal notranslate"><span class="pre">pixels</span> <span class="pre">/</span> <span class="pre">dpi</span></code>. So a 300x300 pixel
+image having 300 dpi resolution appears in a one inch square. The problem is
+most images don't contain a dpi property and it defaults to 72 dpi. This would
+make the same image appear 4.167 inches on a side, somewhere around half the
+page.</p>
+<p>To get the image the size you want, you can specify either its width or height
+in convenient units, like inches or centimeters:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Inches</span>
+
+<span class="n">document</span><span class="o">.</span><span class="n">add_picture</span><span class="p">(</span><span class="s1">&#39;image-filename.png&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">Inches</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>You're free to specify both width and height, but usually you wouldn't want to.
+If you specify only one, <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> uses it to calculate the properly scaled value
+of the other. This way the <em>aspect ratio</em> is preserved and your picture doesn't
+look stretched.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Inches</span></code> and <code class="docutils literal notranslate"><span class="pre">Cm</span></code> classes are provided to let you specify measurements
+in handy units. Internally, <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> uses English Metric Units, 914400 to the
+inch. So if you forget and just put something like <code class="docutils literal notranslate"><span class="pre">width=2</span></code> you'll get an
+extremely small image :). You'll need to import them from the <code class="docutils literal notranslate"><span class="pre">docx.shared</span></code>
+sub-package. You can use them in arithmetic just like they were an integer,
+which in fact they are. So an expression like <code class="docutils literal notranslate"><span class="pre">width</span> <span class="pre">=</span> <span class="pre">Inches(3)</span>
+<span class="pre">/</span> <span class="pre">thing_count</span></code> works just fine.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="id9">
+<h2>应用段落样式<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>Applying a paragraph style</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">中文</label><div class="tab-content docutils">
+<p>如果你不了解 Word 段落样式是什么，那绝对应该去了解一下。基本上，它能让你一次性为段落应用一整套格式设置选项。如果你了解 CSS 样式的话，段落样式与之非常相似。</p>
+<p>你可以在创建段落时就应用段落样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;ListBullet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这种特定的样式会使段落显示为带有项目符号的形式，这非常方便。你也可以在创建段落后再应用样式。下面这两行代码与上面的代码效果相同:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;List Bullet&#39;</span>
+</pre></div>
+</div>
+<p>样式的指定是通过其样式名称来完成的，在这个例子中样式名称为 'List Bullet' 。通常情况下，样式名称与 Word 用户界面（UI）中显示的名称完全一致 。</p>
+</div>
+<input class="tab-input" id="tab-set--8-input--2" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--2">英文</label><div class="tab-content docutils">
+<p>If you don't know what a Word paragraph style is you should definitely check it
+out. Basically it allows you to apply a whole set of formatting options to
+a paragraph at once. It's a lot like CSS styles if you know what those are.</p>
+<p>You can apply a paragraph style right when you create a paragraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;ListBullet&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This particular style causes the paragraph to appear as a bullet, a very handy
+thing. You can also apply a style afterward. These two lines are equivalent to
+the one above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum dolor sit amet.&#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;List Bullet&#39;</span>
+</pre></div>
+</div>
+<p>The style is specified using its style name, 'List Bullet' in this example.
+Generally, the style name is exactly as it appears in the Word user interface
+(UI).</p>
+</div>
+</div>
+</section>
+<section id="id10">
+<h2>应用粗体和斜体<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>Applying bold and italic</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--9-input--1" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--1">中文</label><div class="tab-content docutils">
+<p>为了理解加粗和倾斜是如何实现的，你需要对段落内部的情况有一些了解。简单来说如下：</p>
+<ol class="arabic simple">
+<li><p>段落包含所有 <em>块级</em> 格式设置，例如缩进、行高、制表符等。</p></li>
+<li><p>字符级格式设置（如加粗和倾斜）是在 <cite>run</cite> （文本运行块）级别应用的。段落中的所有内容必须位于某个 <cite>run</cite> 中，但一个段落可以包含多个 <cite>run</cite> 。因此，如果一个段落的中间有一个加粗的单词，那么这个段落就需要三个 <cite>run</cite> ：一个是普通文本 <cite>run</cite> ，一个包含加粗单词的 <cite>run</cite> ，以及另一个用于后续文本的普通 <cite>run</cite> 。</p></li>
+</ol>
+<p>当你通过向 <cite>.add_paragraph()</cite> 方法提供文本来添加段落时，该文本会被放入一个单独的 <cite>run</cite> 中。你可以使用段落的 <cite>.add_run()</cite> 方法添加更多的 <cite>run</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样生成的段落在外观上与从单个字符串创建的段落完全一样。除非查看 XML 代码，否则你无法看出段落文本是如何划分成多个 <cite>run</cite> 的。注意第一个字符串末尾的空格。你需要明确指定每个 <cite>run</cite> 开头和结尾处的空格位置，因为 <cite>run</cite> 之间不会自动插入空格。你可能会因此犯几次错 :).</p>
+<p><cite>Run</cite> 对象有 <cite>.bold</cite> 和 <cite>.italic</cite> 属性，你可以用它们来设置某个 <cite>run</cite> 的加粗或倾斜效果:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39; sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样生成的文本看起来是这样的：'Lorem ipsum <strong>dolor</strong> sit amet.'</p>
+<p>注意，如果你不需要对 <cite>.add_run()</cite> 的结果做其他用途，也可以直接在其结果上设置加粗或倾斜:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># 等同于：</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># 只不过之后你就没有对 run 对象的引用了</span>
+</pre></div>
+</div>
+<p>向 <cite>.add_paragraph()</cite> 方法提供文本并不是必需的。如果你打算从 <cite>run</cite> 开始构建段落，这样做可以让代码更简洁:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39; sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--9-input--2" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--2">英文</label><div class="tab-content docutils">
+<p>In order to understand how bold and italic work, you need to understand
+a little about what goes on inside a paragraph. The short version is this:</p>
+<p>#. A paragraph holds all the <em>block-level</em> formatting, like indentation, line
+height, tabs, and so forth.</p>
+<p>#. Character-level formatting, such as bold and italic, are applied at the
+<cite>run</cite> level. All content within a paragraph must be within a run, but there
+can be more than one. So a paragraph with a bold word in the middle would
+need three runs, a normal one, a bold one containing the word, and another
+normal one for the text after.</p>
+<p>When you add a paragraph by providing text to the <code class="docutils literal notranslate"><span class="pre">.add_paragraph()</span></code> method,
+it gets put into a single run. You can add more using the <code class="docutils literal notranslate"><span class="pre">.add_run()</span></code> method
+on the paragraph:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This produces a paragraph that looks just like one created from a single
+string. It's not apparent where paragraph text is broken into runs unless you
+look at the XML. Note the trailing space at the end of the first string. You
+need to be explicit about where spaces appear at the beginning and end of
+a run. They're not automatically inserted between runs. Expect to be caught by
+that one a few times :).</p>
+<p><a class="reference internal" href="../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> objects have both a <code class="docutils literal notranslate"><span class="pre">.bold</span></code> and <code class="docutils literal notranslate"><span class="pre">.italic</span></code> property that allows you to
+set their value for a run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39; sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>which produces text that looks like this: 'Lorem ipsum <strong>dolor</strong> sit amet.'</p>
+<p>Note that you can set bold or italic right on the result of <code class="docutils literal notranslate"><span class="pre">.add_run()</span></code> if
+you don't need it for anything else:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># is equivalent to:</span>
+
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># except you don&#39;t have a reference to `run` afterward</span>
+</pre></div>
+</div>
+<p>It's not necessary to provide text to the <code class="docutils literal notranslate"><span class="pre">.add_paragraph()</span></code> method. This can
+make your code simpler if you're building the paragraph up from runs anyway:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;Lorem ipsum &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;dolor&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39; sit amet.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h2>应用字符样式<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>Applying a character style</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--10-input--1" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--1">中文</label><div class="tab-content docutils">
+<p>除了段落样式（用于指定一组段落级别的设置）之外，Word 还有 <em>字符样式</em> ，用于指定一组文本运行块（run）级别的设置。一般来说，你可以将字符样式理解为指定一种字体，包括字体类型、字号、颜色、加粗、倾斜等属性。</p>
+<p>与段落样式一样，字符样式必须在你使用 <cite>Document()</cite> 调用打开的文档中已经定义好（<cite>参见</cite> <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a>）。</p>
+<p>在添加新的文本运行块（run）时可以指定字符样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Normal text, &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;text with emphasis.&#39;</span><span class="p">,</span> <span class="s1">&#39;Emphasis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>你也可以在创建文本运行块（run）后为其应用样式。下面的代码与上面的代码效果相同:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Normal text, &#39;</span><span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;text with emphasis.&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;Emphasis&#39;</span>
+</pre></div>
+</div>
+<p>与段落样式一样，样式名称与 Word 用户界面（UI）中显示的名称完全一致 。</p>
+</div>
+<input class="tab-input" id="tab-set--10-input--2" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--2">英文</label><div class="tab-content docutils">
+<p>In addition to paragraph styles, which specify a group of paragraph-level
+settings, Word has <em>character styles</em> which specify a group of run-level
+settings. In general you can think of a character style as specifying a font,
+including its typeface, size, color, bold, italic, etc.</p>
+<p>Like paragraph styles, a character style must already be defined in the
+document you open with the <code class="docutils literal notranslate"><span class="pre">Document()</span></code> call (<cite>see</cite>
+<a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a>).</p>
+<p>A character style can be specified when adding a new run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Normal text, &#39;</span><span class="p">)</span>
+<span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;text with emphasis.&#39;</span><span class="p">,</span> <span class="s1">&#39;Emphasis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also apply a style to a run after it is created. This code produces
+the same result as the lines above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;Normal text, &#39;</span><span class="p">)</span>
+<span class="n">run</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_run</span><span class="p">(</span><span class="s1">&#39;text with emphasis.&#39;</span><span class="p">)</span>
+<span class="n">run</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;Emphasis&#39;</span>
+</pre></div>
+</div>
+<p>As with a paragraph style, the style name is as it appears in the Word UI.</p>
+</div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="documents.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">处理文档</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="install.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">安装</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">快速入门</a><ul>
+<li><a class="reference internal" href="#id2">打开文档</a></li>
+<li><a class="reference internal" href="#id3">添加段落</a></li>
+<li><a class="reference internal" href="#id4">添加标题</a></li>
+<li><a class="reference internal" href="#id5">添加分页符</a></li>
+<li><a class="reference internal" href="#id6">添加表格</a></li>
+<li><a class="reference internal" href="#id7">添加图片</a><ul>
+<li><a class="reference internal" href="#id8">图像大小</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">应用段落样式</a></li>
+<li><a class="reference internal" href="#id10">应用粗体和斜体</a></li>
+<li><a class="reference internal" href="#id11">应用字符样式</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

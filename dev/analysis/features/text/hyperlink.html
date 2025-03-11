@@ -1,0 +1,1035 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../../../../genindex.html" /><link rel="search" title="搜索" href="../../../../search.html" /><link rel="next" title="制表位" href="tab-stops.html" /><link rel="prev" title="文本" href="index.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>超链接 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">分析</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">设置部分</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">文本</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../../_sources/dev/analysis/features/text/hyperlink.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>超链接<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>Hyperlink</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>Word 允许在文档中任何段落可以出现的地方插入超链接。
+实际的超链接元素与 <a class="reference internal" href="../../../../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> 处于同一级别。</p>
+<p>超链接可以指向外部资源（例如网站），
+也可以是内部链接，指向文档中的另一个位置。
+此外，超链接还可以是 <cite>mailto:</cite> URI，
+或者指向可访问的本地文件或网络文件系统中的文件。</p>
+<p>超链接的可见文本存储在一个或多个 <cite>run</cite> 中。
+从技术上讲，超链接可以包含零个 <cite>run</cite>，
+但这种情况仅在特定构造的案例中才会发生
+（否则将没有可点击的内容）。
+与普通文本一样，每个 <cite>run</cite> 可以有自己独立的文本格式（字体）。
+例如，超链接中的某个单词可以加粗等。
+默认情况下，Word 会对新插入的超链接应用内置的 <cite>Hyperlink</cite> 字符样式。
+与其他文本一样，由于在不同的“修订保存”编辑会话
+（即多次执行 &quot;Save&quot; 命令）中进行的修改，
+超链接文本可能会被拆分成多个 <cite>run</cite>。</p>
+<p>请注意，超链接中间可能会出现分页符。</p>
+<p><a class="reference internal" href="../../../../api/text.html#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code></a> 是 <a class="reference internal" href="../../../../api/text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a> 的子元素，与 <a class="reference internal" href="../../../../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> 处于同一级别。</p>
+<p>TODO: 需要确认 URL 编码/解码（如 %20）在超链接中的处理方式（如果有）。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>Word allows a hyperlink to be placed in a document wherever a paragraph can appear. The actual hyperlink element is a peer of <a class="reference internal" href="../../../../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a>.</p>
+<p>The link may be to an external resource such as a web site, or internal, to another location in the document. The link may also be a <cite>mailto:</cite> URI or a reference to a file on an accessible local or network filesystem.</p>
+<p>The visible text of a hyperlink is held in one or more runs. Technically a hyperlink can have zero runs, but this occurs only in contrived cases (otherwise there would be nothing to click on). As usual, each run can have its own distinct text formatting (font), so for example one word in the hyperlink can be bold, etc. By default, Word applies the built-in <cite>Hyperlink</cite> character style to a newly inserted hyperlink. Like other text, the hyperlink text may often be broken into multiple runs as a result of edits in different &quot;revision-save&quot; editing sessions (between &quot;Save&quot; commands).</p>
+<p>Note that rendered page-breaks can occur in the middle of a hyperlink.</p>
+<p>A <a class="reference internal" href="../../../../api/text.html#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code></a> is a child of <a class="reference internal" href="../../../../api/text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a>, a peer of <a class="reference internal" href="../../../../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a>.</p>
+<p>TODO: What about URL-encoding/decoding (like %20) behaviors, if any?</p>
+</div>
+</div>
+<section id="id2">
+<h2>候选协议<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Candidate protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p>外部超链接具有一个地址（address）和一个可选的锚点（anchor）。
+内部超链接仅包含一个锚点。
+锚点在 Web URL 中更准确地称为 <em>URI 片段</em>，
+并且位于井号（&quot;#&quot;）之后。
+XML 中不存储片段分隔符 &quot;#&quot; 字符。</p>
+<p>请注意，锚点和地址存储在两个不同的属性中，
+因此，如果要获取完整的超链接，
+需要将 <cite>.address</cite> 和 <cite>.anchor</cite> 连接起来，
+例如：<cite>f&quot;{address}#{anchor}&quot;</cite>。</p>
+<p>此外，Word 并不会严格区分 Web URI 中的片段，
+因此，它可能作为地址的一部分存储，
+或者单独存储在 <cite>anchor</cite> 属性中，
+具体情况取决于超链接的创建方式。
+根据我的有限经验，
+通过对话框插入的超链接会分离片段，
+而直接在文档中输入的地址则不会。</p>
+<p><strong>访问段落中的超链接</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlinks</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">hyperlinks</span>
+<span class="go">[&lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>按文档顺序访问段落中的超链接和 `run`</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">paragraph</span><span class="o">.</span><span class="n">iter_inner_content</span><span class="p">())</span>
+<span class="go">[</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p><strong>访问超链接地址</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;https://google.com/&#39;</span>
+</pre></div>
+</div>
+<p><strong>访问超链接片段</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;introduction&#39;</span>
+</pre></div>
+</div>
+<p><strong>访问超链接历史记录（是否已访问，`True` 表示尚未访问）</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">history</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><strong>访问超链接中的 `run`</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">runs</span>
+<span class="go">[</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p><strong>访问完整的超链接 URL</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">url</span>
+<span class="go">&#39;https://us.com#introduction&#39;</span>
+</pre></div>
+</div>
+<p><strong>判断超链接是否包含分页符</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">contains_page_break</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><strong>访问超链接的可见文本</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;an excellent Wikipedia article on ferrets&#39;</span>
+</pre></div>
+</div>
+<p><strong>添加外部超链接</strong> （尚未实现）:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="s1">&#39;About&#39;</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;http://us.com&#39;</span><span class="p">,</span> <span class="n">fragment</span><span class="o">=</span><span class="s1">&#39;about&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span>
+<span class="go">&lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;About&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;http://us.com&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;about&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">url</span>
+<span class="go">&#39;http://us.com#about&#39;</span>
+</pre></div>
+</div>
+<p><strong>添加内部超链接（到书签）</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span><span class="s1">&#39;Section 1&#39;</span><span class="p">,</span> <span class="n">fragment</span><span class="o">=</span><span class="s1">&#39;Section_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;Section 1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;Section_1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p><strong>修改超链接属性</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Froogle&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;Froogle&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;mailto:info@froogle.com?subject=sup dawg?&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;mailto:info@froogle.com?subject=sup%20dawg%3F&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">anchor</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p><strong>向超链接添加额外的 `run`</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;A &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># `.insert_run` 方法用于在指定索引 `idx` 处插入新的 `run`，默认 `idx=-1`</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">insert_run</span><span class="p">(</span><span class="s1">&#39; link&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">insert_run</span><span class="p">(</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;A formatted link&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">hyperlink</span><span class="o">.</span><span class="n">iter_runs</span><span class="p">()]</span>
+<span class="go">[&lt;docx.text.run.Run at 0x7fa...&gt;,</span>
+<span class="go">&lt;docx.text.run.Run at 0x7fb...&gt;,</span>
+<span class="go">&lt;docx.text.run.Run at 0x7fc...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>迭代段落中的 `run` 级别元素</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;A paragraph having a link to: &#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">iter_run_level_items</span><span class="p">()]</span>
+<span class="go">[&lt;docx.text.paragraph.Run at 0x7fd...&gt;, &lt;docx.text.paragraph.Hyperlink at 0x7fe...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>`Paragraph.text` 现在包含超链接内的文本</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;A paragraph having a link to: github&#39;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<p>An external hyperlink has an address and an optional anchor. An internal hyperlink has only an anchor. An anchor is more precisely known as a <em>URI fragment</em> in a web URL and follows a hash mark (&quot;#&quot;). The fragment-separator hash character is not stored in the XML.</p>
+<p>Note that the anchor and address are stored in two distinct attributes, so you need to concatenate <cite>.address</cite> and <cite>.anchor</cite> like <cite>f&quot;{address}#{anchor}&quot;</cite> if you want the whole thing.</p>
+<p>Also note that Word does not rigorously separate a fragment in a web URI so it may appear as part of the address or separately in the anchor attribute, depending on how the hyperlink was authored. Hyperlinks inserted using the dialog-box seem to separate it and addresses typed into the document directly don't, based on my limited experience.</p>
+<p><strong>Access hyperlinks in a paragraph</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlinks</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">hyperlinks</span>
+<span class="go">[&lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlinks in a paragraph in document order with runs</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">paragraph</span><span class="o">.</span><span class="n">iter_inner_content</span><span class="p">())</span>
+<span class="go">[</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlink address</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;https://google.com/&#39;</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlink fragment</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;introduction&#39;</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlink history (visited or not, True means not visited yet)</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">history</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlinks runs</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">runs</span>
+<span class="go">[</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">  &lt;docx.text.run.Run at 0x7f...&gt;</span>
+<span class="go">]</span>
+</pre></div>
+</div>
+<p><strong>Access hyperlink URL</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">url</span>
+<span class="go">&#39;https://us.com#introduction&#39;</span>
+</pre></div>
+</div>
+<p><strong>Determine whether a hyperlink contains a rendered page-break</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">contains_page_break</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p><strong>Access visible text of a hyperlink</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;an excellent Wikipedia article on ferrets&#39;</span>
+</pre></div>
+</div>
+<p><strong>Add an external hyperlink</strong> (not yet implemented):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span>
+<span class="gp">... </span>  <span class="s1">&#39;About&#39;</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;http://us.com&#39;</span><span class="p">,</span> <span class="n">fragment</span><span class="o">=</span><span class="s1">&#39;about&#39;</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span>
+<span class="go">&lt;docx.text.hyperlink.Hyperlink at 0x7f...&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;About&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;http://us.com&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;about&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">url</span>
+<span class="go">&#39;http://us.com#about&#39;</span>
+</pre></div>
+</div>
+<p><strong>Add an internal hyperlink (to a bookmark)</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span> <span class="o">=</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span><span class="s1">&#39;Section 1&#39;</span><span class="p">,</span> <span class="n">fragment</span><span class="o">=</span><span class="s1">&#39;Section_1&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;Section 1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">fragment</span>
+<span class="go">&#39;Section_1&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p><strong>Modify hyperlink properties</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Froogle&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;Froogle&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="s1">&#39;mailto:info@froogle.com?subject=sup dawg?&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">address</span>
+<span class="go">&#39;mailto:info@froogle.com?subject=sup%20dawg%3F&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">anchor</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p><strong>Add additional runs to a hyperlink</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;A &#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># .insert_run inserts a new run at idx, defaults to idx=-1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">insert_run</span><span class="p">(</span><span class="s1">&#39; link&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">insert_run</span><span class="p">(</span><span class="s1">&#39;formatted&#39;</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hyperlink</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;A formatted link&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">r</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">hyperlink</span><span class="o">.</span><span class="n">iter_runs</span><span class="p">()]</span>
+<span class="go">[&lt;docx.text.run.Run at 0x7fa...&gt;,</span>
+<span class="go">&lt;docx.text.run.Run at 0x7fb...&gt;,</span>
+<span class="go">&lt;docx.text.run.Run at 0x7fc...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>Iterate over the run-level items a paragraph contains</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="s1">&#39;A paragraph having a link to: &#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">add_hyperlink</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;github&#39;</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s1">&#39;http://github.com&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">paragraph</span><span class="o">.</span><span class="n">iter_run_level_items</span><span class="p">()]:</span>
+<span class="go">[&lt;docx.text.paragraph.Run at 0x7fd...&gt;, &lt;docx.text.paragraph.Hyperlink at 0x7fe...&gt;]</span>
+</pre></div>
+</div>
+<p><strong>Paragraph.text now includes text contained in a hyperlink</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">text</span>
+<span class="go">&#39;A paragraph having a link to: github&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word">
+<h2>Word 的行为<a class="headerlink" href="#word" title="Link to this heading">¶</a></h2>
+<p>Word Behaviors</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p><cite>w:hyperlink</cite> 元素上的 <cite>w:history</cite> 属性的语义是什么？
+我怀疑它用于指示链接是否应显示为蓝色（未访问）或紫色（已访问）。
+我倾向于将其作为 <cite>hyperlink</cite> 的一个可读写属性。
+我们应该查看 Microsoft API 在这方面的处理方式。</p></li>
+<li><p>我们可能需要对 <cite>w:anchor</cite> 施加某些字符集限制。
+例如，Word 似乎不接受空格或连字符。
+但 <cite>ST_String</cite> 这个简单类型似乎并不能处理这些限制。</p></li>
+<li><p>我们需要测试 <cite>Hyperlink.address</cite> 中特殊字符的 URL 转义，
+例如空格和问号。</p></li>
+<li><p>当 Word 加载一个包含内部超链接的文档，
+但该超链接的 <cite>anchor</cite> 值与现有书签不匹配时，它会如何处理？
+我们需要了解这一点，
+因为肯定会有用户遇到这种情况，
+他们可能会因此收到修复错误的提示，
+或者出现其他问题，并向我们寻求支持。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>What are the semantics of the w:history attribute on w:hyperlink? I'm suspecting this indicates whether the link should show up blue (unvisited) or purple (visited). I'm inclined to think we need that as a read/write property on hyperlink. We should see what the MS API does on this count.</p></li>
+<li><p>We probably need to enforce some character-set restrictions on w:anchor. Word doesn't seem to like spaces or hyphens, for example. The simple type ST_String doesn't look like it takes care of this.</p></li>
+<li><p>We'll need to test URL escaping of special characters like spaces and question marks in Hyperlink.address.</p></li>
+<li><p>What does Word do when loading a document containing an internal hyperlink having an anchor value that doesn't match an existing bookmark? We'll want to know because we're sure to get support inquiries from folks who don't match those up and wonder why they get a repair error or whatever.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="xml">
+<h2>样本 XML<a class="headerlink" href="#xml" title="Link to this heading">¶</a></h2>
+<p>Specimen XML</p>
+<section id="id3">
+<h3>外部链接<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>External links</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>外部超链接的地址（URL）存储在 <cite>document.xml.rels</cite> 文件中，
+并由 <cite>w:hyperlink&#64;r:id</cite> 属性进行索引映射:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>external<span class="w"> </span>link<span class="w"> </span>to<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Google<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>… 在 <cite>document.xml.rels</cite> 文件中，
+该 <cite>r:id</cite> 对应的关系映射如下:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Relationships</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://schemas.openxmlformats.org/package/2006/relationships&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Relationship</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;rId4&quot;</span><span class="w"> </span><span class="na">Mode=</span><span class="s">&quot;External&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;http://...&quot;</span><span class="w"> </span><span class="na">Target=</span><span class="s">&quot;http://google.com/&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Relationships&gt;</span>
+</pre></div>
+</div>
+<p>超链接可以包含多个文本 <a href="#id4"><span class="problematic" id="id5">`</span></a>run`（以及许多其他内容，至少从架构上看是这样）:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId2&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>A<span class="w"> </span>hyperlink<span class="w"> </span>containing<span class="w"> </span>an<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:i/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>italicized<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span><span class="w"> </span>word<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>The address (URL) of an external hyperlink is stored in the document.xml.rels
+file, keyed by the w:hyperlink&#64;r:id attribute:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>This<span class="w"> </span>is<span class="w"> </span>an<span class="w"> </span>external<span class="w"> </span>link<span class="w"> </span>to<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Google<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>... mapping to relationship in document.xml.rels:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Relationships</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://schemas.openxmlformats.org/package/2006/relationships&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;Relationship</span><span class="w"> </span><span class="na">Id=</span><span class="s">&quot;rId4&quot;</span><span class="w"> </span><span class="na">Mode=</span><span class="s">&quot;External&quot;</span><span class="w"> </span><span class="na">Type=</span><span class="s">&quot;http://...&quot;</span><span class="w"> </span><span class="na">Target=</span><span class="s">&quot;http://google.com/&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Relationships&gt;</span>
+</pre></div>
+</div>
+<p>A hyperlink can contain multiple runs of text (and a whole lot of other stuff, at least
+as far as the schema indicates):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId2&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>A<span class="w"> </span>hyperlink<span class="w"> </span>containing<span class="w"> </span>an<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:i/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>italicized<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span><span class="w"> </span>word<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h3>内部链接<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>Internal links</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">中文</label><div class="tab-content docutils">
+<p>在 Word UI 中，内部链接提供“跳转到文档中的另一个位置”的功能。
+内部链接的特征是 <strong>没有</strong> <cite>r:id</cite> 属性。
+在这种情况下，<cite>w:anchor</cite> 属性是必需的，其值对应于文档中的书签名称。</p>
+<p>示例:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>See<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">w:anchor=</span><span class="s">&quot;Section_4&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Section<span class="w"> </span>4<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span><span class="w"> </span>for<span class="w"> </span>more<span class="w"> </span>details.<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>… 该链接指向文档中定义的书签:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:bookmarkStart</span><span class="w"> </span><span class="na">w:id=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;Section_4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Section<span class="w"> </span>4<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:bookmarkEnd</span><span class="w"> </span><span class="na">w:id=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">英文</label><div class="tab-content docutils">
+<p>An internal link provides &quot;jump to another document location&quot; behavior in the Word UI. An internal link is distinguished by the absence of an <cite>r:id</cite> attribute. In this case, the w:anchor attribute is required. The value of the anchor attribute is the name of a bookmark in the document.</p>
+<p>Example:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span>See<span class="w"> </span><span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:hyperlink</span><span class="w"> </span><span class="na">w:anchor=</span><span class="s">&quot;Section_4&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Section<span class="w"> </span>4<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:hyperlink&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t</span><span class="w"> </span><span class="na">xml:space=</span><span class="s">&quot;preserve&quot;</span><span class="nt">&gt;</span><span class="w"> </span>for<span class="w"> </span>more<span class="w"> </span>details.<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>... referring to this bookmark elsewhere in the document:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:bookmarkStart</span><span class="w"> </span><span class="na">w:id=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;Section_4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Section<span class="w"> </span>4<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:bookmarkEnd</span><span class="w"> </span><span class="na">w:id=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h2>架构摘录<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>Schema excerpt</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_P&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pPr&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_PPr&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:group</span><span class="w">   </span><span class="na">ref=</span><span class="s">&quot;EG_PContent&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidRPr&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidR&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidDel&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidP&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidRDefault&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;EG_PContent&quot;</span><span class="nt">&gt;</span><span class="w">  </span><span class="cm">&lt;!-- denormalized --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:choice&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;r&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_R&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hyperlink&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_Hyperlink&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;fldSimple&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_SimpleField&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sdt&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_SdtRun&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXml&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_CustomXmlRun&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;smartTag&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;CT_SmartTagRun&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dir&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_DirContentRun&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bdo&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_BdoContentRun&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;subDoc&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;CT_Rel&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;EG_RunLevelElts&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:choice&gt;</span>
+<span class="nt">&lt;/xsd:group&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Hyperlink&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;EG_PContent&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tgtFrame&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tooltip&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;docLocation&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;history&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;anchor&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;r:id&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;EG_RunLevelElts&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:choice&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;proofErr&quot;</span><span class="w">                    </span><span class="na">type=</span><span class="s">&quot;CT_ProofErr&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;permStart&quot;</span><span class="w">                   </span><span class="na">type=</span><span class="s">&quot;CT_PermStart&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;permEnd&quot;</span><span class="w">                     </span><span class="na">type=</span><span class="s">&quot;CT_Perm&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bookmarkStart&quot;</span><span class="w">               </span><span class="na">type=</span><span class="s">&quot;CT_Bookmark&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bookmarkEnd&quot;</span><span class="w">                 </span><span class="na">type=</span><span class="s">&quot;CT_MarkupRange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveFromRangeStart&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_MoveBookmark&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveFromRangeEnd&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_MarkupRange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveToRangeStart&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_MoveBookmark&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveToRangeEnd&quot;</span><span class="w">              </span><span class="na">type=</span><span class="s">&quot;CT_MarkupRange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;commentRangeStart&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;CT_MarkupRange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;commentRangeEnd&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_MarkupRange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlInsRangeStart&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_TrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlInsRangeEnd&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_Markup&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlDelRangeStart&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_TrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlDelRangeEnd&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_Markup&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlMoveFromRangeStart&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_TrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlMoveFromRangeEnd&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;CT_Markup&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlMoveToRangeStart&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;CT_TrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customXmlMoveToRangeEnd&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;CT_Markup&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ins&quot;</span><span class="w">                         </span><span class="na">type=</span><span class="s">&quot;CT_RunTrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;del&quot;</span><span class="w">                         </span><span class="na">type=</span><span class="s">&quot;CT_RunTrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveFrom&quot;</span><span class="w">                    </span><span class="na">type=</span><span class="s">&quot;CT_RunTrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;moveTo&quot;</span><span class="w">                      </span><span class="na">type=</span><span class="s">&quot;CT_RunTrackChange&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;EG_MathContent&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:choice&gt;</span>
+<span class="nt">&lt;/xsd:group&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_R&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;EG_RPr&quot;</span><span class="w">             </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:group</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;EG_RunInnerContent&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidRPr&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidDel&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidR&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:union</span><span class="w"> </span><span class="na">memberTypes=</span><span class="s">&quot;xsd:boolean ST_OnOff1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff1&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;on&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;off&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_RelationshipId&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_String&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tab-stops.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">制表位</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">文本</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">超链接</a><ul>
+<li><a class="reference internal" href="#id2">候选协议</a></li>
+<li><a class="reference internal" href="#word">Word 的行为</a></li>
+<li><a class="reference internal" href="#xml">样本 XML</a><ul>
+<li><a class="reference internal" href="#id3">外部链接</a></li>
+<li><a class="reference internal" href="#id6">内部链接</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">架构摘录</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

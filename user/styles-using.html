@@ -1,0 +1,1079 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="了解图片和其他形状" href="shapes.html" /><link rel="prev" title="了解样式" href="styles-understanding.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>使用样式 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dev/analysis/index.html">分析</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/user/styles-using.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>使用样式<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>Working with Styles</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>本页使用了上一页中开发的概念，但未作介绍。如果术语不熟悉，请参阅上一页 <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> 以了解其定义。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>This page uses concepts developed in the prior page without introduction. If a term is unfamiliar, consult the prior page <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> for a definition.</p>
+</div>
+</div>
+<section id="id2">
+<h2>访问样式<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Access a style</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p>使用 <a class="reference internal" href="../api/document.html#docx.document.Document.styles" title="docx.document.Document.styles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.styles</span></code></a> 属性访问样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span>
+<span class="go">&lt;docx.styles.styles.Styles object at 0x10a7c4f50&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/style.html#docx.styles.styles.Styles" title="docx.styles.styles.Styles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code></a> 对象提供按名称定义样式的字典式访问:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x10a7c4f6b&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>内置样式使用其英文名称（例如“Heading 1”）存储在 WordprocessingML 文件中，即使使用本地化版本的 Word 的用户将在 UI 中看到本地语言名称（例如“Kop 1”）。由于 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 操作 WordprocessingML 文件，因此样式查找必须使用英文名称。此外部网站上提供的文档允许您创建本地语言名称和英文样式名称之间的映射：<a class="reference external" href="http://www.thedoctools.com/index.php?show=mt_create_style_name_list">http://www.thedoctools.com/index.php?show=mt_create_style_name_list</a></p>
+</div>
+<p>用户定义的样式（也称为 <em>自定义样式</em> ）未本地化，并且可以使用与 Word UI 中显示的名称完全相同的名称进行访问。</p>
+<p><a class="reference internal" href="../api/style.html#docx.styles.styles.Styles" title="docx.styles.styles.Styles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code></a> 对象也是可迭代的。通过使用 <a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle" title="docx.styles.style.BaseStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStyle</span></code></a> 上的标识属性，可以生成已定义样式的各种子集。例如，此代码将生成已定义段落样式的列表:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_styles</span> <span class="o">=</span> <span class="p">[</span>
+<span class="gp">... </span>    <span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">styles</span> <span class="k">if</span> <span class="n">s</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">PARAGRAPH</span>
+<span class="gp">... </span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">style</span> <span class="ow">in</span> <span class="n">paragraph_styles</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">style</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Normal</span>
+<span class="go">Body Text</span>
+<span class="go">List Bullet</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<p>Styles are accessed using the <a class="reference internal" href="../api/document.html#docx.document.Document.styles" title="docx.document.Document.styles"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Document.styles</span></code></a> attribute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span>
+<span class="go">&lt;docx.styles.styles.Styles object at 0x10a7c4f50&gt;</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../api/style.html#docx.styles.styles.Styles" title="docx.styles.styles.Styles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code></a> object provides dictionary-style access to defined styles by
+name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x10a7c4f6b&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>Built-in styles are stored in a WordprocessingML file using their English name, e.g. 'Heading 1', even though users working on a localized version of Word will see native language names in the UI, e.g. 'Kop 1'. Because <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> operates on the WordprocessingML file, style lookups must use the English name. A document available on this external site allows you to create a mapping between local language names and English style names: <a class="reference external" href="http://www.thedoctools.com/index.php?show=mt_create_style_name_list">http://www.thedoctools.com/index.php?show=mt_create_style_name_list</a></p>
+</div>
+<p>User-defined styles, also known as <em>custom styles</em>, are not localized and
+are accessed with the name exactly as it appears in the Word UI.</p>
+<p>The <a class="reference internal" href="../api/style.html#docx.styles.styles.Styles" title="docx.styles.styles.Styles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Styles</span></code></a> object is also iterable. By using the identification properties
+on <a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle" title="docx.styles.style.BaseStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseStyle</span></code></a>, various subsets of the defined styles can be generated. For
+example, this code will produce a list of the defined paragraph styles:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_styles</span> <span class="o">=</span> <span class="p">[</span>
+</pre></div>
+</div>
+<p>...     s for s in styles if s.type == WD_STYLE_TYPE.PARAGRAPH
+... ]
+&gt;&gt;&gt; for style in paragraph_styles:
+...     print(style.name)
+...
+Normal
+Body Text
+List Bullet</p>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>应用样式<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Apply a style</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<p><a class="reference internal" href="../api/text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a>、<a class="reference internal" href="../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> 和 <a class="reference internal" href="../api/table.html#docx.table.Table" title="docx.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> 对象各自都有一个 <code class="xref py py-attr docutils literal notranslate"><span class="pre">style</span></code> 属性。将样式对象分配给此属性将应用该样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x11a7c4c50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Normal&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+</pre></div>
+</div>
+<p>也可以直接指定样式名称，在这种情况下 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 将为您进行查找:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;List Bullet&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x10a7c4f84&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;List Bullet&#39;</span>
+</pre></div>
+</div>
+<p>也可以在创建时使用样式对象或其名称来应用样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;Body Text&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">body_text_style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">body_text_style</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<p>The <a class="reference internal" href="../api/text.html#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a>, <a class="reference internal" href="../api/text.html#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a>, and <a class="reference internal" href="../api/table.html#docx.table.Table" title="docx.table.Table"><code class="xref py py-class docutils literal notranslate"><span class="pre">Table</span></code></a> objects each have a <code class="xref py py-attr docutils literal notranslate"><span class="pre">style</span></code>
+attribute. Assigning a style object to this attribute applies that style:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x11a7c4c50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Normal&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+</pre></div>
+</div>
+<p>A style name can also be assigned directly, in which case <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> will do the
+lookup for you:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="s1">&#39;List Bullet&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at &lt;0x10a7c4f84&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;List Bullet&#39;</span>
+</pre></div>
+</div>
+<p>A style can also be applied at creation time using either the style object or
+its name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;Body Text&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">body_text_style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="n">body_text_style</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>添加或删除样式<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>Add or delete a style</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>可以通过指定唯一的名称和样式类型将新样式添加到文档中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">styles</span><span class="o">.</span><span class="n">add_style</span><span class="p">(</span><span class="s1">&#39;Citation&#39;</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Citation&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">type</span>
+<span class="go">PARAGRAPH (1)</span>
+</pre></div>
+</div>
+<p>使用 <code class="xref py py-attr docutils literal notranslate"><span class="pre">base_style</span></code> 属性指定新样式应从中继承格式设置的样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at 0x10a7a9550&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Normal&#39;</span>
+</pre></div>
+</div>
+<p>只需调用其 <a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.delete" title="docx.styles.style.BaseStyle.delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code></a> 方法即可从文档中删除样式:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Citation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">Style.delete()</span></code> method removes the style's definition from the document. It does not affect content in the document to which that style is applied. Content having a style not defined in the document is rendered using the default style for that content object, e.g. 'Normal' in the case of a paragraph.</p>
+</div>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>A new style can be added to the document by specifying a unique name and a style type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">styles</span><span class="o">.</span><span class="n">add_style</span><span class="p">(</span><span class="s1">&#39;Citation&#39;</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Citation&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">type</span>
+<span class="go">PARAGRAPH (1)</span>
+</pre></div>
+</div>
+<p>Use the <code class="xref py py-attr docutils literal notranslate"><span class="pre">base_style</span></code> property to specify a style the new style should inherit formatting settings from:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span>
+<span class="go">&lt;docx.styles.style._ParagraphStyle object at 0x10a7a9550&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">base_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Normal&#39;</span>
+</pre></div>
+</div>
+<p>A style can be removed from the document simply by calling its <a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.delete" title="docx.styles.style.BaseStyle.delete"><code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code></a> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+<span class="go">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Citation&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+<span class="go">9</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>The <code class="xref py py-meth docutils literal notranslate"><span class="pre">Style.delete()</span></code> method removes the style's definition from the document. It does not affect content in the document to which that style is applied. Content having a style not defined in the document is rendered using the default style for that content object, e.g. 'Normal' in the case of a paragraph.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>定义字符格式<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>Define character formatting</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">中文</label><div class="tab-content docutils">
+<p>字符、段落和表格样式都可以指定要应用于具有该样式的内容的字符格式。所有可以直接应用于文本的字符格式都可以在样式中指定。示例包括字体字体和大小、粗体、斜体和下划线。</p>
+<p>这三种样式类型中的每一种都有一个 <code class="xref py py-attr docutils literal notranslate"><span class="pre">font</span></code> 属性，用于访问 <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> 对象。样式的 <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> 对象提供用于获取和设置该样式的字符格式的属性。</p>
+<p>这里提供了几个示例。有关可用属性的完整集合，请参阅 <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> API 文档。</p>
+<p>可以像这样访问样式的字体:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">font</span>
+</pre></div>
+</div>
+<p>字体和大小设置如下:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Calibri&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>许多字体属性都是 <em>三态</em> 的，这意味着它们可以取值 <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>、<code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> 和 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>。<code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> 表示属性处于“开启”状态，<code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> 表示属性处于“关闭”状态。从概念上讲，<code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 值表示“继承”。由于样式存在于继承层次结构中，因此能够在层次结构的正确位置指定属性非常重要，通常尽可能地位于层次结构的上层。例如，如果所有标题都应采用 Arial 字体，则更有意义的做法是将该属性设置为 <cite>Heading 1</cite> 样式，并让 <cite>Heading 2</cite> 从 <cite>Heading 1</cite> 继承。</p>
+<p>粗体和斜体是三态属性，全大写、删除线、上标和许多其他属性也是如此。请参阅 <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> API 文档以获取完整列表:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span> <span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">(None, None)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>下划线有点特殊。它是三态属性和枚举值属性的混合体。<code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> 表示单下划线，这是最常见的。<code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> 表示无下划线，但如果不需要下划线，则更常见的是 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 是正确的选择，因为很少从基本样式继承下划线。其他形式的下划线，例如双下划线或虚线，由 <a class="reference internal" href="../api/enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a> 枚举的成员指定:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or perhaps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span> <span class="o">=</span> <span class="n">WD_UNDERLINE</span><span class="o">.</span><span class="n">DOT_DASH</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">英文</label><div class="tab-content docutils">
+<p>Character, paragraph, and table styles can all specify character formatting to be applied to content with that style. All the character formatting that can be applied directly to text can be specified in a style. Examples include font typeface and size, bold, italic, and underline.</p>
+<p>Each of these three style types have a <code class="xref py py-attr docutils literal notranslate"><span class="pre">font</span></code> attribute providing access to a <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> object. A style's <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> object provides properties for getting and setting the character formatting for that style.</p>
+<p>Several examples are provided here. For a complete set of the available properties, see the <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> API documentation.</p>
+<p>The font for a style can be accessed like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">font</span>
+</pre></div>
+</div>
+<p>Typeface and size are set like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Calibri&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Many font properties are <em>tri-state</em>, meaning they can take the values <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>, and <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>. <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> means the property is &quot;on&quot;, <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> means it is &quot;off&quot;. Conceptually, the <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> value means &quot;inherit&quot;. Because a style exists in an inheritance hierarchy, it is important to have the ability to specify a property at the right place in the hierarchy, generally as far up the hierarchy as possible. For example, if all headings should be in the Arial typeface, it makes more sense to set that property on the <cite>Heading 1</cite> style and have <cite>Heading 2</cite> inherit from <cite>Heading 1</cite>.</p>
+<p>Bold and italic are tri-state properties, as are all-caps, strikethrough, superscript, and many others. See the <a class="reference internal" href="../api/text.html#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> API documentation for a full list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">bold</span><span class="p">,</span> <span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">(None, None)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">italic</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>Underline is a bit of a special case. It is a hybrid of a tri-state property and an enumerated value property. <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> means single underline, by far the most common. <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> means no underline, but more often <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> is the right choice if no underlining is wanted since it is rare to inherit it from a base style. The other forms of underlining, such as double or dashed, are specified with a member of the <a class="reference internal" href="../api/enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a> enumeration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># or perhaps</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">underline</span> <span class="o">=</span> <span class="n">WD_UNDERLINE</span><span class="o">.</span><span class="n">DOT_DASH</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>定义段落格式<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>Define paragraph formatting</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">中文</label><div class="tab-content docutils">
+<p>段落样式和表格样式都允许指定段落格式。这些样式通过其 <code class="xref py py-attr docutils literal notranslate"><span class="pre">paragraph_format</span></code> 属性提供对 <a class="reference internal" href="../api/text.html#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> 对象的访问。</p>
+<p>段落格式包括布局行为，例如对齐、缩进、前后空格、分页符和孤行控制。有关可用属性的完整列表，请参阅 <a class="reference internal" href="../api/text.html#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> 对象的 API 文档页面。</p>
+<p>以下是如何创建具有 1/4 英寸悬挂缩进、12 点上方间距和孤行控制的段落样式的示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">add_style</span><span class="p">(</span><span class="s1">&#39;Indent&#39;</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">paragraph_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">left_indent</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">first_line_indent</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">space_before</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">widow_control</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">英文</label><div class="tab-content docutils">
+<p>Both a paragraph style and a table style allow paragraph formatting to be specified. These styles provide access to a <a class="reference internal" href="../api/text.html#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> object via their <code class="xref py py-attr docutils literal notranslate"><span class="pre">paragraph_format</span></code> property.</p>
+<p>Paragraph formatting includes layout behaviors such as justification, indentation, space before and after, page break before, and widow/orphan control. For a complete list of the available properties, consult the API documentation page for the <a class="reference internal" href="../api/text.html#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> object.</p>
+<p>Here's an example of how you would create a paragraph style having hanging indentation of 1/4 inch, 12 points spacing above, and widow/orphan control:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Pt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">add_style</span><span class="p">(</span><span class="s1">&#39;Indent&#39;</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span> <span class="o">=</span> <span class="n">style</span><span class="o">.</span><span class="n">paragraph_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">left_indent</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">first_line_indent</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">space_before</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">widow_control</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>使用特定于段落的样式属性<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>Use paragraph-specific style properties</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">中文</label><div class="tab-content docutils">
+<p>段落样式具有 <code class="xref py py-attr docutils literal notranslate"><span class="pre">next_paragraph_style</span></code> 属性，该属性指定要应用于插入到该样式段落后的新段落的样式。当样式通常只在序列中出现一次（例如标题）时，这非常有用。在这种情况下，完成标题后，段落样式可以自动设置回正文样式。</p>
+<p>在最常见的情况下（正文段落），后续段落应采用与当前段落相同的样式。如果未指定下一个段落样式，则默认通过应用相同样式来很好地处理这种情况。</p>
+<p>以下是如何将 <em>Heading 1</em> 样式的下一个段落样式更改为 <em>Body Text</em> 的示例:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>可以通过指定 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 或样式本身来恢复默认行为:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="n">heading_1_style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--6-input--2" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--2">英文</label><div class="tab-content docutils">
+<p>A paragraph style has a <code class="xref py py-attr docutils literal notranslate"><span class="pre">next_paragraph_style</span></code> property that specifies the style to be applied to new paragraphs inserted after a paragraph of that style. This is most useful when the style would normally appear only once in a sequence, such as a heading. In that case, the paragraph style can automatically be set back to a body style after completing the heading.</p>
+<p>In the most common case (body paragraphs), subsequent paragraphs should receive the same style as the current paragraph. The default handles this case well by applying the same style if a next paragraph style is not specified.</p>
+<p>Here's an example of how you would change the next paragraph style of the <em>Heading 1</em> style to <em>Body Text</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The default behavior can be restored by assigning <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> or the style itself:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span> <span class="o">=</span> <span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Heading 1&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Body Text&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="n">heading_1_style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">heading_1_style</span><span class="o">.</span><span class="n">next_paragraph_style</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Heading 1&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word-ui">
+<h2>控制样式在 Word UI 中的显示方式<a class="headerlink" href="#word-ui" title="Link to this heading">¶</a></h2>
+<p>Control how a style appears in the Word UI</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">中文</label><div class="tab-content docutils">
+<p>样式的属性分为两类： <em>行为属性</em> 和 <em>格式属性</em> 。其行为属性控制样式在 Word UI 中出现的时间和位置。其格式属性决定应用样式的内容的格式，例如字体大小和段落缩进。</p>
+<p>样式有五种行为属性:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.hidden" title="docx.styles.style.BaseStyle.hidden"><code class="xref py py-attr docutils literal notranslate"><span class="pre">hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.unhide_when_used" title="docx.styles.style.BaseStyle.unhide_when_used"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unhide_when_used</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.priority" title="docx.styles.style.BaseStyle.priority"><code class="xref py py-attr docutils literal notranslate"><span class="pre">priority</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.quick_style" title="docx.styles.style.BaseStyle.quick_style"><code class="xref py py-attr docutils literal notranslate"><span class="pre">quick_style</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.locked" title="docx.styles.style.BaseStyle.locked"><code class="xref py py-attr docutils literal notranslate"><span class="pre">locked</span></code></a></p></li>
+</ul>
+<p>有关这些行为属性如何相互作用以确定样式在 Word UI 中出现的时间和位置的描述，请参阅 <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> 中的 <a class="reference internal" href="styles-understanding.html#style-behavior"><span class="std std-ref">样式行为</span></a> 部分.</p>
+<p><code class="xref py py-attr docutils literal notranslate"><span class="pre">priority</span></code> 属性采用整数值。其他四个样式行为属性是 <em>三态</em>，这意味着它们可以采用值 <a href="#id8"><span class="problematic" id="id9">|</span></a>True|（开启）、<a href="#id10"><span class="problematic" id="id11">|</span></a>False|（关闭）或 <a href="#id12"><span class="problematic" id="id13">|</span></a>None|（继承）。</p>
+</div>
+<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">英文</label><div class="tab-content docutils">
+<p>The properties of a style fall into two categories, <em>behavioral properties</em> and <em>formatting properties</em>. Its behavioral properties control when and where the style appears in the Word UI. Its formatting properties determine the formatting of content to which the style is applied, such as the size of the font and its paragraph indentation.</p>
+<p>There are five behavioral properties of a style:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.hidden" title="docx.styles.style.BaseStyle.hidden"><code class="xref py py-attr docutils literal notranslate"><span class="pre">hidden</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.unhide_when_used" title="docx.styles.style.BaseStyle.unhide_when_used"><code class="xref py py-attr docutils literal notranslate"><span class="pre">unhide_when_used</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.priority" title="docx.styles.style.BaseStyle.priority"><code class="xref py py-attr docutils literal notranslate"><span class="pre">priority</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.quick_style" title="docx.styles.style.BaseStyle.quick_style"><code class="xref py py-attr docutils literal notranslate"><span class="pre">quick_style</span></code></a></p></li>
+<li><p><a class="reference internal" href="../api/style.html#docx.styles.style.BaseStyle.locked" title="docx.styles.style.BaseStyle.locked"><code class="xref py py-attr docutils literal notranslate"><span class="pre">locked</span></code></a></p></li>
+</ul>
+<p>See the <a class="reference internal" href="styles-understanding.html#style-behavior"><span class="std std-ref">样式行为</span></a> section in <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> for a description of how these behavioral properties interact to determine when and where a style appears in the Word UI.</p>
+<p>The <code class="xref py py-attr docutils literal notranslate"><span class="pre">priority</span></code> property takes an integer value. The other four style behavior properties are <em>tri-state</em>, meaning they can take the value <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> (on), <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> (off), or <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> (inherit).</p>
+</div>
+</div>
+<section id="id14">
+<h3>在样式库中显示样式<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>Display a style in the style gallery</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">中文</label><div class="tab-content docutils">
+<p>以下代码将使 'Body Text' 段落样式首先出现在样式库中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">priorty</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--8-input--2" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--2">英文</label><div class="tab-content docutils">
+<p>The following code will cause the 'Body Text' paragraph style to appear first in the style gallery:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">docx</span> <span class="kn">import</span> <span class="n">Document</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Body Text&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">priorty</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id15">
+<h3>从样式库中删除样式<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>Remove a style from the style gallery</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--9-input--1" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--1">中文</label><div class="tab-content docutils">
+<p>此代码将从样式库中删除 'Normal' 段落样式，但允许其保留在推荐列表中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--9-input--2" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--2">英文</label><div class="tab-content docutils">
+<p>This code will remove the 'Normal' paragraph style from the style gallery, but allow it to remain in the recommended list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">style</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2>使用潜在样式<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<p>Working with Latent Styles</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--10-input--1" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--1">中文</label><div class="tab-content docutils">
+<p>请参阅 <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> 中的 <a class="reference internal" href="styles-understanding.html#builtin-styles"><span class="std std-ref">内置样式</span></a> 和 <a class="reference internal" href="styles-understanding.html#latent-styles"><span class="std std-ref">潜在样式</span></a> 部分，了解潜在样式如何定义 .docx 文件的 <cite>styles.xml</cite> 部分中尚未定义的内置样式的行为属性。</p>
+</div>
+<input class="tab-input" id="tab-set--10-input--2" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--2">英文</label><div class="tab-content docutils">
+<p>See the <a class="reference internal" href="styles-understanding.html#builtin-styles"><span class="std std-ref">内置样式</span></a> and <a class="reference internal" href="styles-understanding.html#latent-styles"><span class="std std-ref">潜在样式</span></a> sections in <a class="reference internal" href="styles-understanding.html#understanding-styles"><span class="std std-ref">了解样式</span></a> for a description of how latent styles define the behavioral properties of built-in styles that are not yet defined in the <cite>styles.xml</cite> part of a .docx file.</p>
+</div>
+</div>
+<section id="id17">
+<h3>访问文档中的潜在样式<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>Access the latent styles in a document</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--11-input--1" name="tab-set--11" type="radio"><label class="tab-label" for="tab-set--11-input--1">中文</label><div class="tab-content docutils">
+<p>文档中的潜在样式可以通过样式对象访问:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">latent_styles</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> 对象支持 <code class="xref py py-meth docutils literal notranslate"><span class="pre">len()</span></code>、迭代和通过样式名称进行字典样式访问:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">latent_styles</span><span class="p">)</span>
+<span class="go">161</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">ls</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">ls</span> <span class="ow">in</span> <span class="n">latent_styles</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style_names</span>
+<span class="go">[&#39;Normal&#39;, &#39;Heading 1&#39;, &#39;Heading 2&#39;, ... &#39;TOC Heading&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Quote&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span>
+<span class="go">&lt;docx.styles.latent.LatentStyle object at 0x10a7c4f50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span><span class="o">.</span><span class="n">priority</span>
+<span class="go">29</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--11-input--2" name="tab-set--11" type="radio"><label class="tab-label" for="tab-set--11-input--2">英文</label><div class="tab-content docutils">
+<p>The latent styles in a document are accessed from the styles object:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span> <span class="o">=</span> <span class="n">Document</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="o">.</span><span class="n">latent_styles</span>
+</pre></div>
+</div>
+<p>A <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> object supports <code class="xref py py-meth docutils literal notranslate"><span class="pre">len()</span></code>, iteration, and dictionary-style access by style name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">latent_styles</span><span class="p">)</span>
+<span class="go">161</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">ls</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">ls</span> <span class="ow">in</span> <span class="n">latent_styles</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style_names</span>
+<span class="go">[&#39;Normal&#39;, &#39;Heading 1&#39;, &#39;Heading 2&#39;, ... &#39;TOC Heading&#39;]</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Quote&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span>
+<span class="go">&lt;docx.styles.latent.LatentStyle object at 0x10a7c4f50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_quote</span><span class="o">.</span><span class="n">priority</span>
+<span class="go">29</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id18">
+<h3>更改潜在样式默认值<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>Change latent style defaults</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--12-input--1" name="tab-set--12" type="radio"><label class="tab-label" for="tab-set--12-input--1">中文</label><div class="tab-content docutils">
+<p><a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> 对象还提供对当前文档中内置样式的默认行为属性的访问。这些默认值为 <a class="reference internal" href="../api/style.html#docx.styles.latent._LatentStyle" title="docx.styles.latent._LatentStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">_LatentStyle</span></code></a> 定义中任何未定义的属性以及没有明确潜在样式定义的内置样式的所有行为属性提供值。有关可用属性的完整集合，请参阅 <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> 对象的 API 文档:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--12-input--2" name="tab-set--12" type="radio"><label class="tab-label" for="tab-set--12-input--2">英文</label><div class="tab-content docutils">
+<p>The <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> object also provides access to the default behavioral properties for built-in styles in the current document. These defaults provide the value for any undefined attributes of the <a class="reference internal" href="../api/style.html#docx.styles.latent._LatentStyle" title="docx.styles.latent._LatentStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">_LatentStyle</span></code></a> definitions and to all behavioral properties of built-in styles having no explicit latent style definition. See the API documentation for the <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> object for the complete set of available properties:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="o">.</span><span class="n">default_to_locked</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id19">
+<h3>添加潜在样式定义<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>Add a latent style definition</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--13-input--1" name="tab-set--13" type="radio"><label class="tab-label" for="tab-set--13-input--1">中文</label><div class="tab-content docutils">
+<p>可以使用 <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a> 上的 <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles.add_latent_style" title="docx.styles.latent.LatentStyles.add_latent_style"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_latent_style()</span></code></a> 方法添加新的潜在样式。此代码为内置样式'List Bullet' 添加了新的潜在样式，并将其设置为显示在样式库中:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;List Bullet&#39;</span><span class="p">]</span>
+<span class="go">KeyError: no latent style with name &#39;List Bullet&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="o">.</span><span class="n">add_latent_style</span><span class="p">(</span><span class="s1">&#39;List Bullet&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--13-input--2" name="tab-set--13" type="radio"><label class="tab-label" for="tab-set--13-input--2">英文</label><div class="tab-content docutils">
+<p>A new latent style can be added using the <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles.add_latent_style" title="docx.styles.latent.LatentStyles.add_latent_style"><code class="xref py py-meth docutils literal notranslate"><span class="pre">add_latent_style()</span></code></a> method on <a class="reference internal" href="../api/style.html#docx.styles.latent.LatentStyles" title="docx.styles.latent.LatentStyles"><code class="xref py py-class docutils literal notranslate"><span class="pre">LatentStyles</span></code></a>. This code adds a new latent style for the builtin style 'List Bullet', setting it to appear in the style gallery:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;List Bullet&#39;</span><span class="p">]</span>
+<span class="go">KeyError: no latent style with name &#39;List Bullet&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span> <span class="o">=</span> <span class="n">latent_styles</span><span class="o">.</span><span class="n">add_latent_style</span><span class="p">(</span><span class="s1">&#39;List Bullet&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">hidden</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">priority</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_style</span><span class="o">.</span><span class="n">quick_style</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id20">
+<h3>删除潜在样式定义<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h3>
+<p>Delete a latent style definition</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--14-input--1" name="tab-set--14" type="radio"><label class="tab-label" for="tab-set--14-input--1">中文</label><div class="tab-content docutils">
+<p>可以通过调用其 <code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code> 方法来删​​除潜在样式定义:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span>
+<span class="go">&lt;docx.styles.latent.LatentStyle object at 0x10a7c4f50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span>
+<span class="go">KeyError: no latent style with name &#39;Light Grid&#39;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--14-input--2" name="tab-set--14" type="radio"><label class="tab-label" for="tab-set--14-input--2">英文</label><div class="tab-content docutils">
+<p>A latent style definition can be deleted by calling its <code class="xref py py-meth docutils literal notranslate"><span class="pre">delete()</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span>
+<span class="go">&lt;docx.styles.latent.LatentStyle object at 0x10a7c4f50&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">latent_styles</span><span class="p">[</span><span class="s1">&#39;Light Grid&#39;</span><span class="p">]</span>
+<span class="go">KeyError: no latent style with name &#39;Light Grid&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="shapes.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">了解图片和其他形状</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="styles-understanding.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">了解样式</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">使用样式</a><ul>
+<li><a class="reference internal" href="#id2">访问样式</a></li>
+<li><a class="reference internal" href="#id3">应用样式</a></li>
+<li><a class="reference internal" href="#id4">添加或删除样式</a></li>
+<li><a class="reference internal" href="#id5">定义字符格式</a></li>
+<li><a class="reference internal" href="#id6">定义段落格式</a></li>
+<li><a class="reference internal" href="#id7">使用特定于段落的样式属性</a></li>
+<li><a class="reference internal" href="#word-ui">控制样式在 Word UI 中的显示方式</a><ul>
+<li><a class="reference internal" href="#id14">在样式库中显示样式</a></li>
+<li><a class="reference internal" href="#id15">从样式库中删除样式</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">使用潜在样式</a><ul>
+<li><a class="reference internal" href="#id17">访问文档中的潜在样式</a></li>
+<li><a class="reference internal" href="#id18">更改潜在样式默认值</a></li>
+<li><a class="reference internal" href="#id19">添加潜在样式定义</a></li>
+<li><a class="reference internal" href="#id20">删除潜在样式定义</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

@@ -1,0 +1,865 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../../../../genindex.html" /><link rel="search" title="搜索" href="../../../../search.html" /><link rel="next" title="样式集合" href="styles.html" /><link rel="prev" title="表格 - 合并单元格" href="../table/cell-merge.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>样式 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">分析</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children current-page"><a class="current reference internal" href="#">样式</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../../_sources/dev/analysis/features/styles/index.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>样式<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>Styles</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="styles.html">样式集合</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">样式对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paragraph-style.html">段落样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="character-style.html">字符样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent-styles.html">潜在样式</a></li>
+</ul>
+</div>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>Word 支持“样式”定义，以便轻松一致地将一组格式属性一次性应用于段落、运行、表格或编号方案。该机制类似于层叠样式表 (CSS) 与 HTML 的配合使用方式。</p>
+<p>样式在“styles.xml”包部分中定义，并使用“styleId”字符串与段落、运行或表格关联。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>Word supports the definition of <cite>styles</cite> to allow a group of formatting
+properties to be easily and consistently applied to a paragraph, run, table,
+or numbering scheme, all at once. The mechanism is similar to how Cascading
+Style Sheets (CSS) works with HTML.</p>
+<p>Styles are defined in the <code class="docutils literal notranslate"><span class="pre">styles.xml</span></code> package part and are keyed to
+a paragraph, run, or table using the <cite>styleId</cite> string.</p>
+</div>
+</div>
+<section id="id2">
+<h2>样式视觉行为<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Style visual behavior</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p><strong>排序规则</strong> （Sort order）</p>
+<ul class="simple">
+<li><p><strong>内置样式（built-in styles）</strong> 按 <cite>uiPriority</cite> 属性的有效值 排序。</p></li>
+<li><p><strong>自定义样式（custom styles）</strong> 默认没有 <cite>uiPriority</cite> 属性，因此 <strong>其默认值为 0</strong>，通常会 <strong>排在排序顺序的顶部</strong>。</p></li>
+<li><p>具有相同 <cite>uiPriority</cite> 值的样式 <strong>按字母顺序排序</strong>。</p></li>
+</ul>
+<p>如果 为自定义样式定义了 <cite>uiPriority</cite> 属性，</p>
+<ul class="simple">
+<li><p>该样式 会与内置样式按 <cite>uiPriority</cite> 值交错排序。</p></li>
+<li><p><cite>uiPriority</cite> <strong>接受有符号整数</strong>，包括 <strong>负数</strong>。</p></li>
+<li><p><strong>Word UI 不允许输入负数</strong>，但 <strong>可以通过提高内置样式的 `uiPriority` 值</strong> 来调整排序顺序。</p></li>
+</ul>
+<p><strong>标识规则</strong> （Identification）</p>
+<ul class="simple">
+<li><p><strong>样式的标识方式</strong>：样式 <strong>通过其名称</strong> 进行标识，而**不是** <cite>styleId</cite>。</p></li>
+<li><p><cite>styleId</cite> <strong>仅用于对象（如段落）与样式的内部链接</strong>，可能会被应用程序更改。</p></li>
+<li><p>事实上，Word <strong>每次保存时</strong> 都会 <strong>重新计算 `styleId`，将其转换为样式名称的某种变体</strong>。</p></li>
+</ul>
+<p><strong>假设（Hypothesis）</strong>：</p>
+<p>Word <strong>计算 `styleId` 的方式</strong> 是 <strong>去除样式名称中的所有空格</strong>。</p>
+<p><strong>样式列表归类</strong> （List membership）</p>
+<p>Word 的 <strong>样式面板（styles panel）</strong> 提供了 <strong>四种样式列表</strong>：</p>
+<ol class="arabic simple">
+<li><p><strong>推荐样式（Recommended）</strong></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>包含 <strong>所有</strong> <cite>semiHidden == False</cite> 的 <strong>潜在（latent）和已定义（defined）样式</strong>。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>正在使用的样式（Styles in Use）</strong></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>包含 <strong>文档中已应用**（因此是已定义的）**且 `semiHidden == False` 的样式</strong>。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>当前文档中的样式（In Current Document）</strong></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>包含 当前文档中所有已定义的 <cite>semiHidden == False</cite> 样式。</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p><strong>所有样式（All Styles）</strong></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>包含 <strong>文档中的所有潜在（latent）和已定义（defined）样式</strong>。</p></li>
+</ul>
+</div></blockquote>
+<p><strong>内置样式的定义</strong> （Definition of built-in style）</p>
+<p>当 <strong>文档中首次使用某个内置样式</strong> 时：</p>
+<ul class="simple">
+<li><p>其 <cite>locked</cite>、<cite>uiPriority</cite> 和 <cite>qFormat</cite> 属性的值</p>
+<ul>
+<li><p>继承自 <cite>latentStyles</cite> 定义（如果 <cite>lsdException</cite> 存在，则继承 <cite>lsdException</cite> 中的值），</p></li>
+<li><p><strong>覆盖</strong> 其 <strong>内置默认值</strong>。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>内置样式的默认属性</strong></p>
+<ul class="simple">
+<li><p>可以通过 <cite>latentStyles/&#64;count</cite> 设为 <cite>0</cite>，然后在 样式管理器 中查看该样式的默认属性。</p></li>
+<li><p>这些 <strong>可能包含</strong> 默认的 <strong>行为属性</strong> （behavioral properties）。</p></li>
+</ul>
+<p><strong>异常情况（Anomaly）</strong></p>
+<ul class="simple">
+<li><p><strong>“无间距”（No Spacing）样式</strong> <strong>不会出现在推荐列表中</strong>，</p>
+<ul>
+<li><p>即使 <strong>其行为属性</strong> 表明它 <strong>应该出现在该列表</strong>。</p></li>
+<li><p><strong>Google 资料显示</strong>：这可能是 <strong>Word 2003 的遗留样式（legacy style）</strong>。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Word 内置样式的数量</strong></p>
+<ul class="simple">
+<li><p>Word <strong>共有 267 种内置样式</strong>，列表见：
+<a class="reference external" href="http://www.thedoctools.com/downloads/DocTools_List_Of_Built-in_Style_English_Danish_German_French.pdf">DocTools 内置样式列表</a></p></li>
+<li><p><strong>其他来源</strong> 可能认为 <strong>数量为 276</strong>，而不是 267。</p></li>
+</ul>
+<p><strong>样式在“样式库”中的显示条件</strong> （Appearance in the Style Gallery）</p>
+<p>一个样式 <strong>会显示在“样式库”（Style Gallery）中</strong>，如果：</p>
+<ul class="simple">
+<li><p><cite>semiHidden == False</cite></p></li>
+<li><p><cite>qFormat == True</cite></p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<ul>
+<li><p><strong>Sort order.</strong> Built-in styles appear in order of the effective value of
+their <cite>uiPriority</cite> attribute. By default, a custom style will not receive
+a <cite>uiPriority</cite> attribute, causing its effective value to default to 0. This
+will generlly place custom styles at the top of the sort order. A set of
+styles having the same <cite>uiPriority</cite> value will be sub-sorted in
+alphabetical order.</p>
+<p>If a <cite>uiPriority</cite> attribute is defined for a custom style, that style is
+interleaved with the built-in styles, according to their <cite>uiPriority</cite>
+value. The <cite>uiPriority</cite> attribute takes a signed integer, and accepts
+negative numbers. Note that Word does not allow the use of negative
+integers via its UI; rather it allows the <cite>uiPriority</cite> number of built-in
+types to be increased to produce the desired sorting behavior.</p>
+</li>
+<li><p><strong>Identification.</strong> A style is identified by its name, not its styleId
+attribute. The styleId is used only for internal linking of an object like
+a paragraph to a style. The styleId may be changed by the application, and
+in fact is routinely changed by Word on each save to be a transformation of
+the name.</p>
+<p><em>Hypothesis.</em> Word calculates the <cite>styleId</cite> by removing all spaces from the
+style name.</p>
+</li>
+<li><p><strong>List membership.</strong> There are four style list options in the styles panel:</p>
+<ul class="simple">
+<li><p><em>Recommended.</em> The recommended list contains all latent and defined
+styles that have <cite>semiHidden</cite> == <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>Styles in Use.</em> The styles-in-use list contains all styles that have
+been applied to content in the document (implying they are defined) that
+also have <cite>semiHidden</cite> == <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>In Current Document.</em> The in-current-document list contains all defined
+styles in the document having <cite>semiHidden</cite> == <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+<li><p><em>All Styles.</em> The all-styles list contains all latent and defined
+styles in the document.</p></li>
+</ul>
+</li>
+<li><p><strong>Definition of built-in style.</strong> When a built-in style is added to
+a document (upon first use), the value of each of the <cite>locked</cite>,
+<cite>uiPriority</cite> and <cite>qFormat</cite> attributes from its latent style definition (the
+<cite>latentStyles</cite> attributes overridden by those of any <cite>lsdException</cite>
+element) is used to override the corresponding value in the inserted style
+definition from their built-in defaults.</p></li>
+<li><p>Each built-in style has default attributes that can be revealed by setting
+the <cite>latentStyles/&#64;count</cite> attribute to 0 and inspecting the style in the
+style manager. This may include default behavioral properties.</p></li>
+<li><p>Anomaly. Style &quot;No Spacing&quot; does not appear in the recommended list even
+though its behavioral attributes indicate it should. (Google indicates it
+may be a legacy style from Word 2003).</p></li>
+<li><p>Word has 267 built-in styles, listed here:
+<a class="reference external" href="http://www.thedoctools.com/downloads/DocTools_List_Of_Built-in_Style_English_Danish_German_French.pdf">http://www.thedoctools.com/downloads/DocTools_List_Of_Built-in_Style_English_Danish_German_French.pdf</a></p>
+<p>Note that at least one other sources has the number at 276 rather than 267.</p>
+</li>
+<li><p><strong>Appearance in the Style Gallery.</strong> A style appears in the style gallery
+when: <cite>semiHidden</cite> == <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> and <cite>qFormat</cite> == <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>词汇表<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Glossary</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<dl class="simple">
+<dt>内置样式</dt><dd><p>Word 已知的一组标准样式之一，例如“标题 1”。
+无论内置样式是否在样式部分中实际定义，它们都会显示在 Word 的样式面板中。</p>
+</dd>
+<dt>潜在样式</dt><dd><p>在特定文档中没有定义的内置样式在该文档中称为 <em>潜在样式</em>。</p>
+</dd>
+<dt>样式定义</dt><dd><p>样式部分中的 <code class="docutils literal notranslate"><span class="pre">&lt;w:style&gt;</span></code> 元素，明确定义样式的属性。</p>
+</dd>
+<dt>推荐样式列表</dt><dd><p>从“列表：”下拉框中选择“推荐”时，样式工具箱或面板中显示的样式列表。</p>
+</dd>
+</dl>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<dl class="simple">
+<dt>built-in style</dt><dd><p>One of a set of standard styles known to Word, such as &quot;Heading 1&quot;.
+Built-in styles are presented in Word's style panel whether or not they
+are actually defined in the styles part.</p>
+</dd>
+<dt>latent style</dt><dd><p>A built-in style having no definition in a particular document is known
+as a <em>latent style</em> in that document.</p>
+</dd>
+<dt>style definition</dt><dd><p>A <code class="docutils literal notranslate"><span class="pre">&lt;w:style&gt;</span></code> element in the styles part that explicitly defines the
+attributes of a style.</p>
+</dd>
+<dt>recommended style list</dt><dd><p>A list of styles that appears in the styles toolbox or panel when
+&quot;Recommended&quot; is selected from the &quot;List:&quot; dropdown box.</p>
+</dd>
+</dl>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>单词行为<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>Word behavior</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>如果在样式部分中未定义具有指定样式 ID 的样式，则样式应用无效。</p>
+<p>Word 不会为内置样式添加格式定义（ <code class="docutils literal notranslate"><span class="pre">&lt;w:style&gt;</span></code> 元素），直到它被使用为止。</p>
+<p>一旦出现在样式部分中，如果内置样式定义不再应用于任何内容，Word 就不会删除它。 文档中曾经使用过的每个样式的定义都累积在其 <code class="docutils literal notranslate"><span class="pre">styles.xml</span></code> 中。</p>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>If no style having an assigned style id is defined in the styles part, the
+style application has no effect.</p>
+<p>Word does not add a formatting definition (<code class="docutils literal notranslate"><span class="pre">&lt;w:style&gt;</span></code> element) for a
+built-in style until it is used.</p>
+<p>Once present in the styles part, Word does not remove a built-in style
+definition if it is no longer applied to any content. The definition of each
+of the styles ever used in a document are accumulated in its <code class="docutils literal notranslate"><span class="pre">styles.xml</span></code>.</p>
+</div>
+</div>
+</section>
+<section id="ms-api">
+<h2>相关 MS API <em>(部分)</em><a class="headerlink" href="#ms-api" title="Link to this heading">¶</a></h2>
+<p>Related MS API <em>(partial)</em></p>
+<ul class="simple">
+<li><p>Document.Styles</p></li>
+<li><p>Styles.Add, .Item, .Count, access by name, e.g. Styles(&quot;Foobar&quot;)</p></li>
+<li><p>Style.BaseStyle</p></li>
+<li><p>Style.Builtin</p></li>
+<li><p>Style.Delete()</p></li>
+<li><p>Style.Description</p></li>
+<li><p>Style.Font</p></li>
+<li><p>Style.Linked</p></li>
+<li><p>Style.LinkStyle</p></li>
+<li><p>Style.LinkToListTemplate()</p></li>
+<li><p>Style.ListLevelNumber</p></li>
+<li><p>Style.ListTemplate</p></li>
+<li><p>Style.Locked</p></li>
+<li><p>Style.NameLocal</p></li>
+<li><p>Style.NameParagraphStyle</p></li>
+<li><p>Style.NoSpaceBetweenParagraphsOfSameStyle</p></li>
+<li><p>Style.ParagraphFormat</p></li>
+<li><p>Style.Priority</p></li>
+<li><p>Style.QuickStyle</p></li>
+<li><p>Style.Shading</p></li>
+<li><p>Style.Table(Style)</p></li>
+<li><p>Style.Type</p></li>
+<li><p>Style.UnhideWhenUsed</p></li>
+<li><p>Style.Visibility</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>枚举<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p>Enumerations</p>
+<ul class="simple">
+<li><p>WdBuiltinStyle</p></li>
+</ul>
+</section>
+<section id="xml">
+<h2>示例 XML<a class="headerlink" href="#xml" title="Link to this heading">¶</a></h2>
+<p>Example XML</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&#39;1.0&#39; encoding=&#39;UTF-8&#39; standalone=&#39;yes&#39;?&gt;</span>
+<span class="nt">&lt;w:styles</span>
+<span class="w">    </span><span class="na">xmlns:mc=</span><span class="s">&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;</span>
+<span class="w">    </span><span class="na">xmlns:r=</span><span class="s">&quot;http://schemas.openxmlformats.org/officeDocument/2006/relationships&quot;</span>
+<span class="w">    </span><span class="na">xmlns:w14=</span><span class="s">&quot;http://schemas.microsoft.com/office/word/2010/wordml&quot;</span>
+<span class="w">    </span><span class="na">xmlns:w=</span><span class="s">&quot;http://schemas.openxmlformats.org/wordprocessingml/2006/main&quot;</span>
+<span class="w">    </span><span class="na">mc:Ignorable=</span><span class="s">&quot;w14&quot;</span>
+<span class="w">    </span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:docDefaults&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:rPrDefault&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:rPr&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:rFonts</span><span class="w"> </span><span class="na">w:asciiTheme=</span><span class="s">&quot;minorHAnsi&quot;</span><span class="w"> </span><span class="na">w:eastAsiaTheme=</span><span class="s">&quot;minorEastAsia&quot;</span>
+<span class="w">                  </span><span class="na">w:hAnsiTheme=</span><span class="s">&quot;minorHAnsi&quot;</span><span class="w"> </span><span class="na">w:cstheme=</span><span class="s">&quot;minorBidi&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:sz</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;24&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:szCs</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;24&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:lang</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;en-US&quot;</span><span class="w"> </span><span class="na">w:eastAsia=</span><span class="s">&quot;en-US&quot;</span><span class="w"> </span><span class="na">w:bidi=</span><span class="s">&quot;ar-SA&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:rPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:rPrDefault&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:pPrDefault/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:docDefaults&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:latentStyles</span><span class="w"> </span><span class="na">w:defLockedState=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:defUIPriority=</span><span class="s">&quot;99&quot;</span><span class="w"> </span><span class="na">w:defSemiHidden=</span><span class="s">&quot;1&quot;</span>
+<span class="w">                  </span><span class="na">w:defUnhideWhenUsed=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:defQFormat=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:count=</span><span class="s">&quot;276&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:lsdException</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;Normal&quot;</span><span class="w"> </span><span class="na">w:semiHidden=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:uiPriority=</span><span class="s">&quot;0&quot;</span>
+<span class="w">                    </span><span class="na">w:unhideWhenUsed=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:qFormat=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:lsdException</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;heading 1&quot;</span><span class="w"> </span><span class="na">w:semiHidden=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:uiPriority=</span><span class="s">&quot;9&quot;</span>
+<span class="w">                    </span><span class="na">w:unhideWhenUsed=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:qFormat=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:lsdException</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;heading 2&quot;</span><span class="w"> </span><span class="na">w:uiPriority=</span><span class="s">&quot;9&quot;</span><span class="w"> </span><span class="na">w:qFormat=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:lsdException</span><span class="w"> </span><span class="na">w:name=</span><span class="s">&quot;Default Paragraph Font&quot;</span><span class="w"> </span><span class="na">w:uiPriority=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:latentStyles&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:style</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;paragraph&quot;</span><span class="w"> </span><span class="na">w:default=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:styleId=</span><span class="s">&quot;Normal&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:name</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Normal&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:qFormat/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:style&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:style</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;character&quot;</span><span class="w"> </span><span class="na">w:default=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:styleId=</span><span class="s">&quot;DefaultParagraphFont&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:name</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Default Paragraph Font&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:uiPriority</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:semiHidden/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:unhideWhenUsed/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:style&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:style</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;table&quot;</span><span class="w"> </span><span class="na">w:default=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:styleId=</span><span class="s">&quot;TableNormal&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:name</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Normal Table&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:uiPriority</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;99&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:semiHidden/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:unhideWhenUsed/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:tblPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:tblInd</span><span class="w"> </span><span class="na">w:w=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;dxa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:tblCellMar&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:top</span><span class="w"> </span><span class="na">w:w=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;dxa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:left</span><span class="w"> </span><span class="na">w:w=</span><span class="s">&quot;108&quot;</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;dxa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:bottom</span><span class="w"> </span><span class="na">w:w=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;dxa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">        </span><span class="nt">&lt;w:right</span><span class="w"> </span><span class="na">w:w=</span><span class="s">&quot;108&quot;</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;dxa&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/w:tblCellMar&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:tblPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:style&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:style</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;numbering&quot;</span><span class="w"> </span><span class="na">w:default=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:styleId=</span><span class="s">&quot;NoList&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:name</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;No List&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:uiPriority</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;99&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:semiHidden/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:unhideWhenUsed/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:style&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:style</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;paragraph&quot;</span><span class="w"> </span><span class="na">w:customStyle=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">w:styleId=</span><span class="s">&quot;Foobar&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:name</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Foobar&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:qFormat/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:rsid</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;004B54E0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:style&gt;</span>
+<span class="nt">&lt;/w:styles&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2>架构摘录<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p>Schema excerpt</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Styles&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;docDefaults&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;CT_DocDefaults&quot;</span><span class="w">  </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;latentStyles&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_LatentStyles&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;style&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_Style&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_DocDefaults&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rPrDefault&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_RPrDefault&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pPrDefault&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_PPrDefault&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_LatentStyles&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lsdException&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_LsdException&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defLockedState&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defUIPriority&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defSemiHidden&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defUnhideWhenUsed&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;defQFormat&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;count&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Style&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;aliases&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;basedOn&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;next&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;link&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;autoRedefine&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hidden&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;uiPriority&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_DecimalNumber&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;semiHidden&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;unhideWhenUsed&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;qFormat&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;locked&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;personal&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;personalCompose&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;personalReply&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsid&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_LongHexNumber&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pPr&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_PPrGeneral&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rPr&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_RPr&quot;</span><span class="w">           </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tblPr&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;CT_TblPrBase&quot;</span><span class="w">     </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;trPr&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_TrPr&quot;</span><span class="w">          </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tcPr&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_TcPr&quot;</span><span class="w">          </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tblStylePr&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_TblStylePr&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;ST_StyleType&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;styleId&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;default&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;customStyle&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_LsdException&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;name&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="w">   </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;locked&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;uiPriority&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;semiHidden&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;unhideWhenUsed&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;qFormat&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_String&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:union</span><span class="w"> </span><span class="na">memberTypes=</span><span class="s">&quot;xsd:boolean ST_OnOff1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff1&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;on&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;off&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_StyleType&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;paragraph&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;character&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;table&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;numbering&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="styles.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">样式集合</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../table/cell-merge.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">表格 - 合并单元格</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">样式</a><ul>
+<li><a class="reference internal" href="#id2">样式视觉行为</a></li>
+<li><a class="reference internal" href="#id3">词汇表</a></li>
+<li><a class="reference internal" href="#id4">单词行为</a></li>
+<li><a class="reference internal" href="#ms-api">相关 MS API <em>(部分)</em></a></li>
+<li><a class="reference internal" href="#id5">枚举</a></li>
+<li><a class="reference internal" href="#xml">示例 XML</a></li>
+<li><a class="reference internal" href="#id6">架构摘录</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

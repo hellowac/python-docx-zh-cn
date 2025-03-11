@@ -1,0 +1,1061 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../../../../genindex.html" /><link rel="search" title="搜索" href="../../../../search.html" /><link rel="next" title="字体" href="font.html" /><link rel="prev" title="字体高亮颜色" href="font-highlight-color.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>段落格式 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../../index.html">分析</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">设置部分</a></li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="index.html">文本</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../../_sources/dev/analysis/features/text/paragraph-format.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="id1">
+<h1>段落格式<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>Paragraph formatting</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>WordprocessingML 支持多种段落格式属性来控制布局特征，例如对齐、缩进、行距、前后空格以及孤行控制。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>WordprocessingML supports a variety of paragraph formatting attributes to control layout characteristics such as justification, indentation, line spacing, space before and after, and widow/orphan control.</p>
+</div>
+</div>
+<section id="id2">
+<h2>对齐（对齐）<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Alignment (justification)</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<p>在 Word 中，每个段落都有一个 <cite>alignment</cite> 属性，用于指定段落在页面上布局时如何对齐段落的行。常用值有左对齐、右对齐、居中和两端对齐。</p>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<p>In Word, each paragraph has an <cite>alignment</cite> attribute that specifies how to justify the lines of the paragraph when the paragraph is laid out on the page. Common values are left, right, centered, and justified.</p>
+</div>
+</div>
+<section id="id3">
+<h3>协议<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p>Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<p>获取和设置段落对齐</p>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<p>Getting and setting paragraph alignment</p>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">alignment</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="n">WD_ALIGN_PARAGRAPH</span><span class="o">.</span><span class="n">RIGHT</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">alignment</span>
+<span class="go">RIGHT (2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph</span><span class="o">.</span><span class="n">alignment</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+</section>
+<section id="xml">
+<h3>XML 语义<a class="headerlink" href="#xml" title="Link to this heading">¶</a></h3>
+<p>XML Semantics</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>如果段落中不存在 <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> 元素，则该段落的对齐方式将从其样式层次结构中继承。
+如果该元素存在，其值将覆盖任何继承的值。
+在 API 中，<code class="docutils literal notranslate"><span class="pre">Paragraph.alignment</span></code> 属性的值为 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 时，表示该段落中不存在 <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> 元素。
+如果将 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 赋值给 <code class="docutils literal notranslate"><span class="pre">Paragraph.alignment</span></code>，则 <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> 元素将被移除。</p>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>If the <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> element is not present on a paragraph, the alignment value for that paragraph is inherited from its style hierarchy. If the element is present, its value overrides any inherited value. From the API, a value of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> on the <code class="docutils literal notranslate"><span class="pre">Paragraph.alignment</span></code> property corresponds to no <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> element being present. If <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> is assigned to <code class="docutils literal notranslate"><span class="pre">Paragraph.alignment</span></code>, the <code class="docutils literal notranslate"><span class="pre">&lt;w:jc&gt;</span></code> element is removed.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="id4">
+<h2>段落间距<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p>Paragraph spacing</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">中文</label><div class="tab-content docutils">
+<p>相邻段落之间的间距由段落间距属性控制。
+间距可以应用于段落之前、之后，或同时应用。
+其概念类似于 CSS 中的 <cite>padding</cite> 或 <cite>margin</cite>。</p>
+<p>WordprocessingML 支持以长度值或行高倍数指定段落间距；
+然而，在 Word 用户界面中，仅支持使用长度值。</p>
+<p>段落间距具有“重叠”特性，即两个段落之间的实际渲染间距为前一个段落的“段后间距”
+和后一个段落的“段前间距”两者中的较大值。</p>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">英文</label><div class="tab-content docutils">
+<p>Spacing between subsequent paragraphs is controlled by the paragraph spacing attributes. Spacing can be applied either before the paragraph, after it, or both. The concept is similar to that of <cite>padding</cite> or <cite>margin</cite> in CSS. WordprocessingML supports paragraph spacing specified as either a length value or as a multiple of the line height; however only a length value is supported via the Word UI. Inter-paragraph spacing &quot;overlaps&quot;, such that the rendered spacing between two paragraphs is the maximum of the space after the first paragraph and the space before the second.</p>
+</div>
+</div>
+<section id="id5">
+<h3>协议<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">中文</label><div class="tab-content docutils">
+<p>获取和设置段落间距</p>
+</div>
+<input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">英文</label><div class="tab-content docutils">
+<p>Getting and setting paragraph spacing</p>
+</div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">styles</span><span class="p">[</span><span class="s1">&#39;Normal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">paragraph_format</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">space_before</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">space_before</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">space_before</span><span class="o">.</span><span class="n">pt</span>
+<span class="go">12.0</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3>XML 语义<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h3>
+<p>XML Semantics</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--6-input--1" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>段落间距由 <cite>w:pPr/w:spacing</cite> 元素指定，该元素同时控制行间距。间距以 twip（缇）为单位表示。</p></li>
+<li><p>如果 <cite>w:spacing</cite> 元素不存在，则段落间距从其样式层次结构中继承。</p></li>
+<li><p>如果样式层次结构中也未定义间距，则该段落不会应用任何间距。</p></li>
+<li><p>如果 <cite>w:spacing</cite> 元素存在但某个具体属性（如 <cite>w:before</cite>）缺失，则该属性的值将被继承。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--6-input--2" name="tab-set--6" type="radio"><label class="tab-label" for="tab-set--6-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>Paragraph spacing is specified using the <cite>w:pPr/w:spacing</cite> element, which also controls line spacing. Spacing is specified in twips.</p></li>
+<li><p>If the <cite>w:spacing</cite> element is not present, paragraph spacing is inherited from the style hierarchy.</p></li>
+<li><p>If not present in the style hierarchy, the paragraph will have no spacing.</p></li>
+<li><p>If the <cite>w:spacing</cite> element is present but the specific attribute (e.g. <cite>w:before</cite>) is not, its value is inherited.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id7">
+<h3>样本 XML<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>Specimen XML</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--7-input--1" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--1">中文</label><div class="tab-content docutils">
+<p>前间距为 12 pt，后间距为 0</p>
+</div>
+<input class="tab-input" id="tab-set--7-input--2" name="tab-set--7" type="radio"><label class="tab-label" for="tab-set--7-input--2">英文</label><div class="tab-content docutils">
+<p>12 pt space before, 0 after</p>
+</div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:spacing</span><span class="w"> </span><span class="na">w:before=</span><span class="s">&quot;240&quot;</span><span class="w"> </span><span class="na">w:after=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2>行间距<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>Line spacing</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--8-input--1" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--1">中文</label><div class="tab-content docutils">
+<p>行间距可以指定为特定长度或是行高（字体大小）的倍数。行间距由 <cite>w:spacing/&#64;w:line</cite> 和 <cite>w:spacing/&#64;w:lineRule</cite> 的组合值决定。
+<a class="reference internal" href="../../../../api/text.html#docx.text.parfmt.ParagraphFormat.line_spacing" title="docx.text.parfmt.ParagraphFormat.line_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ParagraphFormat.line_spacing</span></code></a> 属性根据赋值是否为 <a class="reference internal" href="../../../../api/shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> 实例来确定使用哪种方法。</p>
+</div>
+<input class="tab-input" id="tab-set--8-input--2" name="tab-set--8" type="radio"><label class="tab-label" for="tab-set--8-input--2">英文</label><div class="tab-content docutils">
+<p>Line spacing can be specified either as a specific length or as a multiple of the line height (font size). Line spacing is specified by the combination of values in <cite>w:spacing/&#64;w:line</cite> and <cite>w:spacing/&#64;w:lineRule</cite>. The <a class="reference internal" href="../../../../api/text.html#docx.text.parfmt.ParagraphFormat.line_spacing" title="docx.text.parfmt.ParagraphFormat.line_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ParagraphFormat.line_spacing</span></code></a> property determines which method to use based on whether the assigned value is an instance of <a class="reference internal" href="../../../../api/shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a>.</p>
+</div>
+</div>
+<section id="id9">
+<h3>协议<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h3>
+<p>Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--9-input--1" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--1">中文</label><div class="tab-content docutils">
+<p>获取和设置行距</p>
+</div>
+<input class="tab-input" id="tab-set--9-input--2" name="tab-set--9" type="radio"><label class="tab-label" for="tab-set--9-input--2">英文</label><div class="tab-content docutils">
+<p>Getting and setting line spacing</p>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span><span class="p">,</span> <span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing_rule</span>
+<span class="go">(None, None)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span><span class="p">,</span> <span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing_rule</span>
+<span class="go">(228600, WD_LINE_SPACING.EXACTLY (4))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span><span class="p">,</span> <span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing_rule</span>
+<span class="go">(152400, WD_LINE_SPACING.SINGLE (0))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span> <span class="o">=</span> <span class="mf">0.9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing</span><span class="p">,</span> <span class="n">paragraph_format</span><span class="o">.</span><span class="n">line_spacing_rule</span>
+<span class="go">(137160, WD_LINE_SPACING.MULTIPLE (5))</span>
+</pre></div>
+</div>
+</section>
+<section id="id10">
+<h3>XML 语义<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>XML Semantics</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--10-input--1" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>行间距由 <cite>w:spacing/&#64;w:line</cite> 和 <cite>w:spacing/&#64;w:lineRule</cite> 的组合值决定。</p></li>
+<li><p><cite>w:spacing/&#64;w:line</cite> 以 twip 为单位指定。如果 <cite>&#64;w:lineRule</cite> 的值为 'auto'（或缺失），则 <cite>&#64;w:line</cite> 被解释为 240 分之一行的倍数。对于 <cite>&#64;w:lineRule</cite> 的其他所有值，<cite>&#64;w:line</cite> 直接被解释为具体的 twip 长度。</p></li>
+<li><p>如果 <cite>w:spacing</cite> 元素不存在，则行间距从样式层次结构中继承。</p></li>
+<li><p>如果 <cite>&#64;w:line</cite> 不存在，则行间距从样式层次结构中继承。</p></li>
+<li><p>如果 <cite>&#64;w:lineRule</cite> 不存在，则默认为 'auto'。</p></li>
+<li><p>如果在样式层次结构中未指定行间距，则默认使用单倍行距。</p></li>
+<li><p><cite>&#64;w:lineRule</cite> 取 'atLeast' 值时，行间距将取 <cite>&#64;w:line</cite> 指定的 twip 长度或单倍行距中较大的值。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--10-input--2" name="tab-set--10" type="radio"><label class="tab-label" for="tab-set--10-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>Line spacing is specified by the combination of the values in <cite>w:spacing/&#64;w:line</cite> and <cite>w:spacing/&#64;w:lineRule</cite>.</p></li>
+<li><p><cite>w:spacing/&#64;w:line</cite> is specified in twips. If <cite>&#64;w:lineRule</cite> is 'auto' (or missing), <cite>&#64;w:line</cite> is interpreted as 240ths of a line. For all other values of <cite>&#64;w:lineRule</cite>, the value of <cite>&#64;w:line</cite> is interpreted as a specific length in twips.</p></li>
+<li><p>If the <cite>w:spacing</cite> element is not present, line spacing is inherited.</p></li>
+<li><p>If <cite>&#64;w:line</cite> is not present, line spacing is inherited.</p></li>
+<li><p>If not present, <cite>&#64;w:lineRule</cite> defaults to 'auto'.</p></li>
+<li><p>If not present in the style hierarchy, line spacing defaults to single spaced.</p></li>
+<li><p>The 'atLeast' value for <cite>&#64;w:lineRule</cite> indicates the line spacing will be <cite>&#64;w:line</cite> twips or single spaced, whichever is greater.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3>样本 XML<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<p>Specimen XML</p>
+<p>14 points:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:spacing</span><span class="w"> </span><span class="na">w:line=</span><span class="s">&quot;280&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+<p>double-spaced:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:spacing</span><span class="w"> </span><span class="na">w:line=</span><span class="s">&quot;480&quot;</span><span class="w"> </span><span class="na">w:lineRule=</span><span class="s">&quot;exact&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2>缩进<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>Indentation</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--11-input--1" name="tab-set--11" type="radio"><label class="tab-label" for="tab-set--11-input--1">中文</label><div class="tab-content docutils">
+<p>段落缩进由 <cite>w:pPr/w:ind</cite> 元素指定。可以设置左缩进、右缩进、首行缩进和悬挂缩进。缩进可以使用长度值或字符宽度的百分之一指定。但 <code class="docutils literal notranslate"><span class="pre">python-docx</span></code> 仅支持长度值。首行缩进和悬挂缩进均通过 <a class="reference internal" href="../../../../api/text.html#docx.text.parfmt.ParagraphFormat.first_line_indent" title="docx.text.parfmt.ParagraphFormat.first_line_indent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ParagraphFormat.first_line_indent</span></code></a> 属性指定。赋值为正数时，产生首行缩进；赋值为负数时，产生悬挂缩进。</p>
+</div>
+<input class="tab-input" id="tab-set--11-input--2" name="tab-set--11" type="radio"><label class="tab-label" for="tab-set--11-input--2">英文</label><div class="tab-content docutils">
+<p>Paragraph indentation is specified using the <cite>w:pPr/w:ind</cite> element. Left, right, first line, and hanging indent can be specified. Indentation can be specified as a length or in hundredths of a character width. Only length is supported by <code class="docutils literal notranslate"><span class="pre">python-docx</span></code>. Both first line indent and hanging indent are specified using the <a class="reference internal" href="../../../../api/text.html#docx.text.parfmt.ParagraphFormat.first_line_indent" title="docx.text.parfmt.ParagraphFormat.first_line_indent"><code class="xref py py-attr docutils literal notranslate"><span class="pre">ParagraphFormat.first_line_indent</span></code></a> property. Assigning a positive value produces an indented first line. A negative value produces a hanging indent.</p>
+</div>
+</div>
+<section id="id13">
+<h3>协议<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h3>
+<p>Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--12-input--1" name="tab-set--12" type="radio"><label class="tab-label" for="tab-set--12-input--1">中文</label><div class="tab-content docutils">
+<p>获取和设置缩进</p>
+</div>
+<input class="tab-input" id="tab-set--12-input--2" name="tab-set--12" type="radio"><label class="tab-label" for="tab-set--12-input--2">英文</label><div class="tab-content docutils">
+<p>Getting and setting indentation</p>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">left_indent</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">right_indent</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">first_line_indent</span>
+<span class="go">None</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">left_indent</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">left_indent</span><span class="o">.</span><span class="n">pt</span>
+<span class="go">36.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">right_indent</span> <span class="o">=</span> <span class="n">Inches</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">right_indent</span><span class="o">.</span><span class="n">pt</span>
+<span class="go">18.0</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">first_line_indent</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="o">-</span><span class="mi">18</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">first_line_indent</span><span class="o">.</span><span class="n">pt</span>
+<span class="go">-18.0</span>
+</pre></div>
+</div>
+</section>
+<section id="id14">
+<h3>XML 语义<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h3>
+<p>XML Semantics</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--13-input--1" name="tab-set--13" type="radio"><label class="tab-label" for="tab-set--13-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>缩进由 <cite>w:ind/&#64;w:start</cite>、<cite>w:ind/&#64;w:end</cite>、<cite>w:ind/&#64;w:firstLine</cite> 和 <cite>w:ind/&#64;w:hanging</cite> 指定。</p></li>
+<li><p><cite>w:firstLine</cite> 和 <cite>w:hanging</cite> 互斥，如果两者都被指定，则 <cite>w:firstLine</cite> 将被忽略。</p></li>
+<li><p>以上四个属性的值均以 twips 为单位。</p></li>
+<li><p><cite>w:start</cite> 控制从左到右（LTR）段落的左缩进，或从右到左（RTL）段落的右缩进，而 <cite>w:end</cite> 控制另一侧的缩进。如果指定了 <cite>mirrorIndents</cite>，则 <cite>w:start</cite> 控制内侧边距，<cite>w:end</cite> 控制外侧边距。允许使用负值，这将导致文本超出文本边距。</p></li>
+<li><p>如果 <cite>w:ind</cite> 元素不存在，则缩进值将从样式层级继承。</p></li>
+<li><p>任何缺失的属性都会从样式层级继承。</p></li>
+<li><p>如果样式层级中未定义缩进值，则默认值为零。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--13-input--2" name="tab-set--13" type="radio"><label class="tab-label" for="tab-set--13-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>Indentation is specified by <cite>w:ind/&#64;w:start</cite>, <cite>w:ind/&#64;w:end</cite>, <cite>w:ind/&#64;w:firstLine</cite>, and <cite>w:ind/&#64;w:hanging</cite>.</p></li>
+<li><p><cite>w:firstLine</cite> and <cite>w:hanging</cite> are mutually exclusive, if both are specified, <cite>w:firstLine</cite> is ignored.</p></li>
+<li><p>All four attributes are specified in twips.</p></li>
+<li><p><cite>w:start</cite> controls left indent for a left-to-right paragraph or right indent for a right-to-left paragraph. <cite>w:end</cite> controls the other side. If mirrorIndents is specified, <cite>w:start</cite> controls the inside margin and <cite>w:end</cite> the outside. Negative values are permitted and cause the text to move past the text margin.</p></li>
+<li><p>If <cite>w:ind</cite> is not present, indentation is inherited.</p></li>
+<li><p>Any omitted attributes are inherited.</p></li>
+<li><p>If not present in the style hierarchy, indentation values default to zero.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id15">
+<h3>样本 XML<a class="headerlink" href="#id15" title="Link to this heading">¶</a></h3>
+<p>Specimen XML</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--14-input--1" name="tab-set--14" type="radio"><label class="tab-label" for="tab-set--14-input--1">中文</label><div class="tab-content docutils">
+<p>1 英寸左缩进，0.5 英寸（额外）首行缩进，0.5 英寸右缩进:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:ind</span><span class="w"> </span><span class="na">w:start=</span><span class="s">&quot;1440&quot;</span><span class="w"> </span><span class="na">w:end=</span><span class="s">&quot;720&quot;</span><span class="w"> </span><span class="na">w:firstLine=</span><span class="s">&quot;720&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+<p>0.5 英寸左缩进，0.5 英寸悬挂缩进:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:ind</span><span class="w"> </span><span class="na">w:start=</span><span class="s">&quot;720&quot;</span><span class="w"> </span><span class="na">w:hanging=</span><span class="s">&quot;720&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--14-input--2" name="tab-set--14" type="radio"><label class="tab-label" for="tab-set--14-input--2">英文</label><div class="tab-content docutils">
+<p>1 inch left, 0.5 inch (additional) first line, 0.5 inch right:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:ind</span><span class="w"> </span><span class="na">w:start=</span><span class="s">&quot;1440&quot;</span><span class="w"> </span><span class="na">w:end=</span><span class="s">&quot;720&quot;</span><span class="w"> </span><span class="na">w:firstLine=</span><span class="s">&quot;720&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+<p>0.5 inch left, 0.5 inch hanging indent:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:ind</span><span class="w"> </span><span class="na">w:start=</span><span class="s">&quot;720&quot;</span><span class="w"> </span><span class="na">w:hanging=</span><span class="s">&quot;720&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id16">
+<h2>页面位置<a class="headerlink" href="#id16" title="Link to this heading">¶</a></h2>
+<p>Page placement</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--15-input--1" name="tab-set--15" type="radio"><label class="tab-label" for="tab-set--15-input--1">中文</label><div class="tab-content docutils">
+<p>有一些页面布局属性用于控制诸如将段落的所有行保持在同一页上、使段落（如标题）与后续段落保持在同一页上，以及将段落放置在新页顶部等行为。这些属性都是三态布尔值，其中 <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> 表示“继承”。</p>
+</div>
+<input class="tab-input" id="tab-set--15-input--2" name="tab-set--15" type="radio"><label class="tab-label" for="tab-set--15-input--2">英文</label><div class="tab-content docutils">
+<p>There are a handful of page placement properties that control such things as keeping the lines of a paragraph together on the same page, keeing a paragraph (such as a heading) on the same page as the subsequent paragraph, and placing the paragraph at the top of a new page. Each of these are tri-state boolean properties where <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates &quot;inherit&quot;.</p>
+</div>
+</div>
+<section id="id17">
+<h3>协议<a class="headerlink" href="#id17" title="Link to this heading">¶</a></h3>
+<p>Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--16-input--1" name="tab-set--16" type="radio"><label class="tab-label" for="tab-set--16-input--1">中文</label><div class="tab-content docutils">
+<p>获取和设置缩进</p>
+</div>
+<input class="tab-input" id="tab-set--16-input--2" name="tab-set--16" type="radio"><label class="tab-label" for="tab-set--16-input--2">英文</label><div class="tab-content docutils">
+<p>Getting and setting indentation</p>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_with_next</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_together</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">page_break_before</span>
+<span class="go">None</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">widow_control</span>
+<span class="go">None</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_with_next</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_with_next</span>
+<span class="go">True</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_together</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">keep_together</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">page_break_before</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">paragraph_format</span><span class="o">.</span><span class="n">widow_control</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</section>
+<section id="id18">
+<h3>XML 语义<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<p>XML Semantics</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--17-input--1" name="tab-set--17" type="radio"><label class="tab-label" for="tab-set--17-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>所有四个元素都具有“开/关”语义。</p></li>
+<li><p>如果不存在，则它们的值将被继承。</p></li>
+<li><p>如果在样式层次结构中不存在，则值默认为 False。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--17-input--2" name="tab-set--17" type="radio"><label class="tab-label" for="tab-set--17-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>All four elements have &quot;On/Off&quot; semantics.</p></li>
+<li><p>If not present, their value is inherited.</p></li>
+<li><p>If not present in the style hierarchy, values default to False.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id19">
+<h3>样本 XML<a class="headerlink" href="#id19" title="Link to this heading">¶</a></h3>
+<p>Specimen XML</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--18-input--1" name="tab-set--18" type="radio"><label class="tab-label" for="tab-set--18-input--1">中文</label><div class="tab-content docutils">
+<p>与下页保持同步、保持在一起、前页无分页符以及孤行控制</p>
+</div>
+<input class="tab-input" id="tab-set--18-input--2" name="tab-set--18" type="radio"><label class="tab-label" for="tab-set--18-input--2">英文</label><div class="tab-content docutils">
+<p>keep with next, keep together, no page break before, and widow/orphan control</p>
+</div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:keepNext/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:keepLines/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:pageBreakBefore</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:widowControl/&gt;</span>
+<span class="nt">&lt;/w:pPr&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id20">
+<h2>枚举<a class="headerlink" href="#id20" title="Link to this heading">¶</a></h2>
+<p>Enumerations</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../../../api/enum/WdLineSpacing.html#wdlinespacing"><span class="std std-ref">WD_LINE_SPACING</span></a></p></li>
+<li><p><a class="reference internal" href="../../../../api/enum/WdAlignParagraph.html#wdparagraphalignment"><span class="std std-ref">WD_PARAGRAPH_ALIGNMENT</span></a></p></li>
+</ul>
+</section>
+<section id="id21">
+<h2>样本 XML<a class="headerlink" href="#id21" title="Link to this heading">¶</a></h2>
+<p>Specimen XML</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--19-input--1" name="tab-set--19" type="radio"><label class="tab-label" for="tab-set--19-input--1">中文</label><div class="tab-content docutils">
+<p>一个继承了对齐方式的段落:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t&gt;</span>继承的段落对齐方式。<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>一个右对齐的段落:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:jc</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;right&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t&gt;</span>右对齐的段落。<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--19-input--2" name="tab-set--19" type="radio"><label class="tab-label" for="tab-set--19-input--2">英文</label><div class="tab-content docutils">
+<p>A paragraph with inherited alignment:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t&gt;</span>Inherited<span class="w"> </span>paragraph<span class="w"> </span>alignment.<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+<p>A right-aligned paragraph:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:jc</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;right&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:pPr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:t&gt;</span>Right-aligned<span class="w"> </span>paragraph.<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="nt">&lt;/w:p&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id22">
+<h2>架构摘录<a class="headerlink" href="#id22" title="Link to this heading">¶</a></h2>
+<p>Schema excerpt</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_PPr&quot;</span><span class="nt">&gt;</span><span class="w">  </span><span class="cm">&lt;!-- denormalized --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pStyle&quot;</span><span class="w">              </span><span class="na">type=</span><span class="s">&quot;CT_String&quot;</span><span class="w">           </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;keepNext&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;keepLines&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pageBreakBefore&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;framePr&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_FramePr&quot;</span><span class="w">          </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;widowControl&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;numPr&quot;</span><span class="w">               </span><span class="na">type=</span><span class="s">&quot;CT_NumPr&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;suppressLineNumbers&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pBdr&quot;</span><span class="w">                </span><span class="na">type=</span><span class="s">&quot;CT_PBdr&quot;</span><span class="w">             </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;shd&quot;</span><span class="w">                 </span><span class="na">type=</span><span class="s">&quot;CT_Shd&quot;</span><span class="w">              </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tabs&quot;</span><span class="w">                </span><span class="na">type=</span><span class="s">&quot;CT_Tabs&quot;</span><span class="w">             </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;suppressAutoHyphens&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;kinsoku&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wordWrap&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;overflowPunct&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;topLinePunct&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;autoSpaceDE&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;autoSpaceDN&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bidi&quot;</span><span class="w">                </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;adjustRightInd&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;snapToGrid&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;spacing&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;CT_Spacing&quot;</span><span class="w">          </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ind&quot;</span><span class="w">                 </span><span class="na">type=</span><span class="s">&quot;CT_Ind&quot;</span><span class="w">              </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;contextualSpacing&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;mirrorIndents&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;suppressOverlap&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">            </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;jc&quot;</span><span class="w">                  </span><span class="na">type=</span><span class="s">&quot;CT_Jc&quot;</span><span class="w">               </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;textDirection&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_TextDirection&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;textAlignment&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_TextAlignment&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;textboxTightWrap&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;CT_TextboxTightWrap&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;outlineLvl&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_DecimalNumber&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;divId&quot;</span><span class="w">               </span><span class="na">type=</span><span class="s">&quot;CT_DecimalNumber&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;cnfStyle&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_Cnf&quot;</span><span class="w">              </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rPr&quot;</span><span class="w">                 </span><span class="na">type=</span><span class="s">&quot;CT_ParaRPr&quot;</span><span class="w">          </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sectPr&quot;</span><span class="w">              </span><span class="na">type=</span><span class="s">&quot;CT_SectPr&quot;</span><span class="w">           </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pPrChange&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;CT_PPrChange&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_FramePr&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;dropCap&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;ST_DropCap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lines&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;w&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;h&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vSpace&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hSpace&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;wrap&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;ST_Wrap&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hAnchor&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;ST_HAnchor&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vAnchor&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;ST_VAnchor&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;x&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;xAlign&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_XAlign&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;y&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;yAlign&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;s:ST_YAlign&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hRule&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;ST_HeightRule&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;anchorLock&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Ind&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;start&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;startChars&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;end&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;endChars&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;left&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;leftChars&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;right&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rightChars&quot;</span><span class="w">     </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hanging&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;hangingChars&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;firstLine&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;firstLineChars&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Jc&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_Jc&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Spacing&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;before&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;beforeLines&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;beforeAutospacing&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;after&quot;</span><span class="w">             </span><span class="na">type=</span><span class="s">&quot;s:ST_TwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;afterLines&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;ST_DecimalNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;afterAutospacing&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;s:ST_OnOff&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;line&quot;</span><span class="w">              </span><span class="na">type=</span><span class="s">&quot;ST_SignedTwipsMeasure&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lineRule&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;ST_LineSpacingRule&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_String&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;val&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;s:ST_String&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_Tabs&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;tab&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_TabStop&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="cm">&lt;!-- simple types --&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_Jc&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;start&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;center&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;end&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;both&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;mediumKashida&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;distribute&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;numTab&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;highKashida&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;lowKashida&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;thaiDistribute&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;left&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;right&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_LineSpacingRule&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;auto&quot;</span><span class="nt">/&gt;</span><span class="w">  </span><span class="cm">&lt;!-- default --&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;exact&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;atLeast&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:union</span><span class="w"> </span><span class="na">memberTypes=</span><span class="s">&quot;xsd:boolean ST_OnOff1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_OnOff1&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;on&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;off&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="font.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">字体</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="font-highlight-color.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">字体高亮颜色</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">段落格式</a><ul>
+<li><a class="reference internal" href="#id2">对齐（对齐）</a><ul>
+<li><a class="reference internal" href="#id3">协议</a></li>
+<li><a class="reference internal" href="#xml">XML 语义</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id4">段落间距</a><ul>
+<li><a class="reference internal" href="#id5">协议</a></li>
+<li><a class="reference internal" href="#id6">XML 语义</a></li>
+<li><a class="reference internal" href="#id7">样本 XML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">行间距</a><ul>
+<li><a class="reference internal" href="#id9">协议</a></li>
+<li><a class="reference internal" href="#id10">XML 语义</a></li>
+<li><a class="reference internal" href="#id11">样本 XML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id12">缩进</a><ul>
+<li><a class="reference internal" href="#id13">协议</a></li>
+<li><a class="reference internal" href="#id14">XML 语义</a></li>
+<li><a class="reference internal" href="#id15">样本 XML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">页面位置</a><ul>
+<li><a class="reference internal" href="#id17">协议</a></li>
+<li><a class="reference internal" href="#id18">XML 语义</a></li>
+<li><a class="reference internal" href="#id19">样本 XML</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">枚举</a></li>
+<li><a class="reference internal" href="#id21">样本 XML</a></li>
+<li><a class="reference internal" href="#id22">架构摘录</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

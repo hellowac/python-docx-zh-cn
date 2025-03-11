@@ -1,0 +1,836 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../../../genindex.html" /><link rel="search" title="搜索" href="../../../search.html" /><link rel="next" title="设置部分" href="settings.html" /><link rel="prev" title="分析" href="../index.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>页眉和页脚 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../index.html">分析</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../../../_sources/dev/analysis/features/header.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="header">
+<span id="id1"></span><h1>页眉和页脚<a class="headerlink" href="#header" title="Link to this heading">¶</a></h1>
+<p>Header and Footer</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">中文</label><div class="tab-content docutils">
+<p>在 WordprocessingML 文档中，页眉是与正文分开的文本，出现在打印页面的顶部。文档中的页眉通常在各个页面之间相同，内容只有细微的差异，例如章节标题或页码。这种页眉也称为页眉。</p>
+<p>页脚在各个方面都与页眉类似，只是它出现在页面的底部。不要将其与脚注混淆，因为脚注在各个页面之间并不统一。为简洁起见，术语`页眉(header)` 通常在这里用于指代页眉或页脚对象，相信读者能够理解它对这两种对象类型的适用性。</p>
+<p>在书本印刷的文档中，页面双面打印，打开时，每页的正面或“正面(recto)”出现在装订边缘的右侧，而每页的背面或“反面(verso)”出现在左侧。第一个打印页面的页码为“1”，并且始终是正面页。由于页面是连续编号的，因此每个正面页面都会收到一个“奇数(odd)”页码，而每个反面页面都会收到一个“偶数(even)”页码。</p>
+<p>正面页面的页眉通常与反面页面的页眉不同。支持这种差异会导致出现一个选项，即在文档中使用与默认奇数页页眉不同的偶数页页眉。此“奇偶页眉”选项应用于文档级别，并影响文档的所有部分。</p>
+<p>出现在某一部分（例如章节）第一页上的页眉可能与出现在后续页面上的页眉不同。支持这种差异会导致出现一个选项，即设置不同的首页页眉。此“不同的首页页眉”选项应用于部分级别，并且可能因文档中各部分而异。</p>
+<p>在 WordprocessingML 中，页眉或页脚出现在页面的边距区域内。除少数例外情况外，页眉或页脚可能包含正文中可以显示的所有类型的内容，包括文本和图像。每个页眉和页脚都可以访问 <code class="docutils literal notranslate"><span class="pre">/word/styles.xml</span></code> 中定义的样式。</p>
+<p>每个部分都有自己的一组页眉和页脚，但可以将某个部分配置为从前一节“继承”页眉和页脚。每个部分可以有三个页眉定义，即默认页眉、偶数页眉和首页页眉。当未启用不同的偶数/奇数页眉时，默认页眉会出现在偶数页和奇数页上。如果启用了偶数/奇数页眉，则默认页眉用于奇数页。也可以使用相应的三个页脚定义。所有页眉/页脚定义都是可选的。</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--2">英文</label><div class="tab-content docutils">
+<p>In a WordprocessingML document, a page header is text that is separated from the main body of text and appears at the top of a printed page. The page headers in a document are often the same from page to page, with only small differences in content, such as a section title or page number. Such a header is also known as a running head.</p>
+<p>A page footer is analogous in every way to a page header except that it appears at the bottom of a page. It should not be confused with a footnote, which is not uniform between pages. For brevity's sake, the term <cite>header</cite> is often used here to refer to what may be either a header or footer object, trusting the reader to understand its applicability to both object types.</p>
+<p>In book-printed documents, where pages are printed on both sides, when opened, the front or <cite>recto</cite> side of each page appears to the right of the bound edge and the back or <cite>verso</cite> side of each page appears on the left. The first printed page receives the page-number &quot;1&quot;, and is always a recto page. Because pages are numbered consecutively, each recto page receives an <cite>odd</cite> page number and each verso page receives an <cite>even</cite> page number.</p>
+<p>The header appearing on a recto page often differs from that on a verso page. Supporting this difference gives rise to the option to have an even-page header that differs from the default odd-page header in a document. This &quot;both odd-and-even headers&quot; option is applied at the document level and affects all sections of the document.</p>
+<p>The header appearing on the first page of a section (e.g. a chapter) may differ from that appearing on subsequent pages. Supporting this difference gives rise to the option to set a distinct first-page header. This &quot;different first-page-header&quot; option is applied at the section level and may differ from section-to-section in the document.</p>
+<p>In WordprocessingML, a header or footer appears within the margin area of a page. With a few exceptions, a header or footer may contain all the types of content that can appear in the main body, including text and images. Each header and footer has access to the styles defined in <code class="docutils literal notranslate"><span class="pre">/word/styles.xml</span></code>.</p>
+<p>Each section has its own set of headers and footers, although a section can be configured to &quot;inherit&quot; headers and footers from the prior section. Each section can have three header definitions, the default header, even header, and first page header. When different even/odd headers are not enabled, the default header appears on both even and odd numbered pages. If even/odd headers are enabled, the default header is used for odd pages. A corresponding set of three footer definitions are also possible. All header/footer definitions are optional.</p>
+</div>
+</div>
+<section id="id2">
+<h2>未解决的问题<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>Open Questions</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>连续分节符是怎样的？那里的页眉/页脚行为是什么？</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio"><label class="tab-label" for="tab-set--1-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>What about a continuous section break? What is the header/footer behavior there?</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>候选协议<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p>Candidate Protocol</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--1">中文</label><div class="tab-content docutils">
+<p>每个节都有一个页眉；它永远不会是 None:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="n">header</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span>
+<span class="go">&lt;docx.hdrftr.Header object at 0x02468ACE&gt;</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../../api/section.html#docx.section.Section" title="docx.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a> 具有三个页眉属性：<cite>.header</cite>、<cite>.even_page_header</cite> 和 <cite>.first_page_header</cite>。
+所有页眉对象共享相同的属性和方法。此外，页脚也有三个对应的属性。</p>
+<p><cite>Header</cite> 是 <code class="xref py py-class docutils literal notranslate"><span class="pre">BlockItemContainer</span></code> 的子类，继承了 <a class="reference internal" href="../../../api/document.html#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a> 的内容编辑能力，
+如 <cite>.add_paragraph()</cite> 方法。</p>
+<p>如果页眉没有 <cite>w:headerReference</cite> 元素，则该节的页眉定义会“继承”前一个节的页眉定义。
+这种继承是递归的，例如，第一节的页眉定义可以应用到第三节。
+继承页眉定义的页眉称为“链接到前一个”。
+有趣的是，即使第一节没有前一个节，它的页眉仍然可以是“链接到前一个”。
+<cite>.is_linked_to_previous</cite> 仅用于判断当前节是否具有页眉定义:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>编辑操作会自动作用于来源页眉，即当前节缺少该类型页眉时，
+会编辑最近的上一个节的同类型页眉。
+如果没有任何前面的节定义了页眉，
+那么在第一次有效编辑操作时，会在文档的第一节创建一个新的页眉:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">sections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>将 <cite>.is_linked_to_previous</cite> 赋值为 <cite>False</cite>，可以在当前节创建一个空白页眉（如果尚未存在）:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>相反，将 <cite>.is_linked_to_previous</cite> 赋值为 <cite>True</cite>，可以删除当前节的现有页眉:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>文档的 <cite>settings</cite> 对象具有可读写的 <cite>.odd_and_even_pages_header_footer</cite> 属性，
+指示正反页（verso 和 recto）是否具有不同的页眉。
+如果 <cite>.odd_and_even_pages_header_footer</cite> 为 <cite>False</cite>，
+任何已存在的偶数页页眉仍然会被保留，但 Word 不会显示它们。
+将 <cite>.odd_and_even_pages_header_footer</cite> 设为 <cite>True</cite> 并不会自动创建新的偶数页页眉:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">odd_and_even_pages_header_footer</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">odd_and_even_pages_header_footer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">even_page_header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../../../api/section.html#docx.section.Section" title="docx.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a> 具有可读写的 <cite>.different_first_page_header_footer</cite> 属性，
+用于指示当前节的第一页是否应具有不同的页眉。
+将 <cite>.different_first_page_header_footer</cite> 设为 <cite>True</cite> 并不会自动创建新的首页页眉:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">first_page_header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio"><label class="tab-label" for="tab-set--2-input--2">英文</label><div class="tab-content docutils">
+<p>Every section has a header; it is never None:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="n">header</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span>
+<span class="go">&lt;docx.hdrftr.Header object at 0x02468ACE&gt;</span>
+</pre></div>
+</div>
+<p>There are three header properties on <a class="reference internal" href="../../../api/section.html#docx.section.Section" title="docx.section.Section"><code class="xref py py-class docutils literal notranslate"><span class="pre">Section</span></code></a>: <cite>.header</cite>, <cite>.even_page_header</cite>, and <cite>.first_page_header</cite>. All header objects share the same properties and methods. There are three corresponding properties for the footers.</p>
+<p>Header is a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">BlockItemContainer</span></code>, from which it inherits the same content editing capabilities as <a class="reference internal" href="../../../api/document.html#docx.document.Document" title="docx.document.Document"><code class="xref py py-class docutils literal notranslate"><span class="pre">Document</span></code></a>, such as <cite>.add_paragraph()</cite>.</p>
+<p>If the <cite>w:headerReference</cite> element for a header is not present, the definition for that header is &quot;inherited&quot; from the prior section. This action is recursive, such that, for example, the header definition from the first section could be applied to the third section. A header that inherits its definition is said to be &quot;linked to previous&quot;. Perhaps counterintuitively, a header for the first section can be &quot;linked to previous&quot;, even though no previous section exists. The <cite>.is_linked_to_previous</cite> property is simply a test for the existence of a header definition in the current section:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Editing operations transparently operate on the source header, the one in the first prior section having a header of that type (when one is not present in the current section). If no prior sections have a header, one is created in the first section of the document on the first constructive edit call:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="n">document</span><span class="o">.</span><span class="n">sections</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;foobar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Assigning False to <cite>.is_linked_to_previous</cite> creates a blank header for that section when one does not already exist:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Conversely, an existing header is deleted from a section by assigning True to <cite>.is_linked_to_previous</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>The document settings object has a read/write <cite>.odd_and_even_pages_header_footer</cite> property that indicates verso and recto pages will have a different header. Any existing even page header definitions are preserved when <cite>.odd_and_even_pages_header_footer</cite> is False; they are simply not rendered by Word. Assigning <cite>True</cite> to <cite>.odd_and_even_pages_header_footer</cite> does not automatically create new even header definitions:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">odd_and_even_pages_header_footer</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">odd_and_even_pages_header_footer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">even_page_header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p><cite>Section</cite> has a read/write <cite>.different_first_page_header_footer</cite> property that indicates whether the first page of the section should have a distinct header. Assigning <cite>True</cite> to <cite>.different_first_page_header_footer</cite> does not automatically create a new first page header definition:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">different_first_page_header_footer</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">section</span><span class="o">.</span><span class="n">first_page_header</span><span class="o">.</span><span class="n">is_linked_to_previous</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="xml">
+<h2>样本 XML<a class="headerlink" href="#xml" title="Link to this heading">¶</a></h2>
+<p>Specimen XML</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--1">中文</label><div class="tab-content docutils">
+<p>共有七种不同的页眉组合方式：</p>
+<p><strong>整篇文档使用相同的页眉</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p><strong>仅使用奇数页页眉</strong>
+该节的结构与上面相同，但 <cite>settings.xml</cite> 中包含 <cite>&lt;w:evenAndOddHeaders&gt;</cite> 属性:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:settings</span><span class="w"> </span><span class="na">xmlns:w=</span><span class="s">&quot;http://schemas.openxmlformats.org/wordprocessingml/2006/main&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;w:evenAndOddHeaders</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:settings&gt;</span>
+</pre></div>
+</div>
+<p><strong>奇偶页使用不同的页眉</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;even&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p><strong>首页使用不同的页眉，后续页面使用相同的页眉</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;first&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:titlePg/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p><strong>首页、奇数页和偶数页均使用不同的页眉</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;first&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;even&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId5&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:titlePg/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p><strong>页眉部分</strong>:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:hdr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:pStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Header&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:pPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Header<span class="w"> </span>for<span class="w"> </span>section-1<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:p&gt;</span>
+<span class="nt">&lt;/w:hdr&gt;</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio"><label class="tab-label" for="tab-set--3-input--2">英文</label><div class="tab-content docutils">
+<p>There are seven different permutations of headers:</p>
+<p>The same header on all pages of the document:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p>Only an odd header. The section is exactly the same as above but
+<cite>settings.xml</cite> has the the <cite>&lt;w:evenAndOddHeaders&gt;</cite> property:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:settings</span><span class="w"> </span><span class="na">xmlns:w=</span><span class="s">&quot;http://schemas.openxmlformats.org/wordprocessingml/2006/main&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;w:evenAndOddHeaders</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;1&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:settings&gt;</span>
+</pre></div>
+</div>
+<p>Different even and odd headers:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;even&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p>Distinct first page header, subsequent pages all have the same header:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;first&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:titlePg/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p>Distinct first, even, and odd page headers:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:sectPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;default&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId3&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;first&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId4&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:headerReference</span><span class="w"> </span><span class="na">w:type=</span><span class="s">&quot;even&quot;</span><span class="w"> </span><span class="na">r:id=</span><span class="s">&quot;rId5&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:titlePg/&gt;</span>
+<span class="w">    </span>...
+<span class="nt">&lt;/w:sectPr&gt;</span>
+</pre></div>
+</div>
+<p>A header part:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;w:hdr&gt;</span>
+<span class="w">  </span><span class="nt">&lt;w:p&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:pPr&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:pStyle</span><span class="w"> </span><span class="na">w:val=</span><span class="s">&quot;Header&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:pPr&gt;</span>
+<span class="w">    </span><span class="nt">&lt;w:r&gt;</span>
+<span class="w">      </span><span class="nt">&lt;w:t&gt;</span>Header<span class="w"> </span>for<span class="w"> </span>section-1<span class="nt">&lt;/w:t&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/w:r&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/w:p&gt;</span>
+<span class="nt">&lt;/w:hdr&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="word">
+<h2>Word 行为<a class="headerlink" href="#word" title="Link to this heading">¶</a></h2>
+<p>Word Behavior</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--4-input--1" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--1">中文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>当你关闭奇偶页页眉时，Word 会将 <cite>w:evenAndOddHeaders</cite> 的值设为 0，但不会实际删除偶数页页眉。</p></li>
+<li><p>当你关闭首页页眉时，Word 会将 <cite>w:titlePg</cite> 的值设为 0，但不会实际删除偶数页页眉。</p></li>
+<li><p>Word 可以加载仅包含偶数页页眉但没有奇数页页眉的文件。</p></li>
+</ul>
+</div>
+<input class="tab-input" id="tab-set--4-input--2" name="tab-set--4" type="radio"><label class="tab-label" for="tab-set--4-input--2">英文</label><div class="tab-content docutils">
+<ul class="simple">
+<li><p>When you turn off even/odd headers, Word sets the value of <cite>w:evenAndOddHeaders</cite> to 0, but does not actually remove the even header.</p></li>
+<li><p>When you turn off first page header, Word sets the value of <cite>w:titlePg</cite> to 0, but does not actually remove the even header.</p></li>
+<li><p>Word will load a file with an even page header but no odd page header.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="api">
+<h2>微软 API<a class="headerlink" href="#api" title="Link to this heading">¶</a></h2>
+<p>MS API</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--5-input--1" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--1">中文</label><div class="tab-content docutils">
+<p>WdHeaderFooterIndex 枚举:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EVEN_PAGES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">FIRST_PAGE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">PRIMARY</span>    <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>在 MS API 中创建页脚:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">section</span> <span class="o">=</span> <span class="n">Document</span><span class="o">.</span><span class="n">Sections</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">footers</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="n">Footers</span>  <span class="c1"># HeadersFooters 集合对象</span>
+<span class="n">default_footer</span> <span class="o">=</span> <span class="n">footers</span><span class="p">(</span><span class="n">wdHeaderFooterPrimary</span><span class="p">)</span>
+<span class="n">default_footer</span><span class="o">.</span><span class="n">Range</span><span class="o">.</span><span class="n">Text</span> <span class="o">=</span> <span class="s2">&quot;Footer text&quot;</span>
+</pre></div>
+</div>
+<p>PageSetup 对象:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DifferentFirstPageHeaderFooter</span><span class="p">:</span> <span class="n">Read</span><span class="o">/</span><span class="n">write</span> <span class="p">{</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">WD_UNDEFINED</span><span class="p">}</span>
+<span class="n">OddAndEvenPagesHeaderFooter</span><span class="p">:</span> <span class="n">Read</span><span class="o">/</span><span class="n">write</span> <span class="p">{</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">WD_UNDEFINED</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--5-input--2" name="tab-set--5" type="radio"><label class="tab-label" for="tab-set--5-input--2">英文</label><div class="tab-content docutils">
+<p>WdHeaderFooterIndex Enumeration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">EVEN_PAGES</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">FIRST_PAGE</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">PRIMARY</span>    <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Create footer in MS API:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">section</span> <span class="o">=</span> <span class="n">Document</span><span class="o">.</span><span class="n">Sections</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">footers</span> <span class="o">=</span> <span class="n">section</span><span class="o">.</span><span class="n">Footers</span>  <span class="c1"># a HeadersFooters collection object</span>
+<span class="n">default_footer</span> <span class="o">=</span> <span class="n">footers</span><span class="p">(</span><span class="n">wdHeaderFooterPrimary</span><span class="p">)</span>
+<span class="n">default_footer</span><span class="o">.</span><span class="n">Range</span><span class="o">.</span><span class="n">Text</span> <span class="o">=</span> <span class="s2">&quot;Footer text&quot;</span>
+</pre></div>
+</div>
+<p>PageSetup object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DifferentFirstPageHeaderFooter</span><span class="p">:</span> <span class="n">Read</span><span class="o">/</span><span class="n">write</span> <span class="p">{</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">WD_UNDEFINED</span><span class="p">}</span>
+<span class="n">OddAndEvenPagesHeaderFooter</span><span class="p">:</span> <span class="n">Read</span><span class="o">/</span><span class="n">write</span> <span class="p">{</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">WD_UNDEFINED</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="schema">
+<h2>Schema 摘录<a class="headerlink" href="#schema" title="Link to this heading">¶</a></h2>
+<p>Schema Excerpt</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_SectPr&quot;</span><span class="nt">&gt;</span><span class="w">  </span><span class="cm">&lt;!-- denormalized --&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:sequence&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:choice</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="w"> </span><span class="na">maxOccurs=</span><span class="s">&quot;6&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;headerReference&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_HdrFtrRef&quot;</span><span class="nt">/&gt;</span>
+<span class="w">      </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;footerReference&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_HdrFtrRef&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/xsd:choice&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;footnotePr&quot;</span><span class="w">      </span><span class="na">type=</span><span class="s">&quot;CT_FtnProps&quot;</span><span class="w">      </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;endnotePr&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_EdnProps&quot;</span><span class="w">      </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_SectType&quot;</span><span class="w">      </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pgSz&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_PageSz&quot;</span><span class="w">        </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pgMar&quot;</span><span class="w">           </span><span class="na">type=</span><span class="s">&quot;CT_PageMar&quot;</span><span class="w">       </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;paperSrc&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_PaperSource&quot;</span><span class="w">   </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pgBorders&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_PageBorders&quot;</span><span class="w">   </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;lnNumType&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_LineNumber&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;pgNumType&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_PageNumber&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;cols&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_Columns&quot;</span><span class="w">       </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;formProt&quot;</span><span class="w">        </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;vAlign&quot;</span><span class="w">          </span><span class="na">type=</span><span class="s">&quot;CT_VerticalJc&quot;</span><span class="w">    </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;noEndnote&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;titlePg&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;textDirection&quot;</span><span class="w">   </span><span class="na">type=</span><span class="s">&quot;CT_TextDirection&quot;</span><span class="w"> </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bidi&quot;</span><span class="w">            </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rtlGutter&quot;</span><span class="w">       </span><span class="na">type=</span><span class="s">&quot;CT_OnOff&quot;</span><span class="w">         </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;docGrid&quot;</span><span class="w">         </span><span class="na">type=</span><span class="s">&quot;CT_DocGrid&quot;</span><span class="w">       </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;printerSettings&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;CT_Rel&quot;</span><span class="w">           </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:element</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;sectPrChange&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;CT_SectPrChange&quot;</span><span class="w">  </span><span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:sequence&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidRPr&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidDel&quot;</span><span class="w">  </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidR&quot;</span><span class="w">    </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;rsidSect&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_LongHexNumber&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:complexType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;CT_HdrFtrRef&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">ref=</span><span class="s">&quot;r:id&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:attribute</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;type&quot;</span><span class="w"> </span><span class="na">type=</span><span class="s">&quot;ST_HdrFtr&quot;</span><span class="w"> </span><span class="na">use=</span><span class="s">&quot;required&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/xsd:complexType&gt;</span>
+
+<span class="nt">&lt;xsd:simpleType</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ST_HdrFtr&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;xsd:restriction</span><span class="w"> </span><span class="na">base=</span><span class="s">&quot;xsd:string&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;even&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;default&quot;</span><span class="nt">/&gt;</span>
+<span class="w">    </span><span class="nt">&lt;xsd:enumeration</span><span class="w"> </span><span class="na">value=</span><span class="s">&quot;first&quot;</span><span class="nt">/&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/xsd:restriction&gt;</span>
+<span class="nt">&lt;/xsd:simpleType&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="settings.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">设置部分</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">分析</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">页眉和页脚</a><ul>
+<li><a class="reference internal" href="#id2">未解决的问题</a></li>
+<li><a class="reference internal" href="#id3">候选协议</a></li>
+<li><a class="reference internal" href="#xml">样本 XML</a></li>
+<li><a class="reference internal" href="#word">Word 行为</a></li>
+<li><a class="reference internal" href="#api">微软 API</a></li>
+<li><a class="reference internal" href="#schema">Schema 摘录</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../../../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

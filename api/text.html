@@ -1,0 +1,1400 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="索引" href="../genindex.html" /><link rel="search" title="搜索" href="../search.html" /><link rel="next" title="表格对象" href="table.html" /><link rel="prev" title="样式相关对象" href="style.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>文本相关对象 - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="style.html">样式相关对象</a></li>
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../dev/analysis/index.html">分析</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../dev/analysis/features/shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dev/analysis/features/shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/features/sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/analysis/schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/text.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="text-api">
+<span id="id1"></span><h1>文本相关对象<a class="headerlink" href="#text-api" title="Link to this heading">¶</a></h1>
+<p>Text-related objects</p>
+<section id="paragraph">
+<h2><a class="reference internal" href="#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a> 对象<a class="headerlink" href="#paragraph" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.paragraph.</span></span><span class="sig-name descname"><span class="pre">Paragraph</span></span><a class="reference internal" href="../_modules/docx/text/paragraph.html#Paragraph"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.paragraph.Paragraph" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object wrapping a <cite>&lt;w:p&gt;</cite> element.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.add_run">
+<span class="sig-name descname"><span class="pre">add_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style.CharacterStyle" title="docx.styles.style.CharacterStyle"><span class="pre">CharacterStyle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><span class="pre">Run</span></a></span></span><a class="reference internal" href="../_modules/docx/text/paragraph.html#Paragraph.add_run"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.paragraph.Paragraph.add_run" title="Link to this definition">¶</a></dt>
+<dd><p>Append run containing <cite>text</cite> and having character-style <cite>style</cite>.</p>
+<p><cite>text</cite> can contain tab (<code class="docutils literal notranslate"><span class="pre">\t</span></code>) characters, which are converted to the
+appropriate XML form for a tab. <cite>text</cite> can also include newline (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) or
+carriage return (<code class="docutils literal notranslate"><span class="pre">\r</span></code>) characters, each of which is converted to a line
+break. When <cite>text</cite> is <cite>None</cite>, the new run is empty.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.alignment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alignment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">WD_PARAGRAPH_ALIGNMENT</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.alignment" title="Link to this definition">¶</a></dt>
+<dd><p>A member of the <a class="reference internal" href="enum/WdAlignParagraph.html#wdparagraphalignment"><span class="std std-ref">WD_PARAGRAPH_ALIGNMENT</span></a> enumeration specifying the
+justification setting for this paragraph.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the paragraph has no directly-applied alignment
+value and will inherit its alignment value from its style hierarchy. Assigning
+<code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> to this property removes any directly-applied alignment value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/paragraph.html#Paragraph.clear"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.paragraph.Paragraph.clear" title="Link to this definition">¶</a></dt>
+<dd><p>Return this same paragraph after removing all its content.</p>
+<p>Paragraph-level formatting, such as style, is preserved.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.contains_page_break">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contains_page_break</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.contains_page_break" title="Link to this definition">¶</a></dt>
+<dd><p><cite>True</cite> when one or more rendered page-breaks occur in this paragraph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.hyperlinks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hyperlinks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.List" title="（在 Python v3.13）"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><span class="pre">Hyperlink</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.hyperlinks" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code></a> instance for each hyperlink in this paragraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.insert_paragraph_before">
+<span class="sig-name descname"><span class="pre">insert_paragraph_before</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style.ParagraphStyle" title="docx.styles.style.ParagraphStyle"><span class="pre">ParagraphStyle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a></span></span><a class="reference internal" href="../_modules/docx/text/paragraph.html#Paragraph.insert_paragraph_before"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.paragraph.Paragraph.insert_paragraph_before" title="Link to this definition">¶</a></dt>
+<dd><p>Return a newly created paragraph, inserted directly before this paragraph.</p>
+<p>If <cite>text</cite> is supplied, the new paragraph contains that text in a single run. If
+<cite>style</cite> is provided, that style is assigned to the new paragraph.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.iter_inner_content">
+<span class="sig-name descname"><span class="pre">iter_inner_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.Iterator" title="（在 Python v3.13）"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><span class="pre">Run</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><span class="pre">Hyperlink</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/docx/text/paragraph.html#Paragraph.iter_inner_content"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.paragraph.Paragraph.iter_inner_content" title="Link to this definition">¶</a></dt>
+<dd><p>Generate the runs and hyperlinks in this paragraph, in the order they appear.</p>
+<p>The content in a paragraph consists of both runs and hyperlinks. This method
+allows accessing each of those separately, in document order, for when the
+precise position of the hyperlink within the paragraph text is important. Note
+that a hyperlink itself contains runs.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.paragraph_format">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">paragraph_format</span></span><a class="headerlink" href="#docx.text.paragraph.Paragraph.paragraph_format" title="Link to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> object providing access to the formatting properties
+for this paragraph, such as line spacing and indentation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.rendered_page_breaks">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rendered_page_breaks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.List" title="（在 Python v3.13）"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak" title="docx.text.pagebreak.RenderedPageBreak"><span class="pre">RenderedPageBreak</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.rendered_page_breaks" title="Link to this definition">¶</a></dt>
+<dd><p>All rendered page-breaks in this paragraph.</p>
+<p>Most often an empty list, sometimes contains one page-break, but can contain
+more than one is rare or contrived cases.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.runs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.List" title="（在 Python v3.13）"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><span class="pre">Run</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.runs" title="Link to this definition">¶</a></dt>
+<dd><p>Sequence of <a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> instances corresponding to the &lt;w:r&gt; elements in this
+paragraph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.style">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">style</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style.ParagraphStyle" title="docx.styles.style.ParagraphStyle"><span class="pre">ParagraphStyle</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.style" title="Link to this definition">¶</a></dt>
+<dd><p>Read/Write.</p>
+<p><a class="reference internal" href="style.html#docx.styles.style.ParagraphStyle" title="docx.styles.style.ParagraphStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphStyle</span></code></a> object representing the style assigned to this paragraph. If
+no explicit style is assigned to this paragraph, its value is the default
+paragraph style for the document. A paragraph style name can be assigned in lieu
+of a paragraph style object. Assigning <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> removes any applied style, making
+its effective value the default paragraph style for the document.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.paragraph.Paragraph.text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.paragraph.Paragraph.text" title="Link to this definition">¶</a></dt>
+<dd><p>The textual content of this paragraph.</p>
+<p>The text includes the visible-text portion of any hyperlinks in the paragraph.
+Tabs and line breaks in the XML are mapped to <code class="docutils literal notranslate"><span class="pre">\t</span></code> and <code class="docutils literal notranslate"><span class="pre">\n</span></code> characters
+respectively.</p>
+<p>Assigning text to this property causes all existing paragraph content to be
+replaced with a single run containing the assigned text. A <code class="docutils literal notranslate"><span class="pre">\t</span></code> character in
+the text is mapped to a <code class="docutils literal notranslate"><span class="pre">&lt;w:tab/&gt;</span></code> element and each <code class="docutils literal notranslate"><span class="pre">\n</span></code> or <code class="docutils literal notranslate"><span class="pre">\r</span></code>
+character is mapped to a line break. Paragraph-level formatting, such as style,
+is preserved. All run-level formatting, such as bold or italic, is removed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="paragraphformat">
+<h2><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> 对象<a class="headerlink" href="#paragraphformat" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat" title="docx.text.parfmt.ParagraphFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.parfmt.</span></span><span class="sig-name descname"><span class="pre">ParagraphFormat</span></span><a class="reference internal" href="../_modules/docx/text/parfmt.html#ParagraphFormat"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat" title="Link to this definition">¶</a></dt>
+<dd><p>Provides access to paragraph formatting such as justification, indentation, line
+spacing, space before and after, and widow/orphan control.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.alignment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alignment</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.alignment" title="Link to this definition">¶</a></dt>
+<dd><p>A member of the <a class="reference internal" href="enum/WdAlignParagraph.html#wdparagraphalignment"><span class="std std-ref">WD_PARAGRAPH_ALIGNMENT</span></a> enumeration specifying the
+justification setting for this paragraph.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates paragraph alignment is inherited from the style
+hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.first_line_indent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">first_line_indent</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.first_line_indent" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the relative difference in indentation for the
+first line of the paragraph.</p>
+<p>A positive value causes the first line to be indented. A negative value produces
+a hanging indent. <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates first line indentation is inherited from the
+style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.keep_together">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">keep_together</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.keep_together" title="Link to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> if the paragraph should be kept &quot;in one piece&quot; and not broken across a
+page boundary when the document is rendered.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates its effective value is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.keep_with_next">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">keep_with_next</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.keep_with_next" title="Link to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> if the paragraph should be kept on the same page as the subsequent
+paragraph when the document is rendered.</p>
+<p>For example, this property could be used to keep a section heading on the same
+page as its first paragraph. <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates its effective value is inherited
+from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.left_indent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left_indent</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.left_indent" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the space between the left margin and the left side
+of the paragraph.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the left indent value is inherited from the style hierarchy.
+Use an <a class="reference internal" href="shared.html#docx.shared.Inches" title="docx.shared.Inches"><code class="xref py py-class docutils literal notranslate"><span class="pre">Inches</span></code></a> value object as a convenient way to apply indentation in units
+of inches.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.line_spacing">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_spacing</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.line_spacing" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#float" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a> or <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the space between baselines in
+successive lines of the paragraph.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates line spacing is inherited from the style hierarchy.
+A float value, e.g. <code class="docutils literal notranslate"><span class="pre">2.0</span></code> or <code class="docutils literal notranslate"><span class="pre">1.75</span></code>, indicates spacing is applied in
+multiples of line heights. A <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value such as <code class="docutils literal notranslate"><span class="pre">Pt(12)</span></code> indicates spacing
+is a fixed height. The <a class="reference internal" href="shared.html#docx.shared.Pt" title="docx.shared.Pt"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pt</span></code></a> value class is a convenient way to apply line
+spacing in units of points. Assigning <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> resets line spacing to inherit from
+the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.line_spacing_rule">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">line_spacing_rule</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.line_spacing_rule" title="Link to this definition">¶</a></dt>
+<dd><p>A member of the <a class="reference internal" href="enum/WdLineSpacing.html#wdlinespacing"><span class="std std-ref">WD_LINE_SPACING</span></a> enumeration indicating how the value of
+<a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.line_spacing" title="docx.text.parfmt.ParagraphFormat.line_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">line_spacing</span></code></a> should be interpreted.</p>
+<p>Assigning any of the <a class="reference internal" href="enum/WdLineSpacing.html#wdlinespacing"><span class="std std-ref">WD_LINE_SPACING</span></a> members <code class="xref py py-attr docutils literal notranslate"><span class="pre">SINGLE</span></code>,
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">DOUBLE</span></code>, or <code class="xref py py-attr docutils literal notranslate"><span class="pre">ONE_POINT_FIVE</span></code> will cause the value of
+<a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.line_spacing" title="docx.text.parfmt.ParagraphFormat.line_spacing"><code class="xref py py-attr docutils literal notranslate"><span class="pre">line_spacing</span></code></a> to be updated to produce the corresponding line spacing.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.page_break_before">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">page_break_before</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.page_break_before" title="Link to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> if the paragraph should appear at the top of the page following the
+prior paragraph.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates its effective value is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.right_indent">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right_indent</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.right_indent" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the space between the right margin and the right
+side of the paragraph.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the right indent value is inherited from the style hierarchy.
+Use a <a class="reference internal" href="shared.html#docx.shared.Cm" title="docx.shared.Cm"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cm</span></code></a> value object as a convenient way to apply indentation in units of
+centimeters.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.space_after">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">space_after</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.space_after" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the spacing to appear between this paragraph and
+the subsequent paragraph.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates this value is inherited from the style hierarchy. <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a>
+objects provide convenience properties, such as <a class="reference internal" href="shared.html#docx.shared.Length.pt" title="docx.shared.Length.pt"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pt</span></code></a> and
+<a class="reference internal" href="shared.html#docx.shared.Length.inches" title="docx.shared.Length.inches"><code class="xref py py-attr docutils literal notranslate"><span class="pre">inches</span></code></a>, that allow easy conversion to various length units.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.space_before">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">space_before</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.space_before" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> value specifying the spacing to appear between this paragraph and
+the prior paragraph.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates this value is inherited from the style hierarchy. <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a>
+objects provide convenience properties, such as <a class="reference internal" href="shared.html#docx.shared.Length.pt" title="docx.shared.Length.pt"><code class="xref py py-attr docutils literal notranslate"><span class="pre">pt</span></code></a> and
+<a class="reference internal" href="shared.html#docx.shared.Length.cm" title="docx.shared.Length.cm"><code class="xref py py-attr docutils literal notranslate"><span class="pre">cm</span></code></a>, that allow easy conversion to various length units.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.tab_stops">
+<span class="sig-name descname"><span class="pre">tab_stops</span></span><a class="reference internal" href="../_modules/docx/text/parfmt.html#ParagraphFormat.tab_stops"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.tab_stops" title="Link to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#docx.text.tabstops.TabStops" title="docx.text.tabstops.TabStops"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStops</span></code></a> object providing access to the tab stops defined for this
+paragraph format.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.parfmt.ParagraphFormat.widow_control">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">widow_control</span></span><a class="headerlink" href="#docx.text.parfmt.ParagraphFormat.widow_control" title="Link to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> if the first and last lines in the paragraph remain on the same page
+as the rest of the paragraph when Word repaginates the document.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates its effective value is inherited from the style hierarchy.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="hyperlink">
+<h2><a class="reference internal" href="#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code></a> 对象<a class="headerlink" href="#hyperlink" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.hyperlink.Hyperlink" title="docx.text.hyperlink.Hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.hyperlink.</span></span><span class="sig-name descname"><span class="pre">Hyperlink</span></span><a class="reference internal" href="../_modules/docx/text/hyperlink.html#Hyperlink"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.hyperlink.Hyperlink" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object wrapping a <cite>&lt;w:hyperlink&gt;</cite> element.</p>
+<p>A hyperlink occurs as a child of a paragraph, at the same level as a Run. A
+hyperlink itself contains runs, which is where the visible text of the hyperlink is
+stored.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.address">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">address</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.address" title="Link to this definition">¶</a></dt>
+<dd><p>The &quot;URL&quot; of the hyperlink (but not necessarily a web link).</p>
+<p>While commonly a web link like &quot;<a class="reference external" href="https://google.com">https://google.com</a>&quot; the hyperlink address can
+take a variety of forms including &quot;internal links&quot; to bookmarked locations
+within the document. When this hyperlink is an internal &quot;jump&quot; to for example a
+heading from the table-of-contents (TOC), the address is blank. The bookmark
+reference (like &quot;_Toc147925734&quot;) is stored in the <cite>.fragment</cite> property.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.contains_page_break">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contains_page_break</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.contains_page_break" title="Link to this definition">¶</a></dt>
+<dd><p>True when the text of this hyperlink is broken across page boundaries.</p>
+<p>This is not uncommon and can happen for example when the hyperlink text is
+multiple words and occurs in the last line of a page. Theoretically, a hyperlink
+can contain more than one page break but that would be extremely uncommon in
+practice. Still, this value should be understood to mean that &quot;one-or-more&quot;
+rendered page breaks are present.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.fragment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">fragment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.fragment" title="Link to this definition">¶</a></dt>
+<dd><p>Reference like <cite>#glossary</cite> at end of URL that refers to a sub-resource.</p>
+<p>Note that this value does not include the fragment-separator character (&quot;#&quot;).</p>
+<p>This value is known as a &quot;named anchor&quot; in an HTML context and &quot;anchor&quot; in the
+MS API, but an &quot;anchor&quot; element (<cite>&lt;a&gt;</cite>) represents a full hyperlink in HTML so
+we avoid confusion by using the more precise RFC 3986 naming &quot;URI fragment&quot;.</p>
+<p>These are also used to refer to bookmarks within the same document, in which
+case the <cite>.address</cite> value with be blank (&quot;&quot;) and this property will hold a
+value like &quot;_Toc147925734&quot;.</p>
+<p>To reliably get an entire web URL you will need to concatenate this with the
+<cite>.address</cite> value, separated by &quot;#&quot; when both are present. Consider using the
+<cite>.url</cite> property for that purpose.</p>
+<p>Word sometimes stores a fragment in this property (an XML attribute) and
+sometimes with the address, depending on how the URL is inserted, so don't
+depend on this field being empty to indicate no fragment is present.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.runs">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">runs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#list" title="（在 Python v3.13）"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><span class="pre">Run</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.runs" title="Link to this definition">¶</a></dt>
+<dd><p>List of <a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> instances in this hyperlink.</p>
+<p>Together these define the visible text of the hyperlink. The text of a hyperlink
+is typically contained in a single run will be broken into multiple runs if for
+example part of the hyperlink is bold or the text was changed after the document
+was saved.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.text" title="Link to this definition">¶</a></dt>
+<dd><p>String formed by concatenating the text of each run in the hyperlink.</p>
+<p>Tabs and line breaks in the XML are mapped to <code class="docutils literal notranslate"><span class="pre">\t</span></code> and <code class="docutils literal notranslate"><span class="pre">\n</span></code> characters
+respectively. Note that rendered page-breaks can occur within a hyperlink but
+they are not reflected in this text.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.hyperlink.Hyperlink.url">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">url</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.hyperlink.Hyperlink.url" title="Link to this definition">¶</a></dt>
+<dd><p>Convenience property to get web URLs from hyperlinks that contain them.</p>
+<p>This value is the empty string (&quot;&quot;) when there is no address portion, so its
+boolean value can also be used to distinguish external URIs from internal &quot;jump&quot;
+hyperlinks like those found in a table-of-contents.</p>
+<p>Note that this value may also be a link to a file, so if you only want web-urls
+you'll need to check for a protocol prefix like <cite>https://</cite>.</p>
+<p>When both an address and fragment are present, the return value joins the two
+separated by the fragment-separator hash (&quot;#&quot;). Otherwise this value is the same
+as that of the <cite>.address</cite> property.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="run">
+<h2><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> 对象<a class="headerlink" href="#run" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.run.Run">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.run.</span></span><span class="sig-name descname"><span class="pre">Run</span></span><a class="reference internal" href="../_modules/docx/text/run.html#Run"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object wrapping <cite>&lt;w:r&gt;</cite> element.</p>
+<p>Several of the properties on Run take a tri-state value, <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>, or <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> correspond to on and off respectively. <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the
+property is not specified directly on the run and its effective value is taken from
+the style hierarchy.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.add_break">
+<span class="sig-name descname"><span class="pre">add_break</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">break_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">WD_BREAK_TYPE</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">WD_BREAK_TYPE.LINE</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/run.html#Run.add_break"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.add_break" title="Link to this definition">¶</a></dt>
+<dd><p>Add a break element of <cite>break_type</cite> to this run.</p>
+<p><cite>break_type</cite> can take the values <cite>WD_BREAK.LINE</cite>, <cite>WD_BREAK.PAGE</cite>, and
+<cite>WD_BREAK.COLUMN</cite> where <cite>WD_BREAK</cite> is imported from <cite>docx.enum.text</cite>.
+<cite>break_type</cite> defaults to <cite>WD_BREAK.LINE</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.add_picture">
+<span class="sig-name descname"><span class="pre">add_picture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_path_or_stream</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">IO</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#bytes" title="（在 Python v3.13）"><span class="pre">bytes</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><span class="pre">Length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><span class="pre">int</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><span class="pre">Length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="shape.html#docx.shape.InlineShape" title="docx.shape.InlineShape"><span class="pre">InlineShape</span></a></span></span><a class="reference internal" href="../_modules/docx/text/run.html#Run.add_picture"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.add_picture" title="Link to this definition">¶</a></dt>
+<dd><p>Return <a class="reference internal" href="shape.html#docx.shape.InlineShape" title="docx.shape.InlineShape"><code class="xref py py-class docutils literal notranslate"><span class="pre">InlineShape</span></code></a> containing image identified by <cite>image_path_or_stream</cite>.</p>
+<p>The picture is added to the end of this run.</p>
+<p><cite>image_path_or_stream</cite> can be a path (a string) or a file-like object containing
+a binary image.</p>
+<p>If neither width nor height is specified, the picture appears at
+its native size. If only one is specified, it is used to compute a scaling
+factor that is then applied to the unspecified dimension, preserving the aspect
+ratio of the image. The native size of the picture is calculated using the dots-
+per-inch (dpi) value specified in the image file, defaulting to 72 dpi if no
+value is specified, as is often the case.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.add_tab">
+<span class="sig-name descname"><span class="pre">add_tab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></span></span><a class="reference internal" href="../_modules/docx/text/run.html#Run.add_tab"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.add_tab" title="Link to this definition">¶</a></dt>
+<dd><p>Add a <code class="docutils literal notranslate"><span class="pre">&lt;w:tab/&gt;</span></code> element at the end of the run, which Word interprets as a
+tab character.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.add_text">
+<span class="sig-name descname"><span class="pre">add_text</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/run.html#Run.add_text"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.add_text" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a newly appended <code class="xref py py-class docutils literal notranslate"><span class="pre">_Text</span></code> object (corresponding to a new <code class="docutils literal notranslate"><span class="pre">&lt;w:t&gt;</span></code>
+child element) to the run, containing <cite>text</cite>.</p>
+<p>Compare with the possibly more friendly approach of assigning text to the
+<a class="reference internal" href="#docx.text.run.Run.text" title="docx.text.run.Run.text"><code class="xref py py-attr docutils literal notranslate"><span class="pre">Run.text</span></code></a> property.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.bold">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Run.bold" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text of the run to appear in bold face. When <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>,
+the text unconditionally appears non-bold. When <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> the bold setting for this
+run is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/run.html#Run.clear"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.clear" title="Link to this definition">¶</a></dt>
+<dd><p>Return reference to this run after removing all its content.</p>
+<p>All run formatting is preserved.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.contains_page_break">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contains_page_break</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a></em><a class="headerlink" href="#docx.text.run.Run.contains_page_break" title="Link to this definition">¶</a></dt>
+<dd><p><cite>True</cite> when one or more rendered page-breaks occur in this run.</p>
+<p>Note that &quot;hard&quot; page-breaks inserted by the author are not included. A hard
+page-break gives rise to a rendered page-break in the right position so if those
+were included that page-break would be &quot;double-counted&quot;.</p>
+<p>It would be very rare for multiple rendered page-breaks to occur in a single
+run, but it is possible.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.font">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">font</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#docx.text.run.Font" title="docx.text.font.Font"><span class="pre">Font</span></a></em><a class="headerlink" href="#docx.text.run.Run.font" title="Link to this definition">¶</a></dt>
+<dd><p>The <a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> object providing access to the character formatting properties for
+this run, such as font name and size.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.italic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">italic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Run.italic" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text of the run to appear in italics. When <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>, the
+text unconditionally appears non-italic. When <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> the italic setting for this
+run is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.run.Run.iter_inner_content">
+<span class="sig-name descname"><span class="pre">iter_inner_content</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/zh-cn/3/library/typing.html#typing.Iterator" title="（在 Python v3.13）"><span class="pre">Iterator</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Drawing</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak" title="docx.text.pagebreak.RenderedPageBreak"><span class="pre">RenderedPageBreak</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/docx/text/run.html#Run.iter_inner_content"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Run.iter_inner_content" title="Link to this definition">¶</a></dt>
+<dd><p>Generate the content-items in this run in the order they appear.</p>
+<p>NOTE: only content-types currently supported by <cite>python-docx</cite> are generated. In
+this version, that is text and rendered page-breaks. Drawing is included but
+currently only provides access to its XML element (CT_Drawing) on its
+<cite>._drawing</cite> attribute. <cite>Drawing</cite> attributes and methods may be expanded in
+future releases.</p>
+<p>There are a number of element-types that can appear inside a run, but most of
+those (w:br, w:cr, w:noBreakHyphen, w:t, w:tab) have a clear plain-text
+equivalent. Any contiguous range of such elements is generated as a single
+<cite>str</cite>. Rendered page-break and drawing elements are generated individually. Any
+other elements are ignored.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.style">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">style</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="style.html#docx.styles.style.CharacterStyle" title="docx.styles.style.CharacterStyle"><span class="pre">CharacterStyle</span></a></em><a class="headerlink" href="#docx.text.run.Run.style" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write.</p>
+<p>A <a class="reference internal" href="style.html#docx.styles.style.CharacterStyle" title="docx.styles.style.CharacterStyle"><code class="xref py py-class docutils literal notranslate"><span class="pre">CharacterStyle</span></code></a> object representing the character style applied to this run.
+The default character style for the document (often <cite>Default Character Font</cite>) is
+returned if the run has no directly-applied character style. Setting this
+property to <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> removes any directly-applied character style.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.text">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">text</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a></em><a class="headerlink" href="#docx.text.run.Run.text" title="Link to this definition">¶</a></dt>
+<dd><p>String formed by concatenating the text equivalent of each run.</p>
+<p>Each <cite>&lt;w:t&gt;</cite> element adds the text characters it contains. A <cite>&lt;w:tab/&gt;</cite> element
+adds a <cite>t</cite> character. A <cite>&lt;w:cr/&gt;</cite> or <cite>&lt;w:br&gt;</cite> element each add a <cite>n</cite>
+character. Note that a <cite>&lt;w:br&gt;</cite> element can indicate a page break or column
+break as well as a line break. Only line-break <cite>&lt;w:br&gt;</cite> elements translate to
+a <cite>n</cite> character. Others are ignored. All other content child elements, such as
+<cite>&lt;w:drawing&gt;</cite>, are ignored.</p>
+<p>Assigning text to this property has the reverse effect, translating each <cite>t</cite>
+character to a <cite>&lt;w:tab/&gt;</cite> element and each <cite>n</cite> or <cite>r</cite> character to a
+<cite>&lt;w:cr/&gt;</cite> element. Any existing run content is replaced. Run formatting is
+preserved.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Run.underline">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">underline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">WD_UNDERLINE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Run.underline" title="Link to this definition">¶</a></dt>
+<dd><p>The underline style for this <a class="reference internal" href="#docx.text.run.Run" title="docx.text.run.Run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code></a>.</p>
+<p>Value is one of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>, or a member of <a class="reference internal" href="enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a>.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the run has no directly-applied underline value and
+so will inherit the underline value of its containing paragraph. Assigning
+<code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> to this property removes any directly-applied underline value.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> indicates a directly-applied setting of no underline,
+overriding any inherited value.</p>
+<p>A value of <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> indicates single underline.</p>
+<p>The values from <a class="reference internal" href="enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a> are used to specify other outline styles such
+as double, wavy, and dotted.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="font">
+<h2><a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> 对象<a class="headerlink" href="#font" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.run.Font">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.run.</span></span><span class="sig-name descname"><span class="pre">Font</span></span><a class="reference internal" href="../_modules/docx/text/font.html#Font"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.run.Font" title="Link to this definition">¶</a></dt>
+<dd><p>Proxy object for parent of a <cite>&lt;w:rPr&gt;</cite> element and providing access to
+character properties such as font name, font size, bold, and subscript.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.all_caps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_caps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.all_caps" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write.</p>
+<p>Causes text in this font to appear in capital letters.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.bold">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.bold" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write.</p>
+<p>Causes text in this font to appear in bold.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">color</span></span><a class="headerlink" href="#docx.text.run.Font.color" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="dml.html#docx.dml.color.ColorFormat" title="docx.dml.color.ColorFormat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ColorFormat</span></code></a> object providing a way to get and set the text color for this
+font.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.complex_script">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">complex_script</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.complex_script" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the characters in the run to be treated as complex script
+regardless of their Unicode values.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.cs_bold">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cs_bold</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.cs_bold" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the complex script characters in the run to be displayed in
+bold typeface.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.cs_italic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cs_italic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.cs_italic" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the complex script characters in the run to be displayed in
+italic typeface.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.double_strike">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">double_strike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.double_strike" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text in the run to appear with double strikethrough.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.emboss">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">emboss</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.emboss" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text in the run to appear as if raised off the page in
+relief.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.hidden">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">hidden</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.hidden" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text in the run to be hidden from display, unless
+applications settings force hidden text to be shown.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.highlight_color">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">highlight_color</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">WD_COLOR_INDEX</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.highlight_color" title="Link to this definition">¶</a></dt>
+<dd><p>Color of highlighing applied or <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> if not highlighted.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.imprint">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">imprint</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.imprint" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text in the run to appear as if pressed into the page.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.italic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">italic</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.italic" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, causes the text of the run to appear in italics. <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates
+the effective value is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.math">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">math</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.math" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, specifies this run contains WML that should be handled as though it
+was Office Open XML Math.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/stdtypes.html#str" title="（在 Python v3.13）"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.name" title="Link to this definition">¶</a></dt>
+<dd><p>The typeface name for this <a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a>.</p>
+<p>Causes the text it controls to appear in the named font, if a matching font is
+found. <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the typeface is inherited from the style hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.no_proof">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">no_proof</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.no_proof" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, specifies that the contents of this run should not report any
+errors when the document is scanned for spelling and grammar.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.outline">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">outline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.outline" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the characters in the run to appear as if they have an
+outline, by drawing a one pixel wide border around the inside and outside
+borders of each character glyph.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.rtl">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rtl</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.rtl" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the text in the run to have right-to-left characteristics.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.shadow">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">shadow</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.shadow" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the text in the run to appear as if each character has a
+shadow.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><span class="pre">Length</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.size" title="Link to this definition">¶</a></dt>
+<dd><p>Font height in English Metric Units (EMU).</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the font size should be inherited from the style hierarchy.
+<a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> is a subclass of <a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#int" title="（在 Python v3.13）"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> having properties for convenient conversion into
+points or other length units. The <a class="reference internal" href="shared.html#docx.shared.Pt" title="docx.shared.Pt"><code class="xref py py-class docutils literal notranslate"><span class="pre">docx.shared.Pt</span></code></a> class allows
+convenient specification of point values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">Pt</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">size</span>
+<span class="go">304800</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">pt</span>
+<span class="go">24.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.small_caps">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">small_caps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.small_caps" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the lowercase characters in the run to appear as capital
+letters two points smaller than the font size specified for the run.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.snap_to_grid">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">snap_to_grid</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.snap_to_grid" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the run to use the document grid characters per line settings
+defined in the docGrid element when laying out the characters in this run.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.spec_vanish">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">spec_vanish</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.spec_vanish" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, specifies that the given run shall always behave as if it is
+hidden, even when hidden text is being displayed in the current document. The
+property has a very narrow, specialized use related to the table of contents.
+Consult the spec (§17.3.2.36) for more details.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.strike">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">strike</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.strike" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> causes the text in the run to appear with a single horizontal line
+through the center of the line.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.subscript">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subscript</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.subscript" title="Link to this definition">¶</a></dt>
+<dd><p>Boolean indicating whether the characters in this <a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> appear as subscript.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the subscript/subscript value is inherited from the style
+hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.superscript">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">superscript</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.superscript" title="Link to this definition">¶</a></dt>
+<dd><p>Boolean indicating whether the characters in this <a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a> appear as
+superscript.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the subscript/superscript value is inherited from the style
+hierarchy.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.underline">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">underline</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">WD_UNDERLINE</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.underline" title="Link to this definition">¶</a></dt>
+<dd><p>The underline style for this <a class="reference internal" href="#docx.text.run.Font" title="docx.text.run.Font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code></a>.</p>
+<p>The value is one of <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code>, or a member of <a class="reference internal" href="enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a>.</p>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> indicates the font inherits its underline value from the style hierarchy.
+<code class="xref py py-class docutils literal notranslate"><span class="pre">False</span></code> indicates no underline. <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code> indicates single underline. The values
+from <a class="reference internal" href="enum/WdUnderline.html#wdunderline"><span class="std std-ref">WD_UNDERLINE</span></a> are used to specify other outline styles such as double,
+wavy, and dotted.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.run.Font.web_hidden">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">web_hidden</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/functions.html#bool" title="（在 Python v3.13）"><span class="pre">bool</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.run.Font.web_hidden" title="Link to this definition">¶</a></dt>
+<dd><p>Read/write tri-state value.</p>
+<p>When <code class="xref py py-class docutils literal notranslate"><span class="pre">True</span></code>, specifies that the contents of this run shall be hidden when the
+document is displayed in web page view.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="renderedpagebreak">
+<h2><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak" title="docx.text.pagebreak.RenderedPageBreak"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderedPageBreak</span></code></a> 对象<a class="headerlink" href="#renderedpagebreak" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak" title="docx.text.pagebreak.RenderedPageBreak"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderedPageBreak</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.pagebreak.RenderedPageBreak">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.pagebreak.</span></span><span class="sig-name descname"><span class="pre">RenderedPageBreak</span></span><a class="reference internal" href="../_modules/docx/text/pagebreak.html#RenderedPageBreak"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.pagebreak.RenderedPageBreak" title="Link to this definition">¶</a></dt>
+<dd><p>A page-break inserted by Word during page-layout for print or display purposes.</p>
+<p>This usually does not correspond to a &quot;hard&quot; page-break inserted by the document
+author, rather just that Word ran out of room on one page and needed to start
+another. The position of these can change depending on the printer and page-size, as
+well as margins, etc. They also will change in response to edits, but not until Word
+loads and saves the document.</p>
+<p>Note these are never inserted by <cite>python-docx</cite> because it has no rendering function.
+These are generally only useful for text-extraction of existing documents when
+<cite>python-docx</cite> is being used solely as a document &quot;reader&quot;.</p>
+<p>NOTE: a rendered page-break can occur within a hyperlink; consider a multi-word
+hyperlink like &quot;excellent Wikipedia article on LLMs&quot; that happens to fall close to
+the end of the last line on a page such that the page breaks between &quot;Wikipedia&quot; and
+&quot;article&quot;. In such a &quot;page-breaks-in-hyperlink&quot; case, THESE METHODS WILL &quot;MOVE&quot; THE
+PAGE-BREAK to occur after the hyperlink, such that the entire hyperlink appears in
+the paragraph returned by <cite>.preceding_paragraph_fragment</cite>. While this places the
+&quot;tail&quot; text of the hyperlink on the &quot;wrong&quot; page, it avoids having two hyperlinks
+each with a fragment of the actual text and pointing to the same address.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.pagebreak.RenderedPageBreak.following_paragraph_fragment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">following_paragraph_fragment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.pagebreak.RenderedPageBreak.following_paragraph_fragment" title="Link to this definition">¶</a></dt>
+<dd><p>A &quot;loose&quot; paragraph containing the content following this page-break.</p>
+<p>HAS POTENTIALLY SURPRISING BEHAVIORS so read carefully to be sure this is what
+you want. This is primarily targeted toward text-extraction use-cases for which
+precisely associating text with the page it occurs on is important.</p>
+<p>Compare <cite>.preceding_paragraph_fragment</cite> as these two are intended to be used
+together.</p>
+<p>This value is <cite>None</cite> when no content follows this page-break. This case is
+unlikely to occur in practice because Word places even-paragraph-boundary
+page-breaks on the paragraph <em>following</em> the page-break. Still, it is possible
+and must be checked for. Returning <cite>None</cite> for this case avoids &quot;inserting&quot; an
+extra, non-existent paragraph into the content stream. Note that content can
+include DrawingML items like images or charts, not just text.</p>
+<p>The returned paragraph <em>is divorced from the document body</em>. Any changes made to
+it will not be reflected in the document. It is intended to provide a container
+(<cite>Paragraph</cite>) with familiar properties and methods that can be used to
+characterize the paragraph content following a mid-paragraph page-break.</p>
+<p>Contains no portion of the hyperlink when this break occurs within a hyperlink.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.pagebreak.RenderedPageBreak.preceding_paragraph_fragment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">preceding_paragraph_fragment</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#docx.text.paragraph.Paragraph" title="docx.text.paragraph.Paragraph"><span class="pre">Paragraph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/zh-cn/3/library/constants.html#None" title="（在 Python v3.13）"><span class="pre">None</span></a></em><a class="headerlink" href="#docx.text.pagebreak.RenderedPageBreak.preceding_paragraph_fragment" title="Link to this definition">¶</a></dt>
+<dd><p>A &quot;loose&quot; paragraph containing the content preceding this page-break.</p>
+<p>Compare <cite>.following_paragraph_fragment</cite> as these two are intended to be used
+together.</p>
+<p>This value is <cite>None</cite> when no content precedes this page-break. This case is
+common and occurs whenever a page breaks on an even paragraph boundary.
+Returning <cite>None</cite> for this case avoids &quot;inserting&quot; a non-existent paragraph into
+the content stream. Note that content can include DrawingML items like images or
+charts.</p>
+<p>Note the returned paragraph <em>is divorced from the document body</em>. Any changes
+made to it will not be reflected in the document. It is intended to provide a
+familiar container (<cite>Paragraph</cite>) to interrogate for the content preceding this
+page-break in the paragraph in which it occured.</p>
+<p>Contains the entire hyperlink when this break occurs within a hyperlink.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tabstop">
+<h2><a class="reference internal" href="#docx.text.tabstops.TabStop" title="docx.text.tabstops.TabStop"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStop</span></code></a> 对象<a class="headerlink" href="#tabstop" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.tabstops.TabStop" title="docx.text.tabstops.TabStop"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStop</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStop">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.tabstops.</span></span><span class="sig-name descname"><span class="pre">TabStop</span></span><a class="reference internal" href="../_modules/docx/text/tabstops.html#TabStop"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.tabstops.TabStop" title="Link to this definition">¶</a></dt>
+<dd><p>An individual tab stop applying to a paragraph or style.</p>
+<p>Accessed using list semantics on its containing <a class="reference internal" href="#docx.text.tabstops.TabStops" title="docx.text.tabstops.TabStops"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStops</span></code></a> object.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStop.alignment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">alignment</span></span><a class="headerlink" href="#docx.text.tabstops.TabStop.alignment" title="Link to this definition">¶</a></dt>
+<dd><p>A member of <a class="reference internal" href="enum/WdTabAlignment.html#wdtabalignment"><span class="std std-ref">WD_TAB_ALIGNMENT</span></a> specifying the alignment setting for this
+tab stop.</p>
+<p>Read/write.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStop.leader">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">leader</span></span><a class="headerlink" href="#docx.text.tabstops.TabStop.leader" title="Link to this definition">¶</a></dt>
+<dd><p>A member of <a class="reference internal" href="enum/WdTabLeader.html#wdtableader"><span class="std std-ref">WD_TAB_LEADER</span></a> specifying a repeating character used as a
+&quot;leader&quot;, filling in the space spanned by this tab.</p>
+<p>Assigning <code class="xref py py-class docutils literal notranslate"><span class="pre">None</span></code> produces the same result as assigning <cite>WD_TAB_LEADER.SPACES</cite>.
+Read/write.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStop.position">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#docx.text.tabstops.TabStop.position" title="Link to this definition">¶</a></dt>
+<dd><p>A <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> object representing the distance of this tab stop from the inside
+edge of the paragraph.</p>
+<p>May be positive or negative. Read/write.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="tabstops">
+<h2><a class="reference internal" href="#docx.text.tabstops.TabStops" title="docx.text.tabstops.TabStops"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStops</span></code></a> 对象<a class="headerlink" href="#tabstops" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="#docx.text.tabstops.TabStops" title="docx.text.tabstops.TabStops"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStops</span></code></a> objects</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStops">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">docx.text.tabstops.</span></span><span class="sig-name descname"><span class="pre">TabStops</span></span><a class="reference internal" href="../_modules/docx/text/tabstops.html#TabStops"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.tabstops.TabStops" title="Link to this definition">¶</a></dt>
+<dd><p>A sequence of <a class="reference internal" href="#docx.text.tabstops.TabStop" title="docx.text.tabstops.TabStop"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStop</span></code></a> objects providing access to the tab stops of a paragraph
+or paragraph style.</p>
+<p>Supports iteration, indexed access, del, and len(). It is accesed using the
+<a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.tab_stops" title="docx.text.parfmt.ParagraphFormat.tab_stops"><code class="xref py py-attr docutils literal notranslate"><span class="pre">tab_stops</span></code></a> property of ParagraphFormat; it is not intended
+to be constructed directly.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStops.add_tab_stop">
+<span class="sig-name descname"><span class="pre">add_tab_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">WD_TAB_ALIGNMENT.LEFT</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">leader</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">WD_TAB_LEADER.SPACES</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/tabstops.html#TabStops.add_tab_stop"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.tabstops.TabStops.add_tab_stop" title="Link to this definition">¶</a></dt>
+<dd><p>Add a new tab stop at <cite>position</cite>, a <a class="reference internal" href="shared.html#docx.shared.Length" title="docx.shared.Length"><code class="xref py py-class docutils literal notranslate"><span class="pre">Length</span></code></a> object specifying the location
+of the tab stop relative to the paragraph edge.</p>
+<p>A negative <cite>position</cite> value is valid and appears in hanging indentation. Tab
+alignment defaults to left, but may be specified by passing a member of the
+<a class="reference internal" href="enum/WdTabAlignment.html#wdtabalignment"><span class="std std-ref">WD_TAB_ALIGNMENT</span></a> enumeration as <cite>alignment</cite>. An optional leader character
+can be specified by passing a member of the <a class="reference internal" href="enum/WdTabLeader.html#wdtableader"><span class="std std-ref">WD_TAB_LEADER</span></a> enumeration as
+<cite>leader</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="docx.text.tabstops.TabStops.clear_all">
+<span class="sig-name descname"><span class="pre">clear_all</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/docx/text/tabstops.html#TabStops.clear_all"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#docx.text.tabstops.TabStops.clear_all" title="Link to this definition">¶</a></dt>
+<dd><p>Remove all custom tab stops.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="table.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">表格对象</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="style.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">样式相关对象</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">文本相关对象</a><ul>
+<li><a class="reference internal" href="#paragraph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Paragraph</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph"><code class="docutils literal notranslate"><span class="pre">Paragraph</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.add_run"><code class="docutils literal notranslate"><span class="pre">Paragraph.add_run()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.alignment"><code class="docutils literal notranslate"><span class="pre">Paragraph.alignment</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.clear"><code class="docutils literal notranslate"><span class="pre">Paragraph.clear()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.contains_page_break"><code class="docutils literal notranslate"><span class="pre">Paragraph.contains_page_break</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.hyperlinks"><code class="docutils literal notranslate"><span class="pre">Paragraph.hyperlinks</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.insert_paragraph_before"><code class="docutils literal notranslate"><span class="pre">Paragraph.insert_paragraph_before()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.iter_inner_content"><code class="docutils literal notranslate"><span class="pre">Paragraph.iter_inner_content()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.paragraph_format"><code class="docutils literal notranslate"><span class="pre">Paragraph.paragraph_format</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.rendered_page_breaks"><code class="docutils literal notranslate"><span class="pre">Paragraph.rendered_page_breaks</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.runs"><code class="docutils literal notranslate"><span class="pre">Paragraph.runs</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.style"><code class="docutils literal notranslate"><span class="pre">Paragraph.style</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.paragraph.Paragraph.text"><code class="docutils literal notranslate"><span class="pre">Paragraph.text</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#paragraphformat"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParagraphFormat</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.alignment"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.alignment</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.first_line_indent"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.first_line_indent</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.keep_together"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.keep_together</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.keep_with_next"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.keep_with_next</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.left_indent"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.left_indent</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.line_spacing"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.line_spacing</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.line_spacing_rule"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.line_spacing_rule</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.page_break_before"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.page_break_before</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.right_indent"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.right_indent</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.space_after"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.space_after</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.space_before"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.space_before</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.tab_stops"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.tab_stops</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.parfmt.ParagraphFormat.widow_control"><code class="docutils literal notranslate"><span class="pre">ParagraphFormat.widow_control</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hyperlink"><code class="xref py py-class docutils literal notranslate"><span class="pre">Hyperlink</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink"><code class="docutils literal notranslate"><span class="pre">Hyperlink</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.address"><code class="docutils literal notranslate"><span class="pre">Hyperlink.address</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.contains_page_break"><code class="docutils literal notranslate"><span class="pre">Hyperlink.contains_page_break</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.fragment"><code class="docutils literal notranslate"><span class="pre">Hyperlink.fragment</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.runs"><code class="docutils literal notranslate"><span class="pre">Hyperlink.runs</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.text"><code class="docutils literal notranslate"><span class="pre">Hyperlink.text</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.hyperlink.Hyperlink.url"><code class="docutils literal notranslate"><span class="pre">Hyperlink.url</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run"><code class="xref py py-class docutils literal notranslate"><span class="pre">Run</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.run.Run"><code class="docutils literal notranslate"><span class="pre">Run</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.run.Run.add_break"><code class="docutils literal notranslate"><span class="pre">Run.add_break()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.add_picture"><code class="docutils literal notranslate"><span class="pre">Run.add_picture()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.add_tab"><code class="docutils literal notranslate"><span class="pre">Run.add_tab()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.add_text"><code class="docutils literal notranslate"><span class="pre">Run.add_text()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.bold"><code class="docutils literal notranslate"><span class="pre">Run.bold</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.clear"><code class="docutils literal notranslate"><span class="pre">Run.clear()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.contains_page_break"><code class="docutils literal notranslate"><span class="pre">Run.contains_page_break</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.font"><code class="docutils literal notranslate"><span class="pre">Run.font</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.italic"><code class="docutils literal notranslate"><span class="pre">Run.italic</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.iter_inner_content"><code class="docutils literal notranslate"><span class="pre">Run.iter_inner_content()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.style"><code class="docutils literal notranslate"><span class="pre">Run.style</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.text"><code class="docutils literal notranslate"><span class="pre">Run.text</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Run.underline"><code class="docutils literal notranslate"><span class="pre">Run.underline</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#font"><code class="xref py py-class docutils literal notranslate"><span class="pre">Font</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.run.Font"><code class="docutils literal notranslate"><span class="pre">Font</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.run.Font.all_caps"><code class="docutils literal notranslate"><span class="pre">Font.all_caps</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.bold"><code class="docutils literal notranslate"><span class="pre">Font.bold</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.color"><code class="docutils literal notranslate"><span class="pre">Font.color</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.complex_script"><code class="docutils literal notranslate"><span class="pre">Font.complex_script</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.cs_bold"><code class="docutils literal notranslate"><span class="pre">Font.cs_bold</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.cs_italic"><code class="docutils literal notranslate"><span class="pre">Font.cs_italic</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.double_strike"><code class="docutils literal notranslate"><span class="pre">Font.double_strike</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.emboss"><code class="docutils literal notranslate"><span class="pre">Font.emboss</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.hidden"><code class="docutils literal notranslate"><span class="pre">Font.hidden</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.highlight_color"><code class="docutils literal notranslate"><span class="pre">Font.highlight_color</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.imprint"><code class="docutils literal notranslate"><span class="pre">Font.imprint</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.italic"><code class="docutils literal notranslate"><span class="pre">Font.italic</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.math"><code class="docutils literal notranslate"><span class="pre">Font.math</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.name"><code class="docutils literal notranslate"><span class="pre">Font.name</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.no_proof"><code class="docutils literal notranslate"><span class="pre">Font.no_proof</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.outline"><code class="docutils literal notranslate"><span class="pre">Font.outline</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.rtl"><code class="docutils literal notranslate"><span class="pre">Font.rtl</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.shadow"><code class="docutils literal notranslate"><span class="pre">Font.shadow</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.size"><code class="docutils literal notranslate"><span class="pre">Font.size</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.small_caps"><code class="docutils literal notranslate"><span class="pre">Font.small_caps</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.snap_to_grid"><code class="docutils literal notranslate"><span class="pre">Font.snap_to_grid</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.spec_vanish"><code class="docutils literal notranslate"><span class="pre">Font.spec_vanish</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.strike"><code class="docutils literal notranslate"><span class="pre">Font.strike</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.subscript"><code class="docutils literal notranslate"><span class="pre">Font.subscript</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.superscript"><code class="docutils literal notranslate"><span class="pre">Font.superscript</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.underline"><code class="docutils literal notranslate"><span class="pre">Font.underline</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.run.Font.web_hidden"><code class="docutils literal notranslate"><span class="pre">Font.web_hidden</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#renderedpagebreak"><code class="xref py py-class docutils literal notranslate"><span class="pre">RenderedPageBreak</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak"><code class="docutils literal notranslate"><span class="pre">RenderedPageBreak</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak.following_paragraph_fragment"><code class="docutils literal notranslate"><span class="pre">RenderedPageBreak.following_paragraph_fragment</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.pagebreak.RenderedPageBreak.preceding_paragraph_fragment"><code class="docutils literal notranslate"><span class="pre">RenderedPageBreak.preceding_paragraph_fragment</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tabstop"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStop</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStop"><code class="docutils literal notranslate"><span class="pre">TabStop</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStop.alignment"><code class="docutils literal notranslate"><span class="pre">TabStop.alignment</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStop.leader"><code class="docutils literal notranslate"><span class="pre">TabStop.leader</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStop.position"><code class="docutils literal notranslate"><span class="pre">TabStop.position</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#tabstops"><code class="xref py py-class docutils literal notranslate"><span class="pre">TabStops</span></code> 对象</a><ul>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStops"><code class="docutils literal notranslate"><span class="pre">TabStops</span></code></a><ul>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStops.add_tab_stop"><code class="docutils literal notranslate"><span class="pre">TabStops.add_tab_stop()</span></code></a></li>
+<li><a class="reference internal" href="#docx.text.tabstops.TabStops.clear_all"><code class="docutils literal notranslate"><span class="pre">TabStops.clear_all()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>

@@ -1,0 +1,126 @@
+{
+  "api/dml": [],
+  "api/document": [],
+  "api/enum/MsoColorType": [],
+  "api/enum/MsoThemeColorIndex": [],
+  "api/enum/WdAlignParagraph": [],
+  "api/enum/WdBuiltinStyle": [],
+  "api/enum/WdCellVerticalAlignment": [],
+  "api/enum/WdColorIndex": [],
+  "api/enum/WdLineSpacing": [],
+  "api/enum/WdOrientation": [],
+  "api/enum/WdRowAlignment": [],
+  "api/enum/WdRowHeightRule": [],
+  "api/enum/WdSectionStart": [],
+  "api/enum/WdStyleType": [],
+  "api/enum/WdTabAlignment": [],
+  "api/enum/WdTabLeader": [],
+  "api/enum/WdTableDirection": [],
+  "api/enum/WdUnderline": [],
+  "api/enum/index": [],
+  "api/section": [],
+  "api/settings": [],
+  "api/shape": [],
+  "api/shared": [],
+  "api/style": [],
+  "api/table": [],
+  "api/text": [],
+  "dev/analysis/features/coreprops": [],
+  "dev/analysis/features/header": [],
+  "dev/analysis/features/numbering": [],
+  "dev/analysis/features/sections": [],
+  "dev/analysis/features/settings": [],
+  "dev/analysis/features/shapes/index": [],
+  "dev/analysis/features/shapes/picture": [],
+  "dev/analysis/features/shapes/shapes-inline": [],
+  "dev/analysis/features/shapes/shapes-inline-size": [],
+  "dev/analysis/features/styles/character-style": [],
+  "dev/analysis/features/styles/index": [],
+  "dev/analysis/features/styles/latent-styles": [],
+  "dev/analysis/features/styles/paragraph-style": [],
+  "dev/analysis/features/styles/style": [],
+  "dev/analysis/features/styles/styles": [],
+  "dev/analysis/features/table/cell-merge": [],
+  "dev/analysis/features/table/index": [],
+  "dev/analysis/features/table/table-cell": [],
+  "dev/analysis/features/table/table-props": [],
+  "dev/analysis/features/table/table-row": [],
+  "dev/analysis/features/text/breaks": [],
+  "dev/analysis/features/text/font": [],
+  "dev/analysis/features/text/font-color": [],
+  "dev/analysis/features/text/font-highlight-color": [],
+  "dev/analysis/features/text/hyperlink": [],
+  "dev/analysis/features/text/index": [],
+  "dev/analysis/features/text/paragraph-format": [],
+  "dev/analysis/features/text/run-content": [],
+  "dev/analysis/features/text/tab-stops": [],
+  "dev/analysis/features/text/underline": [],
+  "dev/analysis/index": [],
+  "dev/analysis/schema/ct_body": [],
+  "dev/analysis/schema/ct_document": [],
+  "dev/analysis/schema/ct_p": [],
+  "index": [],
+  "user/api-concepts": [],
+  "user/documents": [],
+  "user/hdrftr": [],
+  "user/install": [],
+  "user/quickstart": [],
+  "user/sections": [
+    {
+      "source": ">>> from docx.shared import Inches\n>>> section.left_margin, section.right_margin\n(1143000, 1143000)  # (Inches(1.25), Inches(1.25))\n>>> section.top_margin, section.bottom_margin\n(914400, 914400)  # (Inches(1), Inches(1))\n>>> section.gutter\n0\n>>> section.header_distance, section.footer_distance\n(457200, 457200)  # (Inches(0.5), Inches(0.5))\n>>> section.left_margin = Inches(1.5)\n>>> section.right_margin = Inches(1)\n>>> section.left_margin, section.right_margin\n(1371600, 914400)",
+      "names": [
+        {
+          "import_components": [
+            "docx",
+            "shared",
+            "Inches"
+          ],
+          "code_str": "Inches",
+          "lineno": 1,
+          "end_lineno": 1,
+          "context": "import_target",
+          "resolved_location": "docx.shared.Inches"
+        },
+        {
+          "import_components": [
+            "docx",
+            "shared",
+            "Inches"
+          ],
+          "code_str": "Inches",
+          "lineno": 10,
+          "end_lineno": 10,
+          "context": "none",
+          "resolved_location": "docx.shared.Inches"
+        },
+        {
+          "import_components": [
+            "docx",
+            "shared",
+            "Inches"
+          ],
+          "code_str": "Inches",
+          "lineno": 11,
+          "end_lineno": 11,
+          "context": "none",
+          "resolved_location": "docx.shared.Inches"
+        }
+      ],
+      "example": {
+        "document": "user/sections",
+        "ref_id": "id7",
+        "headings": [
+          "\u4f7f\u7528\u8282",
+          "\u8282\u5c5e\u6027",
+          "\u9875\u8fb9\u8ddd"
+        ]
+      },
+      "doc_lineno": null
+    }
+  ],
+  "user/shapes": [],
+  "user/styles-understanding": [],
+  "user/styles-using": [],
+  "user/tables": [],
+  "user/text": []
+}

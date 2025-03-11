@@ -1,0 +1,955 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN" data-content_root="../../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="索引" href="../../genindex.html" /><link rel="search" title="搜索" href="../../search.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>docx.table - python-docx 1.1.2 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-codeautolink.css?v=125d5c1c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #eeffcc;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">python-docx 1.1.2 文档</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">python-docx 1.1.2 文档</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="搜索" name="q" aria-label="搜索">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">用户指南 / User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/install.html">安装</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/quickstart.html">快速入门</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/documents.html">处理文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/tables.html">使用表格</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/text.html">使用文本</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/sections.html">使用节</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/hdrftr.html">使用页眉和页脚</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/api-concepts.html">API 基础知识</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/styles-understanding.html">了解样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/styles-using.html">使用样式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user/shapes.html">了解图片和其他形状</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API 文档 / API Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api/document.html">文档对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/settings.html">文档 <code class="xref py py-class docutils literal notranslate"><span class="pre">Settings</span></code> 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/style.html">样式相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/text.html">文本相关对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/table.html">表格对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/section.html">节对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/shape.html">与形状相关的对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/dml.html">DrawingML 对象</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/shared.html">共享类</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../api/enum/index.html">枚举</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of 枚举</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/MsoColorType.html"><code class="docutils literal notranslate"><span class="pre">MSO_COLOR_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/MsoThemeColorIndex.html"><code class="docutils literal notranslate"><span class="pre">MSO_THEME_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdAlignParagraph.html"><code class="docutils literal notranslate"><span class="pre">WD_PARAGRAPH_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdBuiltinStyle.html"><code class="docutils literal notranslate"><span class="pre">WD_BUILTIN_STYLE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdCellVerticalAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_CELL_VERTICAL_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdColorIndex.html"><code class="docutils literal notranslate"><span class="pre">WD_COLOR_INDEX</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdLineSpacing.html"><code class="docutils literal notranslate"><span class="pre">WD_LINE_SPACING</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdOrientation.html"><code class="docutils literal notranslate"><span class="pre">WD_ORIENTATION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdRowAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdRowHeightRule.html"><code class="docutils literal notranslate"><span class="pre">WD_ROW_HEIGHT_RULE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdSectionStart.html"><code class="docutils literal notranslate"><span class="pre">WD_SECTION_START</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdStyleType.html"><code class="docutils literal notranslate"><span class="pre">WD_STYLE_TYPE</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdTabAlignment.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_ALIGNMENT</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdTabLeader.html"><code class="docutils literal notranslate"><span class="pre">WD_TAB_LEADER</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdTableDirection.html"><code class="docutils literal notranslate"><span class="pre">WD_TABLE_DIRECTION</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api/enum/WdUnderline.html"><code class="docutils literal notranslate"><span class="pre">WD_UNDERLINE</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">贡献指南 / Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../dev/analysis/index.html">分析</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle navigation of 分析</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/features/header.html">页眉和页脚</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/features/settings.html">设置部分</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dev/analysis/features/text/index.html">文本</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle navigation of 文本</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/hyperlink.html">超链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/tab-stops.html">制表位</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/font-highlight-color.html">字体高亮颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/paragraph-format.html">段落格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/font.html">字体</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/font-color.html">字体颜色</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/underline.html">下划线</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/run-content.html">Run 级别内容</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/text/breaks.html">中断</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dev/analysis/features/table/index.html">表格</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle navigation of 表格</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/table/table-props.html">表格属性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/table/table-row.html">表行</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/table/table-cell.html">单元格</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/table/cell-merge.html">表格 - 合并单元格</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dev/analysis/features/styles/index.html">样式</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle navigation of 样式</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/styles/styles.html">样式集合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/styles/style.html">样式对象</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/styles/paragraph-style.html">段落样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/styles/character-style.html">字符样式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/styles/latent-styles.html">潜在样式</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../dev/analysis/features/shapes/index.html">形状（一般）</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle navigation of 形状（一般）</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/shapes/shapes-inline.html">内联形状</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/shapes/shapes-inline-size.html">内联形状大小</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../dev/analysis/features/shapes/picture.html">图片</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/features/coreprops.html">核心文档属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/features/numbering.html">编号部分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/features/sections.html">节</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/schema/ct_document.html"><code class="docutils literal notranslate"><span class="pre">CT_Document</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/schema/ct_body.html"><code class="docutils literal notranslate"><span class="pre">CT_Body</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../dev/analysis/schema/ct_p.html"><code class="docutils literal notranslate"><span class="pre">CT_P</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <h1>docx.table 源代码</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;The |Table| object and related proxy classes.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">cast</span><span class="p">,</span> <span class="n">overload</span>
+
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">TypeAlias</span>
+
+<span class="kn">from</span> <span class="nn">docx.blkcntnr</span> <span class="kn">import</span> <span class="n">BlockItemContainer</span>
+<span class="kn">from</span> <span class="nn">docx.enum.style</span> <span class="kn">import</span> <span class="n">WD_STYLE_TYPE</span>
+<span class="kn">from</span> <span class="nn">docx.enum.table</span> <span class="kn">import</span> <span class="n">WD_CELL_VERTICAL_ALIGNMENT</span>
+<span class="kn">from</span> <span class="nn">docx.oxml.simpletypes</span> <span class="kn">import</span> <span class="n">ST_Merge</span>
+<span class="kn">from</span> <span class="nn">docx.oxml.table</span> <span class="kn">import</span> <span class="n">CT_TblGridCol</span>
+<span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Inches</span><span class="p">,</span> <span class="n">Parented</span><span class="p">,</span> <span class="n">StoryChild</span><span class="p">,</span> <span class="n">lazyproperty</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">docx.types</span> <span class="k">as</span> <span class="nn">t</span>
+    <span class="kn">from</span> <span class="nn">docx.enum.table</span> <span class="kn">import</span> <span class="n">WD_ROW_HEIGHT_RULE</span><span class="p">,</span> <span class="n">WD_TABLE_ALIGNMENT</span><span class="p">,</span> <span class="n">WD_TABLE_DIRECTION</span>
+    <span class="kn">from</span> <span class="nn">docx.oxml.table</span> <span class="kn">import</span> <span class="n">CT_Row</span><span class="p">,</span> <span class="n">CT_Tbl</span><span class="p">,</span> <span class="n">CT_TblPr</span><span class="p">,</span> <span class="n">CT_Tc</span>
+    <span class="kn">from</span> <span class="nn">docx.shared</span> <span class="kn">import</span> <span class="n">Length</span>
+    <span class="kn">from</span> <span class="nn">docx.styles.style</span> <span class="kn">import</span> <span class="p">(</span>
+        <span class="n">ParagraphStyle</span><span class="p">,</span>
+        <span class="n">_TableStyle</span><span class="p">,</span>  <span class="c1"># pyright: ignore[reportPrivateUsage]</span>
+    <span class="p">)</span>
+
+<span class="n">TableParent</span><span class="p">:</span> <span class="n">TypeAlias</span> <span class="o">=</span> <span class="s2">&quot;Table | _Columns | _Rows&quot;</span>
+
+
+<div class="viewcode-block" id="Table">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table">[文档]</a>
+<span class="k">class</span> <span class="nc">Table</span><span class="p">(</span><span class="n">StoryChild</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Proxy class for a WordprocessingML ``&lt;w:tbl&gt;`` element.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tbl</span><span class="p">:</span> <span class="n">CT_Tbl</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">ProvidesStoryPart</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Table</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_element</span> <span class="o">=</span> <span class="n">tbl</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span> <span class="o">=</span> <span class="n">tbl</span>
+
+<div class="viewcode-block" id="Table.add_column">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.add_column">[文档]</a>
+    <span class="k">def</span> <span class="nf">add_column</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">:</span> <span class="n">Length</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a |_Column| object of `width`, newly added rightmost to the table.&quot;&quot;&quot;</span>
+        <span class="n">tblGrid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tblGrid</span>
+        <span class="n">gridCol</span> <span class="o">=</span> <span class="n">tblGrid</span><span class="o">.</span><span class="n">add_gridCol</span><span class="p">()</span>
+        <span class="n">gridCol</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tr_lst</span><span class="p">:</span>
+            <span class="n">tc</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">add_tc</span><span class="p">()</span>
+            <span class="n">tc</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">width</span>
+        <span class="k">return</span> <span class="n">_Column</span><span class="p">(</span><span class="n">gridCol</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Table.add_row">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.add_row">[文档]</a>
+    <span class="k">def</span> <span class="nf">add_row</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a |_Row| instance, newly added bottom-most to the table.&quot;&quot;&quot;</span>
+        <span class="n">tbl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span>
+        <span class="n">tr</span> <span class="o">=</span> <span class="n">tbl</span><span class="o">.</span><span class="n">add_tr</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="n">tbl</span><span class="o">.</span><span class="n">tblGrid</span><span class="o">.</span><span class="n">gridCol_lst</span><span class="p">:</span>
+            <span class="n">tc</span> <span class="o">=</span> <span class="n">tr</span><span class="o">.</span><span class="n">add_tc</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">gridCol</span><span class="o">.</span><span class="n">w</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">tc</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">gridCol</span><span class="o">.</span><span class="n">w</span>
+        <span class="k">return</span> <span class="n">_Row</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WD_TABLE_ALIGNMENT</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read/write.</span>
+
+<span class="sd">        A member of :ref:`WdRowAlignment` or None, specifying the positioning of this</span>
+<span class="sd">        table between the page margins. |None| if no setting is specified, causing the</span>
+<span class="sd">        effective value to be inherited from the style hierarchy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tblPr</span><span class="o">.</span><span class="n">alignment</span>
+
+    <span class="nd">@alignment</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">WD_TABLE_ALIGNMENT</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tblPr</span><span class="o">.</span><span class="n">alignment</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">autofit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;|True| if column widths can be automatically adjusted to improve the fit of</span>
+<span class="sd">        cell contents.</span>
+
+<span class="sd">        |False| if table layout is fixed. Column widths are adjusted in either case if</span>
+<span class="sd">        total column width exceeds page width. Read/write boolean.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tblPr</span><span class="o">.</span><span class="n">autofit</span>
+
+    <span class="nd">@autofit</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">autofit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tblPr</span><span class="o">.</span><span class="n">autofit</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="Table.cell">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.cell">[文档]</a>
+    <span class="k">def</span> <span class="nf">cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">col_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Cell</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;|_Cell| at `row_idx`, `col_idx` intersection.</span>
+
+<span class="sd">        (0, 0) is the top, left-most cell.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cell_idx</span> <span class="o">=</span> <span class="n">col_idx</span> <span class="o">+</span> <span class="p">(</span><span class="n">row_idx</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_column_count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cells</span><span class="p">[</span><span class="n">cell_idx</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Table.column_cells">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.column_cells">[文档]</a>
+    <span class="k">def</span> <span class="nf">column_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">column_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sequence of cells in the column at `column_idx` in this table.&quot;&quot;&quot;</span>
+        <span class="n">cells</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cells</span>
+        <span class="n">idxs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">column_idx</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cells</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_column_count</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">cells</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idxs</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Table.columns">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.columns">[文档]</a>
+    <span class="nd">@lazyproperty</span>
+    <span class="k">def</span> <span class="nf">columns</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;|_Columns| instance representing the sequence of columns in this table.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_Columns</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Table.row_cells">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.row_cells">[文档]</a>
+    <span class="k">def</span> <span class="nf">row_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;DEPRECATED: Use `table.rows[row_idx].cells` instead.</span>
+
+<span class="sd">        Sequence of cells in the row at `row_idx` in this table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">column_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_column_count</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">row_idx</span> <span class="o">*</span> <span class="n">column_count</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="n">column_count</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cells</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="Table.rows">
+<a class="viewcode-back" href="../../api/table.html#docx.table.Table.rows">[文档]</a>
+    <span class="nd">@lazyproperty</span>
+    <span class="k">def</span> <span class="nf">rows</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Rows</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;|_Rows| instance containing the sequence of rows in this table.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">_Rows</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_TableStyle</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;|_TableStyle| object representing the style applied to this table.</span>
+
+<span class="sd">        Read/write. The default table style for the document (often `Normal Table`) is</span>
+<span class="sd">        returned if the table has no directly-applied style. Assigning |None| to this</span>
+<span class="sd">        property removes any directly-applied table style causing it to inherit the</span>
+<span class="sd">        default table style of the document.</span>
+
+<span class="sd">        Note that the style name of a table style differs slightly from that displayed</span>
+<span class="sd">        in the user interface; a hyphen, if it appears, must be removed. For example,</span>
+<span class="sd">        `Light Shading - Accent 1` becomes `Light Shading Accent 1`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">style_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tblStyle_val</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;_TableStyle | None&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">part</span><span class="o">.</span><span class="n">get_style</span><span class="p">(</span><span class="n">style_id</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">TABLE</span><span class="p">))</span>
+
+    <span class="nd">@style</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">style</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">style_or_name</span><span class="p">:</span> <span class="n">_TableStyle</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">style_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">part</span><span class="o">.</span><span class="n">get_style_id</span><span class="p">(</span><span class="n">style_or_name</span><span class="p">,</span> <span class="n">WD_STYLE_TYPE</span><span class="o">.</span><span class="n">TABLE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tblStyle_val</span> <span class="o">=</span> <span class="n">style_id</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provide child objects with reference to the |Table| object they belong to,</span>
+<span class="sd">        without them having to know their direct parent is a |Table| object.</span>
+
+<span class="sd">        This is the terminus of a series of `parent._table` calls from an arbitrary</span>
+<span class="sd">        child through its ancestors.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WD_TABLE_DIRECTION</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Member of :ref:`WdTableDirection` indicating cell-ordering direction.</span>
+
+<span class="sd">        For example: `WD_TABLE_DIRECTION.LTR`. |None| indicates the value is inherited</span>
+<span class="sd">        from the style hierarchy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;WD_TABLE_DIRECTION | None&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">bidiVisual_val</span><span class="p">)</span>
+
+    <span class="nd">@table_direction</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">table_direction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">WD_TABLE_DIRECTION</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_element</span><span class="o">.</span><span class="n">bidiVisual_val</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_cells</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;A sequence of |_Cell| objects, one for each cell of the layout grid.</span>
+
+<span class="sd">        If the table contains a span, one or more |_Cell| object references are</span>
+<span class="sd">        repeated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">col_count</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_column_count</span>
+        <span class="n">cells</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">iter_tcs</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">grid_span_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">grid_span</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">tc</span><span class="o">.</span><span class="n">vMerge</span> <span class="o">==</span> <span class="n">ST_Merge</span><span class="o">.</span><span class="n">CONTINUE</span><span class="p">:</span>
+                    <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="p">[</span><span class="o">-</span><span class="n">col_count</span><span class="p">])</span>
+                <span class="k">elif</span> <span class="n">grid_span_idx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cells</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cells</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">_Cell</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="bp">self</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">cells</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_column_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The number of grid columns in this table.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">col_count</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_tblPr</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CT_TblPr</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tblPr</span></div>
+
+
+
+<div class="viewcode-block" id="_Cell">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Cell">[文档]</a>
+<span class="k">class</span> <span class="nc">_Cell</span><span class="p">(</span><span class="n">BlockItemContainer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Table cell.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tc</span><span class="p">:</span> <span class="n">CT_Tc</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">TableParent</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Cell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;t.ProvidesStoryPart&quot;</span><span class="p">,</span> <span class="n">parent</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element</span> <span class="o">=</span> <span class="n">tc</span>
+
+<div class="viewcode-block" id="_Cell.add_paragraph">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Cell.add_paragraph">[文档]</a>
+    <span class="k">def</span> <span class="nf">add_paragraph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">style</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ParagraphStyle</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a paragraph newly added to the end of the content in this cell.</span>
+
+<span class="sd">        If present, `text` is added to the paragraph in a single run. If specified, the</span>
+<span class="sd">        paragraph style `style` is applied. If `style` is not specified or is |None|,</span>
+<span class="sd">        the result is as though the &#39;Normal&#39; style was applied. Note that the formatting</span>
+<span class="sd">        of text in a cell can be influenced by the table style. `text` can contain tab</span>
+<span class="sd">        (``\\t``) characters, which are converted to the appropriate XML form for a tab.</span>
+<span class="sd">        `text` can also include newline (``\\n``) or carriage return (``\\r``)</span>
+<span class="sd">        characters, each of which is converted to a line break.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_Cell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="_Cell.add_table">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Cell.add_table">[文档]</a>
+    <span class="k">def</span> <span class="nf">add_table</span><span class="p">(</span>  <span class="c1"># pyright: ignore[reportIncompatibleMethodOverride]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">rows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">cols</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a table newly added to this cell after any existing cell content.</span>
+
+<span class="sd">        The new table will have `rows` rows and `cols` columns.</span>
+
+<span class="sd">        An empty paragraph is added after the table because Word requires a paragraph</span>
+<span class="sd">        element as the last element in every cell.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">width</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">Inches</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">table</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">_Cell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_paragraph</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">table</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid_span</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Number of layout-grid cells this cell spans horizontally.</span>
+
+<span class="sd">        A &quot;normal&quot; cell has a grid-span of 1. A horizontally merged cell has a grid-span of 2 or</span>
+<span class="sd">        more.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span><span class="o">.</span><span class="n">grid_span</span>
+
+<div class="viewcode-block" id="_Cell.merge">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Cell.merge">[文档]</a>
+    <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other_cell</span><span class="p">:</span> <span class="n">_Cell</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a merged cell created by spanning the rectangular region having this</span>
+<span class="sd">        cell and `other_cell` as diagonal corners.</span>
+
+<span class="sd">        Raises |InvalidSpanError| if the cells do not define a rectangular region.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tc</span><span class="p">,</span> <span class="n">tc_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span><span class="p">,</span> <span class="n">other_cell</span><span class="o">.</span><span class="n">_tc</span>
+        <span class="n">merged_tc</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">tc_2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_Cell</span><span class="p">(</span><span class="n">merged_tc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">paragraphs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of paragraphs in the cell.</span>
+
+<span class="sd">        A table cell is required to contain at least one block-level element and end</span>
+<span class="sd">        with a paragraph. By default, a new cell contains a single paragraph. Read-only</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_Cell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">paragraphs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">tables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of tables in the cell, in the order they appear.</span>
+
+<span class="sd">        Read-only.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">_Cell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">tables</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The entire contents of this cell as a string of text.</span>
+
+<span class="sd">        Assigning a string to this property replaces all existing content with a single</span>
+<span class="sd">        paragraph containing the assigned text in a single run.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">paragraphs</span><span class="p">)</span>
+
+    <span class="nd">@text</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Write-only.</span>
+
+<span class="sd">        Set entire contents of cell to the string `text`. Any existing content or</span>
+<span class="sd">        revisions are replaced.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span>
+        <span class="n">tc</span><span class="o">.</span><span class="n">clear_content</span><span class="p">()</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">tc</span><span class="o">.</span><span class="n">add_p</span><span class="p">()</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">add_r</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">vertical_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Member of :ref:`WdCellVerticalAlignment` or None.</span>
+
+<span class="sd">        A value of |None| indicates vertical alignment for this cell is inherited.</span>
+<span class="sd">        Assigning |None| causes any explicitly defined vertical alignment to be removed,</span>
+<span class="sd">        restoring inheritance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">tcPr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element</span><span class="o">.</span><span class="n">tcPr</span>
+        <span class="k">if</span> <span class="n">tcPr</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">tcPr</span><span class="o">.</span><span class="n">vAlign_val</span>
+
+    <span class="nd">@vertical_alignment</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">vertical_alignment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">WD_CELL_VERTICAL_ALIGNMENT</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="n">tcPr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element</span><span class="o">.</span><span class="n">get_or_add_tcPr</span><span class="p">()</span>
+        <span class="n">tcPr</span><span class="o">.</span><span class="n">vAlign_val</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The width of this cell in EMU, or |None| if no explicit width is set.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span><span class="o">.</span><span class="n">width</span>
+
+    <span class="nd">@width</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Length</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tc</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+
+<div class="viewcode-block" id="_Column">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Column">[文档]</a>
+<span class="k">class</span> <span class="nc">_Column</span><span class="p">(</span><span class="n">Parented</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Table column.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gridCol</span><span class="p">:</span> <span class="n">CT_TblGridCol</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">TableParent</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Column</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol</span> <span class="o">=</span> <span class="n">gridCol</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cells</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">_Cell</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sequence of |_Cell| instances corresponding to cells in this column.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">column_cells</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_index</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the |Table| object this column belongs to.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">table</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Length</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The width of this column in EMU, or |None| if no explicit width is set.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol</span><span class="o">.</span><span class="n">w</span>
+
+    <span class="nd">@width</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Length</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_index</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Index of this column in its table, starting from zero.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol</span><span class="o">.</span><span class="n">gridCol_idx</span></div>
+
+
+
+<div class="viewcode-block" id="_Columns">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Columns">[文档]</a>
+<span class="k">class</span> <span class="nc">_Columns</span><span class="p">(</span><span class="n">Parented</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequence of |_Column| instances corresponding to the columns in a table.</span>
+
+<span class="sd">    Supports ``len()``, iteration and indexed access.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tbl</span><span class="p">:</span> <span class="n">CT_Tbl</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">TableParent</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Columns</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span> <span class="o">=</span> <span class="n">tbl</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provide indexed access, e.g. &#39;columns[0]&#39;.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">gridCol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol_lst</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;column index [</span><span class="si">%d</span><span class="s2">] is out of range&quot;</span> <span class="o">%</span> <span class="n">idx</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_Column</span><span class="p">(</span><span class="n">gridCol</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">gridCol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gridCol_lst</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">_Column</span><span class="p">(</span><span class="n">gridCol</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_gridCol_lst</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the |Table| object this column collection belongs to.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">table</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_gridCol_lst</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sequence containing ``&lt;w:gridCol&gt;`` elements for this table, each</span>
+<span class="sd">        representing a table column.&quot;&quot;&quot;</span>
+        <span class="n">tblGrid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tblGrid</span>
+        <span class="k">return</span> <span class="n">tblGrid</span><span class="o">.</span><span class="n">gridCol_lst</span></div>
+
+
+
+<div class="viewcode-block" id="_Row">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Row">[文档]</a>
+<span class="k">class</span> <span class="nc">_Row</span><span class="p">(</span><span class="n">Parented</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Table row.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tr</span><span class="p">:</span> <span class="n">CT_Row</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">TableParent</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Row</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_element</span> <span class="o">=</span> <span class="n">tr</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">cells</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">_Cell</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sequence of |_Cell| instances corresponding to cells in this row.</span>
+
+<span class="sd">        Note that Word allows table rows to start later than the first column and end before the</span>
+<span class="sd">        last column.</span>
+
+<span class="sd">        - Only cells actually present are included in the return value.</span>
+<span class="sd">        - This implies the length of this cell sequence may differ between rows of the same table.</span>
+<span class="sd">        - If you are reading the cells from each row to form a rectangular &quot;matrix&quot; data structure</span>
+<span class="sd">          of the table cell values, you will need to account for empty leading and/or trailing</span>
+<span class="sd">          layout-grid positions using `.grid_cols_before` and `.grid_cols_after`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">iter_tc_cells</span><span class="p">(</span><span class="n">tc</span><span class="p">:</span> <span class="n">CT_Tc</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Generate a cell object for each layout-grid cell in `tc`.</span>
+
+<span class="sd">            In particular, a `&lt;w:tc&gt;` element with a horizontal &quot;span&quot; with generate the same cell</span>
+<span class="sd">            multiple times, one for each grid-cell being spanned. This approximates a row in a</span>
+<span class="sd">            &quot;uniform&quot; table, where each row has a cell for each column in the table.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="c1"># -- a cell comprising the second or later row of a vertical span is indicated by</span>
+            <span class="c1"># -- tc.vMerge=&quot;continue&quot; (the default value of the `w:vMerge` attribute, when it is</span>
+            <span class="c1"># -- present in the XML). The `w:tc` element at the same grid-offset in the prior row</span>
+            <span class="c1"># -- is guaranteed to be the same width (gridSpan). So we can delegate content</span>
+            <span class="c1"># -- discovery to that prior-row `w:tc` element (recursively) until we arrive at the</span>
+            <span class="c1"># -- &quot;root&quot; cell -- for the vertical span.</span>
+            <span class="k">if</span> <span class="n">tc</span><span class="o">.</span><span class="n">vMerge</span> <span class="o">==</span> <span class="s2">&quot;continue&quot;</span><span class="p">:</span>
+                <span class="k">yield from</span> <span class="n">iter_tc_cells</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">_tc_above</span><span class="p">)</span>  <span class="c1"># pyright: ignore[reportPrivateUsage]</span>
+                <span class="k">return</span>
+
+            <span class="c1"># -- Otherwise, vMerge is either &quot;restart&quot; or None, meaning this `tc` holds the actual</span>
+            <span class="c1"># -- content of the cell (whether it is vertically merged or not).</span>
+            <span class="n">cell</span> <span class="o">=</span> <span class="n">_Cell</span><span class="p">(</span><span class="n">tc</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">table</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tc</span><span class="o">.</span><span class="n">grid_span</span><span class="p">):</span>
+                <span class="k">yield</span> <span class="n">cell</span>
+
+        <span class="k">def</span> <span class="nf">_iter_row_cells</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="n">_Cell</span><span class="p">]:</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;Generate `_Cell` instance for each populated layout-grid cell in this row.&quot;&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">tc_lst</span><span class="p">:</span>
+                <span class="k">yield from</span> <span class="n">iter_tc_cells</span><span class="p">(</span><span class="n">tc</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_iter_row_cells</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid_cols_after</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Count of unpopulated grid-columns after the last cell in this row.</span>
+
+<span class="sd">        Word allows a row to &quot;end early&quot;, meaning that one or more cells are not present at the</span>
+<span class="sd">        end of that row.</span>
+
+<span class="sd">        Note these are not simply &quot;empty&quot; cells. The renderer reads this value and &quot;skips&quot; this</span>
+<span class="sd">        many columns after drawing the last cell.</span>
+
+<span class="sd">        Note this also implies that not all rows are guaranteed to have the same number of cells,</span>
+<span class="sd">        e.g. `_Row.cells` could have length `n` for one row and `n - m` for the next row in the same</span>
+<span class="sd">        table. Visually this appears as a column (at the beginning or end, not in the middle) with</span>
+<span class="sd">        one or more cells missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">grid_after</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">grid_cols_before</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Count of unpopulated grid-columns before the first cell in this row.</span>
+
+<span class="sd">        Word allows a row to &quot;start late&quot;, meaning that one or more cells are not present at the</span>
+<span class="sd">        beginning of that row.</span>
+
+<span class="sd">        Note these are not simply &quot;empty&quot; cells. The renderer reads this value and skips forward to</span>
+<span class="sd">        the table layout-grid position of the first cell in this row; the renderer &quot;skips&quot; this many</span>
+<span class="sd">        columns before drawing the first cell.</span>
+
+<span class="sd">        Note this also implies that not all rows are guaranteed to have the same number of cells,</span>
+<span class="sd">        e.g. `_Row.cells` could have length `n` for one row and `n - m` for the next row in the same</span>
+<span class="sd">        table.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">grid_before</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Length</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a |Length| object representing the height of this cell, or |None| if</span>
+<span class="sd">        no explicit height is set.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">trHeight_val</span>
+
+    <span class="nd">@height</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">height</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Length</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">trHeight_val</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">height_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">WD_ROW_HEIGHT_RULE</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the height rule of this cell as a member of the :ref:`WdRowHeightRule`.</span>
+
+<span class="sd">        This value is |None| if no explicit height_rule is set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">trHeight_hRule</span>
+
+    <span class="nd">@height_rule</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">height_rule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">WD_ROW_HEIGHT_RULE</span> <span class="o">|</span> <span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">trHeight_hRule</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the |Table| object this row belongs to.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">table</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">_index</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Index of this row in its table, starting from zero.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tr</span><span class="o">.</span><span class="n">tr_idx</span></div>
+
+
+
+<div class="viewcode-block" id="_Rows">
+<a class="viewcode-back" href="../../api/table.html#docx.table._Rows">[文档]</a>
+<span class="k">class</span> <span class="nc">_Rows</span><span class="p">(</span><span class="n">Parented</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sequence of |_Row| objects corresponding to the rows in a table.</span>
+
+<span class="sd">    Supports ``len()``, iteration, indexed access, and slicing.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tbl</span><span class="p">:</span> <span class="n">CT_Tbl</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">TableParent</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Rows</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span> <span class="o">=</span> <span class="n">tbl</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Row</span><span class="p">:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Row</span><span class="p">]:</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">slice</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">_Row</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="n">_Row</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provide indexed access, (e.g. `rows[0]` or `rows[1:3]`)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="p">)[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">_Row</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span> <span class="k">for</span> <span class="n">tr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tr_lst</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_tbl</span><span class="o">.</span><span class="n">tr_lst</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">table</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Table</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reference to the |Table| object this row collection belongs to.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parent</span><span class="o">.</span><span class="n">table</span></div>
+
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2013, Steve Canny
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script src="../../_static/documentation_options.js?v=8ec669e7"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    </body>
+</html>
