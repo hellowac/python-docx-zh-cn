@@ -5,11 +5,15 @@
 
 .. tab:: 中文
 
+    别名: **WD_ALIGN_PARAGRAPH**
+
+    指定段落对齐类型。
+
 .. tab:: 英文
 
-alias: **WD_ALIGN_PARAGRAPH**
+    alias: **WD_ALIGN_PARAGRAPH**
 
-Specifies paragraph justification type.
+    Specifies paragraph justification type.
 
 Example::
 

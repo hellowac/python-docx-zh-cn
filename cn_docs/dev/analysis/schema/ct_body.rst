@@ -16,23 +16,18 @@
    Spec Section , 17.2.2
 
 
-Spec text
+规范文本
 ---------
+
+Spec text
 
 .. tab:: 中文
 
-.. tab:: 英文
+    此元素指定文档主体的内容——主要的文档编辑界面。
 
-    This element specifies the contents of the body of the document -- the main
-    document editing surface.
+    文档主体包含所谓的“块级标记”——这种标记可以作为 WordprocessingML 文档中段落的兄弟元素而存在。
 
-    The document body contains what is referred to as *block-level markup* --
-    markup which can exist as a sibling element to paragraphs in a
-    WordprocessingML document.
-
-    Example: Consider a document with a single paragraph in the main document
-    story. This document would require the following WordprocessingML in its
-    main document part::
+    示例：假设一个文档的主文档故事中只有一个段落。此文档的主文档部分需要以下 WordprocessingML::
 
         <w:document>
           <w:body>
@@ -40,12 +35,29 @@ Spec text
           </w:body>
         </w:document>
 
-    The fact that the paragraph is inside the body element makes it part of the
-    main document story.
+    段落位于正文元素内，这一事实使其成为主要文档故事的一部分。
 
+.. tab:: 英文
+
+    This element specifies the contents of the body of the document -- the main document editing surface.
+
+    The document body contains what is referred to as *block-level markup* -- markup which can exist as a sibling element to paragraphs in a WordprocessingML document.
+
+    Example: Consider a document with a single paragraph in the main document story. This document would require the following WordprocessingML in its main document part::
+
+        <w:document>
+          <w:body>
+            <w:p/>
+          </w:body>
+        </w:document>
+
+    The fact that the paragraph is inside the body element makes it part of the main document story.
+
+
+架构摘录
+--------------
 
 Schema excerpt
---------------
 
 ::
 

@@ -1,111 +1,186 @@
 
-Character Style
+字符样式
 ===============
 
+Character Style
+
 .. tab:: 中文
+
+    Word 允许为一组运行级别属性指定名称。这组属性称为“字符样式”。通过设置运行样式，可以一次性将所有设置应用于运行。
 
 .. tab:: 英文
 
-Word allows a set of run-level properties to be given a name. The set of
-properties is called a *character style*. All the settings may be applied to
-a run in a single action by setting the style of the run.
+    Word allows a set of run-level properties to be given a name. The set of
+    properties is called a *character style*. All the settings may be applied to
+    a run in a single action by setting the style of the run.
 
 
-Protocol
+协议
 --------
 
+Protocol
+
 .. tab:: 中文
+
+    有两个与字符样式相关的调用协议：获取和设置
+    运行的字符样式，以及在创建运行时指定样式。
+
+    获取运行样式::
+
+        >>> run = p.add_run()
+
+        >>> run.style
+        <docx.styles.style._CharacterStyle object at 0x1053ab5d0>
+        >>> run.style.name
+        'Default Paragraph Font'
+
+    使用字符样式名称设置运行样式::
+
+        >>> run.style = 'Emphasis'
+        >>> run.style.name
+        'Emphasis'
+
+    使用字符样式对象设置运行样式::
+
+        >>> run.style = document.styles['Strong']
+        >>> run.style.name
+        'Strong'
+
+    将 |None| 分配给 :attr:`.Run.style` 会导致任何应用的字符样式
+    被删除。没有字符样式的运行将继承文档的默认字符
+    样式::
+
+        >>> run.style = None
+        >>> run.style.name
+        'Default Paragraph Font'
+
+    在创建时指定运行的样式::
+
+        >>> run = p.add_run(style='Strong')
+        >>> run.style.name
+        'Strong'
 
 .. tab:: 英文
 
-There are two call protocols related to character style: getting and setting
-the character style of a run, and specifying a style when creating a run.
+    There are two call protocols related to character style: getting and setting
+    the character style of a run, and specifying a style when creating a run.
 
-Get run style::
+    Get run style::
 
-    >>> run = p.add_run()
+        >>> run = p.add_run()
 
-    >>> run.style
-    <docx.styles.style._CharacterStyle object at 0x1053ab5d0>
-    >>> run.style.name
-    'Default Paragraph Font'
+        >>> run.style
+        <docx.styles.style._CharacterStyle object at 0x1053ab5d0>
+        >>> run.style.name
+        'Default Paragraph Font'
 
-Set run style using character style name::
+    Set run style using character style name::
 
-    >>> run.style = 'Emphasis'
-    >>> run.style.name
-    'Emphasis'
+        >>> run.style = 'Emphasis'
+        >>> run.style.name
+        'Emphasis'
 
-Set run style using character style object::
+    Set run style using character style object::
 
-    >>> run.style = document.styles['Strong']
-    >>> run.style.name
-    'Strong'
+        >>> run.style = document.styles['Strong']
+        >>> run.style.name
+        'Strong'
 
-Assigning |None| to :attr:`.Run.style` causes any applied character style to
-be removed. A run without a character style inherits the default character
-style of the document::
+    Assigning |None| to :attr:`.Run.style` causes any applied character style to
+    be removed. A run without a character style inherits the default character
+    style of the document::
 
-    >>> run.style = None
-    >>> run.style.name
-    'Default Paragraph Font'
+        >>> run.style = None
+        >>> run.style.name
+        'Default Paragraph Font'
 
-Specifying the style of a run on creation::
+    Specifying the style of a run on creation::
 
-    >>> run = p.add_run(style='Strong')
-    >>> run.style.name
-    'Strong'
+        >>> run = p.add_run(style='Strong')
+        >>> run.style.name
+        'Strong'
 
 
-Specimen XML
+XML 例子
 ------------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Specimen XML
 
 .. highlight:: xml
 
-A baseline regular run::
-
-  <w:p>
-    <w:r>
-      <w:t>This is a regular paragraph.</w:t>
-    </w:r>
-  </w:p>
-
-Adding `Emphasis` character style::
-
-  <w:p>
-    <w:r>
-      <w:rPr>
-        <w:rStyle w:val="Emphasis"/>
-      </w:rPr>
-      <w:t>This paragraph appears in Emphasis character style.</w:t>
-    </w:r>
-  </w:p>
-
-A style that appears in the Word user interface (UI) with one or more spaces
-in its name, such as "Subtle Emphasis", will generally have a style ID with
-those spaces removed. In this example, "Subtle Emphasis" becomes
-"SubtleEmphasis"::
-
-  <w:p>
-    <w:r>
-      <w:rPr>
-        <w:rStyle w:val="SubtleEmphasis"/>
-      </w:rPr>
-      <w:t>a few words in Subtle Emphasis style</w:t>
-    </w:r>
-  </w:p>
-
-
-Schema excerpt
---------------
-
 .. tab:: 中文
 
+    基线常规运行::
+
+      <w:p>
+        <w:r>
+          <w:t>这是一个常规段落。</w:t>
+        </w:r>
+      </w:p>
+
+    添加 `Emphasis` 字符样式::
+
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="Emphasis"/>
+          </w:rPr>
+          <w:t>此段落以 Emphasis 字符样式显示。</w:t>
+        </w:r>
+      </w:p>
+
+    如果 Word 用户界面 (UI) 中显示的样式的名称中有一个或多个空格，例如“Subtle Emphasis”，则通常会有一个删除了这些空格的样式 ID。在此示例中，“Subtle Emphasis”变为
+    “SubtleEmphasis”::
+
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="SubtleEmphasis"/>
+          </w:rPr>
+          <w:t>Subtle Emphasis 样式中的几个词</w:t>
+        </w:r>
+      </w:p>
+
 .. tab:: 英文
+
+    A baseline regular run::
+
+      <w:p>
+        <w:r>
+          <w:t>This is a regular paragraph.</w:t>
+        </w:r>
+      </w:p>
+
+    Adding `Emphasis` character style::
+
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="Emphasis"/>
+          </w:rPr>
+          <w:t>This paragraph appears in Emphasis character style.</w:t>
+        </w:r>
+      </w:p>
+
+    A style that appears in the Word user interface (UI) with one or more spaces
+    in its name, such as "Subtle Emphasis", will generally have a style ID with
+    those spaces removed. In this example, "Subtle Emphasis" becomes
+    "SubtleEmphasis"::
+
+      <w:p>
+        <w:r>
+          <w:rPr>
+            <w:rStyle w:val="SubtleEmphasis"/>
+          </w:rPr>
+          <w:t>a few words in Subtle Emphasis style</w:t>
+        </w:r>
+      </w:p>
+
+
+Schema 摘录
+--------------
+
+Schema excerpt
 
 .. highlight:: xml
 

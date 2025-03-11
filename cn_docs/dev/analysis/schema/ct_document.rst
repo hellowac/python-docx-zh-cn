@@ -13,18 +13,16 @@
    Spec Section , 17.2.3
 
 
-Spec text
+规范文本
 ---------
+
+Spec text
 
 .. tab:: 中文
 
-.. tab:: 英文
+    此元素指定 WordprocessingML 文档中主文档部分的内容。
 
-    This element specifies the contents of a main document part in
-    a WordprocessingML document.
-
-    Consider the basic structure of the main document part in a basic
-    WordprocessingML document, as follows::
+    考虑基本 WordprocessingML 文档中主文档部分的基本结构，如下所示::
 
         <w:document>
           <w:body>
@@ -32,16 +30,27 @@ Spec text
           </w:body>
         </w:document>
 
-    All of the contents of the main document part are contained beneath the
-    document element.
-
-
-Schema excerpt
---------------
-
-.. tab:: 中文
+    主文档部分的所有内容均包含在文档元素下方。
 
 .. tab:: 英文
+
+    This element specifies the contents of a main document part in a WordprocessingML document.
+
+    Consider the basic structure of the main document part in a basic WordprocessingML document, as follows::
+
+        <w:document>
+          <w:body>
+            <w:p/>
+          </w:body>
+        </w:document>
+
+    All of the contents of the main document part are contained beneath the document element.
+
+
+架构摘录
+--------------
+
+Schema excerpt
 
 .. highlight:: xml
 

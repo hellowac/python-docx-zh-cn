@@ -1,65 +1,83 @@
 
 .. _text_api:
 
-Text-related objects
+文本相关对象
 ====================
+
+Text-related objects
 
 .. tab:: 中文
 
 .. tab:: 英文
 
 
-|Paragraph| objects
+|Paragraph| 对象
 -------------------
+
+|Paragraph| objects
 
 .. autoclass:: docx.text.paragraph.Paragraph()
    :members:
 
 
-|ParagraphFormat| objects
+|ParagraphFormat| 对象
 -------------------------
+
+|ParagraphFormat| objects
 
 .. autoclass:: docx.text.parfmt.ParagraphFormat()
    :members:
 
 
-|Hyperlink| objects
+|Hyperlink| 对象
 -------------------
+
+|Hyperlink| objects
 
 .. autoclass:: docx.text.hyperlink.Hyperlink()
    :members:
 
 
-|Run| objects
+|Run| 对象
 -------------
+
+|Run| objects
 
 .. autoclass:: docx.text.run.Run()
    :members:
 
 
-|Font| objects
+|Font| 对象
 --------------
+
+|Font| objects
 
 .. autoclass:: docx.text.run.Font()
    :members:
 
 
-|RenderedPageBreak| objects
+|RenderedPageBreak| 对象
 ---------------------------
+
+|RenderedPageBreak| objects
 
 .. autoclass:: docx.text.pagebreak.RenderedPageBreak()
    :members:
 
 
-|TabStop| objects
+|TabStop| 对象
 -----------------
+
+|TabStop| objects
 
 .. autoclass:: docx.text.tabstops.TabStop()
    :members:
 
 
-|TabStops| objects
+|TabStops| 对象
 ------------------
+
+|TabStops| objects
 
 .. autoclass:: docx.text.tabstops.TabStops()
    :members: clear_all

@@ -5,12 +5,15 @@
 
 .. tab:: 中文
 
+    指示 Office 主题颜色，即格式功能区上的颜色库中显示的颜色之一。
+
+    别名: ``MSO_THEME_COLOR``
+
 .. tab:: 英文
 
-Indicates the Office theme color, one of those shown in the color gallery on
-the formatting ribbon.
+    Indicates the Office theme color, one of those shown in the color gallery on the formatting ribbon.
 
-Alias: ``MSO_THEME_COLOR``
+    Alias: ``MSO_THEME_COLOR``
 
 Example::
 

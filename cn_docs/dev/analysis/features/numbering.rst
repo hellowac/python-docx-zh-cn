@@ -1,16 +1,22 @@
 
-Numbering Part
+编号部分
 ==============
 
-... having to do with numbering sequences for ordered lists, etc. ...
-
-
-Schema excerpt
---------------
+Numbering Part
 
 .. tab:: 中文
 
+    ...与有序列表的编号序列等有关......
+
 .. tab:: 英文
+
+    ... having to do with numbering sequences for ordered lists, etc. ...
+
+
+Schema 摘录
+--------------
+
+Schema excerpt
 
 .. highlight:: xml
 

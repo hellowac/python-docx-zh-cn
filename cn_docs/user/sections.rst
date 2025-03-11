@@ -7,7 +7,7 @@ Working with Sections
 
 .. tab:: 中文
 
-    Word 支持“节”（ `section` ）的概念，即文档中具有相同页面布局设置（如页边距和页面方向）的部分。例如，文档中某些页面可以采用纵向布局，而另一些页面采用横向布局。每个节还定义了适用于该节页面的页眉和页脚。
+    Word 支持“节”（ `section` ）的概念，即文档中具有相同页面布局设置（如页边距和页面方向）的节。例如，文档中某些页面可以采用纵向布局，而另一些页面采用横向布局。每个节还定义了适用于该节页面的页眉和页脚。
 
     大多数 Word 文档只有一个默认节，而且大多数节没有理由更改默认页边距或其他页面布局。但是，当您确实需要更改页面布局时，您需要了解节才能完成。
 
@@ -30,7 +30,7 @@ Accessing sections
 
 .. tab:: 中文
 
-    通过 |Document| 对象上的 ``sections`` 属性可以访问文档部分::
+    通过 |Document| 对象上的 ``sections`` 属性可以访问文档节::
 
         >>> document = Document()
         >>> sections = document.sections
@@ -48,7 +48,7 @@ Accessing sections
         EVEN_PAGE (3)
         ODD_PAGE (4)
 
-    理论上，文档可以没有任何明确的部分，
+    理论上，文档可以没有任何明确的节，
     尽管我还没有看到这种情况在实际中发生。如果您正在访问
     不可预测的 .docx 文件数量，您可能希望使用 ``len()`` 检查或 ``try`` 块来应对这种可能性，以避免未捕获的
     ``IndexError`` 异常停止您的程序。
@@ -90,7 +90,7 @@ Adding a new section
 
 .. tab:: 中文
 
-    :meth:`Document.add_section` 方法允许在文档末尾开始新的部分。调用此方法后添加的段落和表格将出现在新部分中::
+    :meth:`Document.add_section` 方法允许在文档末尾开始新的节。调用此方法后添加的段落和表格将出现在新节中::
 
         >>> current_section = document.sections[-1] # 文档中的最后一节
         >>> current_section.start_type
@@ -168,7 +168,7 @@ Page dimensions and orientation
 
 .. tab:: 中文
 
-    |Section| 上的三个属性描述了页面尺寸和方向。 这些属性可以一起使用，例如将部分的​​方向从纵向更改为横向::
+    |Section| 上的三个属性描述了页面尺寸和方向。 这些属性可以一起使用，例如将节的​​方向从纵向更改为横向::
 
         >>> section.orientation, section.page_width, section.page_height
         (PORTRAIT (0), 7772400, 10058400)  # (Inches(8.5), Inches(11))

@@ -90,35 +90,44 @@ Example XML
 
 .. tab:: 中文
 
+    段落样式.next_paragraph_style 是样式['Bar']::
+
+        ​​<w:style w:type="paragraph" w:styleId="Foo">
+          <w:name w:val="Foo"/>
+          <w:next w:val="Bar"/>
+        </w:style>
+
+    **语义。** `w:next` 子元素是可选的。
+
+    * 省略时，下一个样式与当前样式相同。
+    * 如果不存在具有匹配 styleId 的样式，则忽略 `w:next` 元素并且下一个样式与当前样式相同。
+    * 如果找到样式但其样式类型不是段落，则忽略 `w:next` 元素，并且下一个样式与当前样式相同。
+
 .. tab:: 英文
 
 .. highlight:: xml
 
-paragraph_style.next_paragraph_style is styles['Bar']::
+    paragraph_style.next_paragraph_style is styles['Bar']::
 
-  <w:style w:type="paragraph" w:styleId="Foo">
-    <w:name w:val="Foo"/>
-    <w:next w:val="Bar"/>
-  </w:style>
+      <w:style w:type="paragraph" w:styleId="Foo">
+        <w:name w:val="Foo"/>
+        <w:next w:val="Bar"/>
+      </w:style>
 
-**Semantics.** The `w:next` child element is optional.
+    **Semantics.** The `w:next` child element is optional.
 
-* When omitted, the next style is the same as the current style.
-* If no style with a matching styleId exists, the `w:next` element is ignored
-  and the next style is the same as the current style.
-* If a style is found but is of a style type other than paragraph, the
-  `w:next` element is ignored and the next style is the same as the current
-  style.
+    * When omitted, the next style is the same as the current style.
+    * If no style with a matching styleId exists, the `w:next` element is ignored
+      and the next style is the same as the current style.
+    * If a style is found but is of a style type other than paragraph, the
+      `w:next` element is ignored and the next style is the same as the current
+      style.
 
 
 候选协议
 ~~~~~~~~~~~~~~~~~~
 
 Candidate protocol
-
-.. tab:: 中文
-
-.. tab:: 英文
 
 .. highlight:: python
 

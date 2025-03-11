@@ -1,29 +1,40 @@
 
-Inline shape
+内联形状
 ============
+
+Inline shape
 
 .. tab:: 中文
 
+    Word 允许将图形对象作为内联对象放入文档中。内联形状作为 ``<w:drawing>`` 元素出现，是 ``<w:r>`` 元素的子元素。
+
 .. tab:: 英文
 
-Word allows a graphical object to be placed into a document as an inline
-object. An inline shape appears as a ``<w:drawing>`` element as a child of
-a ``<w:r>`` element.
+    Word allows a graphical object to be placed into a document as an inline object. An inline shape appears as a ``<w:drawing>`` element as a child of a ``<w:r>`` element.
 
 
-Candidate protocol -- inline shape access
+候选协议——内联形状访问
 -----------------------------------------
 
-The following interactive session illustrates the protocol for accessing an
-inline shape::
+Candidate protocol -- inline shape access
 
-    >>> inline_shapes = document.body.inline_shapes
-    >>> inline_shape = inline_shapes[0]
-    >>> assert inline_shape.type == MSO_SHAPE_TYPE.PICTURE
+.. tab:: 中文
 
+    以下交互式会话说明了访问内联形状的协议：
+
+.. tab:: 英文
+
+    The following interactive session illustrates the protocol for accessing an inline shape::
+
+        >>> inline_shapes = document.body.inline_shapes
+        >>> inline_shape = inline_shapes[0]
+        >>> assert inline_shape.type == MSO_SHAPE_TYPE.PICTURE
+
+
+资源
+---------
 
 Resources
----------
 
 .. tab:: 中文
 
@@ -46,109 +57,170 @@ Resources
 MS API
 ------
 
+MS API
+
 .. tab:: 中文
+
+    Document 上的 Shapes 和 InlineShapes 属性保存对 MS API 中图片等内容的引用。
+
+    * 高度和宽度
+    * 边框
+    * 阴影
+    * 超链接
+    * PictureFormat（提供亮度、颜色、裁剪、透明度、对比度）
+    * ScaleHeight 和 ScaleWidth
+    * HasChart
+    * HasSmartArt
+    * 类型（图表、LockedCanvas、图片、SmartArt 等）
 
 .. tab:: 英文
 
-The Shapes and InlineShapes properties on Document hold references to things
-like pictures in the MS API.
+    The Shapes and InlineShapes properties on Document hold references to things like pictures in the MS API.
 
-* Height and Width
-* Borders
-* Shadow
-* Hyperlink
-* PictureFormat (providing brightness, color, crop, transparency, contrast)
-* ScaleHeight and ScaleWidth
-* HasChart
-* HasSmartArt
-* Type (Chart, LockedCanvas, Picture, SmartArt, etc.)
+    * Height and Width
+    * Borders
+    * Shadow
+    * Hyperlink
+    * PictureFormat (providing brightness, color, crop, transparency, contrast)
+    * ScaleHeight and ScaleWidth
+    * HasChart
+    * HasSmartArt
+    * Type (Chart, LockedCanvas, Picture, SmartArt, etc.)
 
 
-Spec references
+规范参考
 ---------------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Spec references
 
 * 17.3.3.9 drawing (DrawingML Object)
 * 20.4.2.8 inline (Inline DrawingML Object)
 * 20.4.2.7 extent (Drawing Object Size)
 
 
-Minimal XML
+最小 XML
 -----------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Minimal XML
 
 .. highlight:: xml
 
-This XML represents my best guess of the minimal inline shape container that
-Word will load::
+.. tab:: 中文
 
-    <w:r>
-      <w:drawing>
-        <wp:inline>
-          <wp:extent cx="914400" cy="914400"/>
-          <wp:docPr id="1" name="Picture 1"/>
-          <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
-            <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+    此 XML 代表了我对 Word 将加载的最小内联形状容器的最佳猜测::
 
-              <!-- might not have to put anything here for a start -->
+        <w:r>
+          <w:drawing>
+            <wp:inline>
+              <wp:extent cx="914400" cy="914400"/>
+              <wp:docPr id="1" name="Picture 1"/>
+              <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
 
-            </a:graphicData>
-          </a:graphic>
-        </wp:inline>
-      </w:drawing>
-    </w:r>
+                  <!-- 可能不需要在这里放任何东西 -->
+
+                </a:graphicData>
+              </a:graphic>
+            </wp:inline>
+          </w:drawing>
+        </w:r>
+
+.. tab:: 英文
+
+    This XML represents my best guess of the minimal inline shape container that
+    Word will load ::
+
+        <w:r>
+          <w:drawing>
+            <wp:inline>
+              <wp:extent cx="914400" cy="914400"/>
+              <wp:docPr id="1" name="Picture 1"/>
+              <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+
+                  <!-- might not have to put anything here for a start -->
+
+                </a:graphicData>
+              </a:graphic>
+            </wp:inline>
+          </w:drawing>
+        </w:r>
 
 
-Specimen XML
+样本 XML
 ------------
 
+Specimen XML
+
 .. tab:: 中文
+
+    ``CT_Drawing`` (``<w:drawing>``) 元素可以出现在运行中，例如作为 ``<w:t>`` 元素的对等元素。此元素包含 DrawingML 对象。WordprocessingML 绘图在 ISO/IEC 规范的第 20.4 节中进行了讨论。
+
+    此 XML 表示内联形状，该形状单独插入段落中。图形对象本身的细节已删除::
+
+        <w:p>
+          <w:r>
+            <w:rPr/>
+              <w:noProof/>
+            </w:rPr>
+            <w:drawing>
+              <wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="1BDE1558" wp14:editId="31E593BB">
+                <wp:extent cx="859536" cy="343814"/>
+                <wp:effectExtent l="0" t="0" r="4445" b="12065"/>
+                <wp:docPr id="1" name="Picture 1"/>
+                <wp:cNvGraphicFramePr>
+                  <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                </wp:cNvGraphicFramePr>
+                <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                  <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+
+                    <!-- 图形对象（例如 pic:pic）放在此处 -->
+
+                  </a:graphicData>
+                </a:graphic>
+              </wp:inline>
+            </w:drawing>
+          </w:r>
+        </w:p>
 
 .. tab:: 英文
 
 .. highlight:: xml
 
-A ``CT_Drawing`` (``<w:drawing>``) element can appear in a run, as a peer of,
-for example, a ``<w:t>`` element. This element contains a DrawingML object.
-WordprocessingML drawings are discussed in section 20.4 of the ISO/IEC spec.
+    A ``CT_Drawing`` (``<w:drawing>``) element can appear in a run, as a peer of, for example, a ``<w:t>`` element. This element contains a DrawingML object. WordprocessingML drawings are discussed in section 20.4 of the ISO/IEC spec.
 
-This XML represents an inline shape inserted inline on a paragraph by itself.
-The particulars of the graphical object itself are redacted::
+    This XML represents an inline shape inserted inline on a paragraph by itself. The particulars of the graphical object itself are redacted::
 
-    <w:p>
-      <w:r>
-        <w:rPr/>
-          <w:noProof/>
-        </w:rPr>
-        <w:drawing>
-          <wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="1BDE1558" wp14:editId="31E593BB">
-            <wp:extent cx="859536" cy="343814"/>
-            <wp:effectExtent l="0" t="0" r="4445" b="12065"/>
-            <wp:docPr id="1" name="Picture 1"/>
-            <wp:cNvGraphicFramePr>
-              <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
-            </wp:cNvGraphicFramePr>
-            <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
-              <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+        <w:p>
+          <w:r>
+            <w:rPr/>
+              <w:noProof/>
+            </w:rPr>
+            <w:drawing>
+              <wp:inline distT="0" distB="0" distL="0" distR="0" wp14:anchorId="1BDE1558" wp14:editId="31E593BB">
+                <wp:extent cx="859536" cy="343814"/>
+                <wp:effectExtent l="0" t="0" r="4445" b="12065"/>
+                <wp:docPr id="1" name="Picture 1"/>
+                <wp:cNvGraphicFramePr>
+                  <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                </wp:cNvGraphicFramePr>
+                <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                  <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
 
-                <!-- graphical object, such as pic:pic, goes here -->
+                    <!-- graphical object, such as pic:pic, goes here -->
 
-              </a:graphicData>
-            </a:graphic>
-          </wp:inline>
-        </w:drawing>
-      </w:r>
-    </w:p>
+                  </a:graphicData>
+                </a:graphic>
+              </wp:inline>
+            </w:drawing>
+          </w:r>
+        </w:p>
 
+
+架构定义
+------------------
 
 Schema definitions
-------------------
 
 .. highlight:: xml
 

@@ -1,219 +1,356 @@
 
-Sections
+节
 ========
 
+Sections
+
 .. tab:: 中文
+
+    Word 支持 `section(节)` 的概念，具有不同的页面布局设置。例如，一个文档可以包含纵向布局的某些页面和横向布局的另一些页面。分节符的实现方式与换行符、分页符和分栏符完全不同。前者在新节的最后一段中添加一个 ``<w:pPr><w:sectPr>`` 元素。后者在运行中插入一个 ``<w:br>`` 元素。
+
+    文档中的最后一节由 ``<w:sectPr>`` 元素指定，该元素是 ``<w:body>`` 元素的最后一个子元素。虽然此元素是可选的，但 Word 似乎为所有文件创建了它。由于大多数文件只有一个节，最常见的情况是这是唯一的 ``<w:sectPr>`` 元素。
+
+    其他节由节最后一段中的 ``w:p/w:pPr/w:sectPr`` 元素指定。该段落中的任何内容都是由其 ``<w:sectPr>`` 元素定义的部分的一部分。后续部分以下段落开始。
+
+    使用 Word UI 插入分节符时，将发生以下步骤：
+
+    1. 复制下一个出现的 ``<w:sectPr>`` 元素并将其添加到当前段落。（如果该段落已经有一个 ``<w:sectPr>`` 元素，看看会发生什么会很有趣。）
+    2. 在当前段落后插入一个新段落。光标位置后的文本将移动到新段落。
+    3. 下一个出现的 ``<w:sectPr>`` 元素的起始类型（例如下一页）将更改为反映用户从 UI 中选择的类型。
 
 .. tab:: 英文
 
-Word supports the notion of a `section`, having distinct page layout settings.
-This is how, for example, a document can contain some pages in portrait layout
-and others in landscape. Section breaks are implemented completely differently
-from line, page, and column breaks. The former adds a ``<w:pPr><w:sectPr>``
-element to the last paragraph in the new section. The latter inserts
-a ``<w:br>`` element in a run.
+    Word supports the notion of a `section`, having distinct page layout settings. This is how, for example, a document can contain some pages in portrait layout and others in landscape. Section breaks are implemented completely differently from line, page, and column breaks. The former adds a ``<w:pPr><w:sectPr>`` element to the last paragraph in the new section. The latter inserts a ``<w:br>`` element in a run.
 
-The last section in a document is specified by a ``<w:sectPr>`` element
-appearing as the last child of the ``<w:body>`` element. While this element
-is optional, it appears that Word creates it for all files. Since most files
-have only a single section, the most common case is where this is the only
-``<w:sectPr>`` element.
+    The last section in a document is specified by a ``<w:sectPr>`` element appearing as the last child of the ``<w:body>`` element. While this element is optional, it appears that Word creates it for all files. Since most files have only a single section, the most common case is where this is the only ``<w:sectPr>`` element.
 
-Additional sections are specified by a ``w:p/w:pPr/w:sectPr`` element in the
-last paragraph of the section. Any content in that paragraph is part of the
-section defined by its ``<w:sectPr>`` element. The subsequent section begins
-with the following paragraph.
+    Additional sections are specified by a ``w:p/w:pPr/w:sectPr`` element in the last paragraph of the section. Any content in that paragraph is part of the section defined by its ``<w:sectPr>`` element. The subsequent section begins with the following paragraph.
 
-When a section break is inserted using the Word UI, the following steps
-occur:
+    When a section break is inserted using the Word UI, the following steps occur:
 
-1. The next-occurring ``<w:sectPr>`` element is copied and added to the
-   current paragraph. (It would be interesting to see what happens when that
-   paragraph already has a ``<w:sectPr>`` element.)
-2. A new paragraph is inserted after the current paragraph. The text occuring
-   after the cursor position is moved to the new paragraph.
-3. The start-type (e.g. next page) of the next-occuring ``<w:sectPr>``
-   element is changed to reflect the type chosen by the user from the UI.
+    1. The next-occurring ``<w:sectPr>`` element is copied and added to the current paragraph. (It would be interesting to see what happens when that paragraph already has a ``<w:sectPr>`` element.)
+    2. A new paragraph is inserted after the current paragraph. The text occuring after the cursor position is moved to the new paragraph.
+    3. The start-type (e.g. next page) of the next-occuring ``<w:sectPr>`` element is changed to reflect the type chosen by the user from the UI.
 
 
-Word behavior
+Word 行为
 -------------
 
+Word behavior
+
 .. tab:: 中文
+
+    * 包含分节符（<w:sectPr> 元素）的段落不会在 Word UI 中产生 ¶ 字形。
+    * 分节符指示符/双线直接出现在出现 <w:sectPr> 的段落文本之后。如果分节符段落没有文本，指示线将立即出现在前一个段落的段落标记之后。
 
 .. tab:: 英文
 
-* A paragraph containing a section break (<w:sectPr> element) does not
-  produce a ¶ glyph in the Word UI.
-* The section break indicator/double-line appears directly after the text of
-  the paragraph in which the <w:sectPr> appears. If the section break
-  paragraph has no text, the indicator line appears immediately after the
-  paragraph mark of the prior paragraph.
+    * A paragraph containing a section break (<w:sectPr> element) does not produce a ¶ glyph in the Word UI.
+    * The section break indicator/double-line appears directly after the text of the paragraph in which the <w:sectPr> appears. If the section break paragraph has no text, the indicator line appears immediately after the paragraph mark of the prior paragraph.
 
 
-Before and after analysis
+分析前后
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. tab:: 中文
-
-.. tab:: 英文
+Before and after analysis
 
 .. highlight:: xml
 
-Baseline document containing two paragraphs::
+.. tab:: 中文
 
-  <w:body>
-    <w:p>
-      <w:r>
-        <w:t>Paragraph 1</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:t>Paragraph 2</w:t>
-      </w:r>
-    </w:p>
-    <w:sectPr>
-      <w:pgSz w:w="12240" w:h="15840"/>
-      <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
-               w:header="720" w:footer="720" w:gutter="0"/>
-      <w:cols w:space="720"/>
-      <w:docGrid w:linePitch="360"/>
-    </w:sectPr>
-  </w:body>
+    包含两个段落的基线文件::
 
-
-Odd-page section inserted before paragraph mark in Paragraph 1::
-
-  <w:body>
-    <w:p>
-      <w:pPr>
+      <w:body>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
         <w:sectPr>
           <w:pgSz w:w="12240" w:h="15840"/>
           <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
-                   w:header="720" w:footer="720" w:gutter="0"/>
+                  w:header="720" w:footer="720" w:gutter="0"/>
           <w:cols w:space="720"/>
           <w:docGrid w:linePitch="360"/>
         </w:sectPr>
-      </w:pPr>
-      <w:r>
-        <w:t>Paragraph 1</w:t>
-      </w:r>
-    </w:p>
-    <w:p/>
-    <w:p>
-      <w:r>
-        <w:t>Paragraph 2</w:t>
-      </w:r>
-    </w:p>
-    <w:sectPr w:rsidR="00F039D0" w:rsidSect="006006E7">
-      <w:type w:val="oddPage"/>
-      <w:pgSz w:w="12240" w:h="15840"/>
-      <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
-               w:header="720" w:footer="720" w:gutter="0"/>
-      <w:cols w:space="720"/>
-      <w:docGrid w:linePitch="360"/>
-    </w:sectPr>
-  </w:body>
-
-UI shows empty ¶ mark in first position of new next page. Section break
-indicator appears directly after Paragraph 1 text, with no intervening
-¶ mark.
+      </w:body>
 
 
-Even-page section break inserted before first character in Paragraph 2::
+    奇数页部分插入第 1 段的段落标记之前::
 
-  <w:body>
-    <w:p>
-      <w:r>
-        <w:t>Paragraph 1</w:t>
-      </w:r>
-    </w:p>
-    <w:p>
-      <w:pPr>
-        <w:sectPr>
+      <w:body>
+        <w:p>
+          <w:pPr>
+            <w:sectPr>
+              <w:pgSz w:w="12240" w:h="15840"/>
+              <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                      w:header="720" w:footer="720" w:gutter="0"/>
+              <w:cols w:space="720"/>
+              <w:docGrid w:linePitch="360"/>
+            </w:sectPr>
+          </w:pPr>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p/>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
+        <w:sectPr w:rsidR="00F039D0" w:rsidSect="006006E7">
           <w:type w:val="oddPage"/>
           <w:pgSz w:w="12240" w:h="15840"/>
           <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
-                   w:header="720" w:footer="720" w:gutter="0"/>
+                  w:header="720" w:footer="720" w:gutter="0"/>
           <w:cols w:space="720"/>
           <w:docGrid w:linePitch="360"/>
         </w:sectPr>
-      </w:pPr>
-    </w:p>
-    <w:p>
-      <w:r>
-        <w:lastRenderedPageBreak/>
-        <w:t>Paragraph 2</w:t>
-      </w:r>
-    </w:p>
-    <w:sectPr>
-      <w:type w:val="evenPage"/>
-      <w:pgSz w:w="12240" w:h="15840"/>
-      <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
-               w:header="720" w:footer="720" w:gutter="0"/>
-      <w:cols w:space="720"/>
-      <w:docGrid w:linePitch="360"/>
-    </w:sectPr>
-  </w:body>
+      </w:body>
 
+    UI 在新的下一页的第一个位置显示空的 ¶ 标记。分节符指示符直接出现在第 1 段文本之后，中间没有 ¶ 标记。
+
+    在第 2 段的第一个字符前插入偶数页分节符::
+
+      <w:body>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:pPr>
+            <w:sectPr>
+              <w:type w:val="oddPage"/>
+              <w:pgSz w:w="12240" w:h="15840"/>
+              <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                      w:header="720" w:footer="720" w:gutter="0"/>
+              <w:cols w:space="720"/>
+              <w:docGrid w:linePitch="360"/>
+            </w:sectPr>
+          </w:pPr>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:lastRenderedPageBreak/>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
+        <w:sectPr>
+          <w:type w:val="evenPage"/>
+          <w:pgSz w:w="12240" w:h="15840"/>
+          <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                  w:header="720" w:footer="720" w:gutter="0"/>
+          <w:cols w:space="720"/>
+          <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+      </w:body>
+
+.. tab:: 英文
+
+    Baseline document containing two paragraphs::
+
+      <w:body>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
+        <w:sectPr>
+          <w:pgSz w:w="12240" w:h="15840"/>
+          <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                  w:header="720" w:footer="720" w:gutter="0"/>
+          <w:cols w:space="720"/>
+          <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+      </w:body>
+
+
+    Odd-page section inserted before paragraph mark in Paragraph 1::
+
+      <w:body>
+        <w:p>
+          <w:pPr>
+            <w:sectPr>
+              <w:pgSz w:w="12240" w:h="15840"/>
+              <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                      w:header="720" w:footer="720" w:gutter="0"/>
+              <w:cols w:space="720"/>
+              <w:docGrid w:linePitch="360"/>
+            </w:sectPr>
+          </w:pPr>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p/>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
+        <w:sectPr w:rsidR="00F039D0" w:rsidSect="006006E7">
+          <w:type w:val="oddPage"/>
+          <w:pgSz w:w="12240" w:h="15840"/>
+          <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                  w:header="720" w:footer="720" w:gutter="0"/>
+          <w:cols w:space="720"/>
+          <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+      </w:body>
+
+    UI shows empty ¶ mark in first position of new next page. Section break
+    indicator appears directly after Paragraph 1 text, with no intervening
+    ¶ mark.
+
+
+    Even-page section break inserted before first character in Paragraph 2::
+
+      <w:body>
+        <w:p>
+          <w:r>
+            <w:t>Paragraph 1</w:t>
+          </w:r>
+        </w:p>
+        <w:p>
+          <w:pPr>
+            <w:sectPr>
+              <w:type w:val="oddPage"/>
+              <w:pgSz w:w="12240" w:h="15840"/>
+              <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                      w:header="720" w:footer="720" w:gutter="0"/>
+              <w:cols w:space="720"/>
+              <w:docGrid w:linePitch="360"/>
+            </w:sectPr>
+          </w:pPr>
+        </w:p>
+        <w:p>
+          <w:r>
+            <w:lastRenderedPageBreak/>
+            <w:t>Paragraph 2</w:t>
+          </w:r>
+        </w:p>
+        <w:sectPr>
+          <w:type w:val="evenPage"/>
+          <w:pgSz w:w="12240" w:h="15840"/>
+          <w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800"
+                  w:header="720" w:footer="720" w:gutter="0"/>
+          <w:cols w:space="720"/>
+          <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+      </w:body>
+
+
+枚举
+------------
 
 Enumerations
-------------
 
 WD_SECTION_START
 ~~~~~~~~~~~~~~~~
 
+WD_SECTION_START
+
 .. tab:: 中文
+
+    别名: **WD_SECTION**
+
+    `MSDN 上的 WdSectionStart 枚举`_
+
+    CONTINUOUS (0)
+        连续分节符.
+
+    NEW_COLUMN (1)
+        新的列分节符.
+
+    NEW_PAGE (2)
+        新的页面分节符.
+
+    EVEN_PAGE (3)
+        偶数页分节符.
+
+    ODD_PAGE (4)
+        奇数页分节符.
 
 .. tab:: 英文
 
-alias: **WD_SECTION**
+    alias: **WD_SECTION**
 
-`WdSectionStart Enumeration on MSDN`_
+    `WdSectionStart Enumeration on MSDN`_
+
+    CONTINUOUS (0)
+        Continuous section break.
+
+    NEW_COLUMN (1)
+        New column section break.
+
+    NEW_PAGE (2)
+        New page section break.
+
+    EVEN_PAGE (3)
+        Even pages section break.
+
+    ODD_PAGE (4)
+        Odd pages section break.
+
+.. _MSDN 上的 WdSectionStart 枚举:
+  http://msdn.microsoft.com/en-us/library/office/bb238171.aspx
 
 .. _WdSectionStart Enumeration on MSDN:
-   http://msdn.microsoft.com/en-us/library/office/bb238171.aspx
-
-CONTINUOUS (0)
-    Continuous section break.
-
-NEW_COLUMN (1)
-    New column section break.
-
-NEW_PAGE (2)
-    New page section break.
-
-EVEN_PAGE (3)
-    Even pages section break.
-
-ODD_PAGE (4)
-    Odd pages section break.
+  http://msdn.microsoft.com/en-us/library/office/bb238171.aspx
 
 
 WD_ORIENTATION
 ~~~~~~~~~~~~~~
 
+WD_ORIENTATION
+
 .. tab:: 中文
+
+    alias: **WD_ORIENT**
+
+    `MSDN上 的 WdOrientation 枚举`_
+
+    LANDSCAPE (1)
+        横向.
+
+    PORTRAIT (0)
+        纵向。
 
 .. tab:: 英文
 
-alias: **WD_ORIENT**
+    alias: **WD_ORIENT**
 
-`WdOrientation Enumeration on MSDN`_
+    `WdOrientation Enumeration on MSDN`_
+
+    LANDSCAPE (1)
+        Landscape orientation.
+
+    PORTRAIT (0)
+        Portrait orientation.
 
 .. _WdOrientation Enumeration on MSDN:
-   http://msdn.microsoft.com/en-us/library/office/ff837902.aspx
+  http://msdn.microsoft.com/en-us/library/office/ff837902.aspx
 
-LANDSCAPE (1)
-    Landscape orientation.
+.. _MSDN上 的 WdOrientation 枚举:
+  http://msdn.microsoft.com/en-us/library/office/ff837902.aspx
 
-PORTRAIT (0)
-    Portrait orientation.
 
+Schema 摘录
+--------------
 
 Schema excerpt
---------------
 
 .. highlight:: xml
 

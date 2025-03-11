@@ -1,21 +1,22 @@
 
-Picture
+图片
 =======
 
+Picture
+
 .. tab:: 中文
+
+    Word 允许将图片放置在图形对象容器中，可以是内联形状或浮动形状。
 
 .. tab:: 英文
 
-Word allows a picture to be placed in a graphical object container, either an
-inline shape or a floating shape.
+    Word allows a picture to be placed in a graphical object container, either an inline shape or a floating shape.
 
 
-Candidate protocol
+候选协议
 ------------------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Candidate protocol
 
 ::
 
@@ -25,17 +26,47 @@ Candidate protocol
     >>> inline_shape.height = height
 
 
-Minimal XML
+最小 XML
 -----------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Minimal XML
 
 .. highlight:: xml
 
-This XML represents the working hypothesis of the minimum XML that must be
-inserted to add a working picture to a document::
+.. tab:: 中文
+
+    此 XML 表示向文档添加工作图片所必须插入的最小 XML 的工作假设::
+
+        <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+          <pic:nvPicPr>
+            <pic:cNvPr id="1" name="python-powered.png"/>
+            <pic:cNvPicPr/>
+          </pic:nvPicPr>
+          <pic:blipFill>
+            <a:blip r:embed="rId7"/>
+            <a:stretch>
+              <a:fillRect/>
+            </a:stretch>
+          </pic:blipFill>
+          <pic:spPr>
+            <a:xfrm>
+              <a:off x="0" y="0"/>
+              <a:ext cx="859536" cy="343814"/>
+            </a:xfrm>
+            <a:prstGeom prst="rect"/>
+          </pic:spPr>
+        </pic:pic>
+
+    必需参数：
+
+    * 唯一的 DrawingML 对象 ID（文档范围，很确定只是部分）
+    * 名称，如果是文件类对象，则为文件名或通用名称。
+    * 与图像部分相关的 rId
+    * 大小（cx、cy）
+
+.. tab:: 英文
+
+    This XML represents the working hypothesis of the minimum XML that must be inserted to add a working picture to a document::
 
     <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
       <pic:nvPicPr>
@@ -58,24 +89,30 @@ inserted to add a working picture to a document::
     </pic:pic>
 
 
-Required parameters:
+    Required parameters:
 
-* unique DrawingML object id (document-wide, pretty sure it's just the part)
-* name, either filename or generic if file-like object.
-* rId for rel to image part
-* size (cx, cy)
+    * unique DrawingML object id (document-wide, pretty sure it's just the part)
+    * name, either filename or generic if file-like object.
+    * rId for rel to image part
+    * size (cx, cy)
 
+
+样本 XML
+------------
 
 Specimen XML
-------------
 
 .. tab:: 中文
 
+    此 XML 表示在段落中以内嵌方式插入的图片
+
 .. tab:: 英文
+
+    This XML represents a picture inserted inline on a paragraph by itself
 
 .. highlight:: xml
 
-This XML represents a picture inserted inline on a paragraph by itself::
+::
 
     <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
       <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
@@ -109,8 +146,10 @@ This XML represents a picture inserted inline on a paragraph by itself::
     </a:graphicData>
 
 
-Schema definitions
+架构定义
 ------------------
+
+Schema definitions
 
 .. highlight:: xml
 

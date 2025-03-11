@@ -5,12 +5,15 @@
 
 .. tab:: 中文
 
+    别名: **WD_COLOR**
+
+    指定要应用的标准预设颜色。用于字体突出显示和其他应用程序。
+
 .. tab:: 英文
 
-alias: **WD_COLOR**
+    alias: **WD_COLOR**
 
-Specifies a standard preset color to apply. Used for font highlighting and
-perhaps other applications.
+    Specifies a standard preset color to apply. Used for font highlighting and perhaps other applications.
 
 ----
 

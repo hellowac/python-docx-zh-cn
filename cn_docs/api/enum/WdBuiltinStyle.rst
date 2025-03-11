@@ -5,11 +5,15 @@
 
 .. tab:: 中文
 
+    别名: **WD_STYLE**
+
+    指定内置的 Microsoft Word 样式。
+
 .. tab:: 英文
 
-alias: **WD_STYLE**
+    alias: **WD_STYLE**
 
-Specifies a built-in Microsoft Word style.
+    Specifies a built-in Microsoft Word style.
 
 Example::
 

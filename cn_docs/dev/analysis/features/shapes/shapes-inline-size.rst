@@ -1,28 +1,32 @@
 
-Inline shape size
+内联形状大小
 =================
 
+Inline shape size
+
 .. tab:: 中文
+
+    内联形状的位置完全由其内联的文本决定，但可以指定其尺寸。对于某些形状类型，所包含的形状和形状容器都指定宽度和高度。对于图片，内联形状（容器）的尺寸决定显示尺寸，而 pic 元素的尺寸决定图像的“原始尺寸”。
 
 .. tab:: 英文
 
-The position of an inline shape is completely determined by the text it is
-inline with, however its dimensions can be specified. For some shape types,
-both the contained shape and the shape container specify a width and height.
-In the case of a picture, the dimensions of the inline shape (container)
-determine the display size while the dimension of the pic element determine the
-"original size" of the image.
+    The position of an inline shape is completely determined by the text it is inline with, however its dimensions can be specified. For some shape types, both the contained shape and the shape container specify a width and height. In the case of a picture, the dimensions of the inline shape (container) determine the display size while the dimension of the pic element determine the "original size" of the image.
 
 
-Candidate protocol -- inline shape access
+候选协议——内联形状访问
 -----------------------------------------
 
+Candidate protocol -- inline shape access
+
 .. tab:: 中文
+
+    以下交互式会话说明了访问和更改内联形状大小的协议
 
 .. tab:: 英文
 
-The following interactive session illustrates the protocol for accessing and
-changing the size of an inline shape::
+    The following interactive session illustrates the protocol for accessing and changing the size of an inline shape
+
+::
 
     >>> inline_shape = inline_shapes[0]
     >>> assert inline_shape.type == MSO_SHAPE_TYPE.PICTURE
@@ -36,12 +40,10 @@ changing the size of an inline shape::
     457200, 228600
 
 
-Resources
+资源
 ---------
 
-.. tab:: 中文
-
-.. tab:: 英文
+Resources
 
 * `InlineShape Members (Word) on MSDN`_
 * `Shape Members (Word) on MSDN`_
@@ -53,16 +55,22 @@ Resources
    http://msdn.microsoft.com/en-us/library/office/ff195191.aspx
 
 
-Specimen XML
+样本 XML
 ------------
+
+Specimen XML
 
 .. tab:: 中文
 
+    此 XML 表示在段落中以内嵌方式插入的内嵌形状
+
 .. tab:: 英文
+
+    This XML represents an inline shape inserted inline on a paragraph by itself
 
 .. highlight:: xml
 
-This XML represents an inline shape inserted inline on a paragraph by itself::
+::
 
     <w:p>
       <w:r>

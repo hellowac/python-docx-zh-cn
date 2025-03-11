@@ -13,8 +13,10 @@
    Spec Section , 17.3.1.22
 
 
-Schema excerpt
+架构摘录
 --------------
+
+Schema excerpt
 
 .. highlight:: xml
 

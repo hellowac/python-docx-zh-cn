@@ -1,8 +1,10 @@
 
 .. _settings_api:
 
-Document |Settings| objects
+文档 |Settings| 对象
 ---------------------------
+
+Document |Settings| objects
 
 .. tab:: 中文
 
